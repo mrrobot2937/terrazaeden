@@ -1,0 +1,324 @@
+{
+    "brands": [
+        {
+            "id": "ay-wey",
+            "name": "Ay Wey!",
+            "description": "Auténtica comida mexicana con sabor extraordinario",
+            "logo": "/logos/aywey.png",
+            "primaryColor": "#FF6B35",
+            "secondaryColor": "#FFE066",
+            "accentColor": "#C1502E",
+            "category": "Mexicana",
+            "menu": {
+                "categories": [
+                    {
+                        "id": "tacos",
+                        "name": "Tacos",
+                        "items": [
+                            {
+                                "id": "taco-pastor",
+                                "name": "Taco al Pastor",
+                                "description": "Carne de cerdo marinada con piña y especias",
+                                "price": 8500,
+                                "image": "/menu/ay-wey/taco-pastor.jpg"
+                            },
+                            {
+                                "id": "taco-carnitas",
+                                "name": "Taco de Carnitas",
+                                "description": "Cerdo confitado con cebolla y cilantro",
+                                "price": 9000,
+                                "image": "/menu/ay-wey/taco-carnitas.jpg"
+                            },
+                            {
+                                "id": "taco-pollo",
+                                "name": "Taco de Pollo",
+                                "description": "Pollo marinado con especias mexicanas",
+                                "price": 8000,
+                                "image": "/menu/ay-wey/taco-pollo.jpg"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "burritos",
+                        "name": "Burritos",
+                        "items": [
+                            {
+                                "id": "burrito-supreme",
+                                "name": "Burrito Supreme",
+                                "description": "Pollo, frijoles, arroz, guacamole y pico de gallo",
+                                "price": 15000,
+                                "image": "/menu/ay-wey/burrito-supreme.jpg"
+                            },
+                            {
+                                "id": "burrito-veggie",
+                                "name": "Burrito Vegetariano",
+                                "description": "Frijoles negros, arroz, verduras y guacamole",
+                                "price": 12000,
+                                "image": "/menu/ay-wey/burrito-veggie.jpg"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "mazorca",
+            "name": "Mazorca",
+            "description": "Especialistas en elotes y mazorcas gourmet",
+            "logo": "/logos/mazorca.png",
+            "primaryColor": "#FFD700",
+            "secondaryColor": "#FFA500",
+            "accentColor": "#FF8C00",
+            "category": "Snacks",
+            "menu": {
+                "categories": [
+                    {
+                        "id": "mazorcas",
+                        "name": "Mazorcas",
+                        "items": [
+                            {
+                                "id": "mazorca-clasica",
+                                "name": "Mazorca Clásica",
+                                "description": "Con mantequilla, mayo, queso y chile",
+                                "price": 6000,
+                                "image": "/menu/mazorca/clasica.jpg"
+                            },
+                            {
+                                "id": "mazorca-premium",
+                                "name": "Mazorca Premium",
+                                "description": "Con todos los ingredientes + bacon y salsa especial",
+                                "price": 8500,
+                                "image": "/menu/mazorca/premium.jpg"
+                            },
+                            {
+                                "id": "mazorca-dulce",
+                                "name": "Mazorca Dulce",
+                                "description": "Con leche condensada y coco rallado",
+                                "price": 7000,
+                                "image": "/menu/mazorca/dulce.jpg"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "cocos-pacifico",
+            "name": "Cocos Pacífico Fresh",
+            "description": "Bebidas tropicales y cocteles de coco",
+            "logo": "/logos/cocos.png",
+            "primaryColor": "#00CED1",
+            "secondaryColor": "#98FB98",
+            "accentColor": "#20B2AA",
+            "category": "Bebidas",
+            "menu": {
+                "categories": [
+                    {
+                        "id": "cocos",
+                        "name": "Cocos",
+                        "items": [
+                            {
+                                "id": "coco-natural",
+                                "name": "Coco Natural",
+                                "description": "Agua de coco fresca directo del fruto",
+                                "price": 5000,
+                                "image": "/menu/cocos/natural.jpg"
+                            },
+                            {
+                                "id": "coco-loca",
+                                "name": "Coco Loca",
+                                "description": "Coco con ron, piña y especias secretas",
+                                "price": 12000,
+                                "image": "/menu/cocos/loca.jpg"
+                            },
+                            {
+                                "id": "coco-tropical",
+                                "name": "Coco Tropical",
+                                "description": "Mezcla de frutas tropicales con agua de coco",
+                                "price": 8000,
+                                "image": "/menu/cocos/tropical.jpg"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "sabor-extremo",
+            "name": "Sabor Extremo Gourmet",
+            "description": "Alta cocina con sabores intensos",
+            "logo": "/logos/saborextremo.png",
+            "primaryColor": "#8B0000",
+            "secondaryColor": "#FFD700",
+            "accentColor": "#DC143C",
+            "category": "Gourmet",
+            "menu": {
+                "categories": [
+                    {
+                        "id": "platos-principales",
+                        "name": "Platos Principales",
+                        "items": [
+                            {
+                                "id": "ribeye-extreme",
+                                "name": "Ribeye Extreme",
+                                "description": "Corte premium con reducción de vino tinto y papas trufa",
+                                "price": 35000,
+                                "image": "/menu/sabor-extremo/ribeye.jpg"
+                            },
+                            {
+                                "id": "salmon-gourmet",
+                                "name": "Salmón Gourmet",
+                                "description": "Salmón atlántico con salsa de maracuyá",
+                                "price": 32000,
+                                "image": "/menu/sabor-extremo/salmon.jpg"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "choripam",
+            "name": "Choripam",
+            "description": "Los mejores chorizos y sándwiches artesanales",
+            "logo": "/logos/choripam.png",
+            "primaryColor": "#D2691E",
+            "secondaryColor": "#CD853F",
+            "accentColor": "#A0522D",
+            "category": "Parrilla",
+            "menu": {
+                "categories": [
+                    {
+                        "id": "chorizos",
+                        "name": "Chorizos",
+                        "items": [
+                            {
+                                "id": "choripan-clasico",
+                                "name": "Choripán Clásico",
+                                "description": "Chorizo artesanal con chimichurri y pan crispy",
+                                "price": 8000,
+                                "image": "/menu/choripam/clasico.jpg"
+                            },
+                            {
+                                "id": "choripan-premium",
+                                "name": "Choripán Premium",
+                                "description": "Chorizo premium con salsa especial",
+                                "price": 10000,
+                                "image": "/menu/choripam/premium.jpg"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "togoima",
+            "name": "Togoima",
+            "description": "Fusión asiática con toques colombianos",
+            "logo": "/logos/togoima.png",
+            "primaryColor": "#FF1744",
+            "secondaryColor": "#FF6B6B",
+            "accentColor": "#E91E63",
+            "category": "Fusión",
+            "menu": {
+                "categories": [
+                    {
+                        "id": "ramen",
+                        "name": "Ramen",
+                        "items": [
+                            {
+                                "id": "ramen-colombiano",
+                                "name": "Ramen Colombiano",
+                                "description": "Ramen con cerdo, arepa y cilantro",
+                                "price": 18000,
+                                "image": "/menu/togoima/ramen-colombiano.jpg"
+                            },
+                            {
+                                "id": "ramen-vegetariano",
+                                "name": "Ramen Vegetariano",
+                                "description": "Ramen con verduras frescas y tofu",
+                                "price": 16000,
+                                "image": "/menu/togoima/ramen-vegetariano.jpg"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "dream-burger",
+            "name": "Dream Burger",
+            "description": "Hamburguesas gourmet que superan tus sueños",
+            "logo": "/logos/dreamburguer.png",
+            "primaryColor": "#FF4081",
+            "secondaryColor": "#FFC107",
+            "accentColor": "#E91E63",
+            "category": "Hamburguesas",
+            "menu": {
+                "categories": [
+                    {
+                        "id": "burgers",
+                        "name": "Hamburguesas",
+                        "items": [
+                            {
+                                "id": "dream-classic",
+                                "name": "Dream Classic",
+                                "description": "Carne angus, queso cheddar, tomate, lechuga y salsa especial",
+                                "price": 16000,
+                                "image": "/menu/dream-burger/classic.jpg"
+                            },
+                            {
+                                "id": "dream-extreme",
+                                "name": "Dream Extreme",
+                                "description": "Doble carne, bacon, cebolla caramelizada y salsa BBQ",
+                                "price": 22000,
+                                "image": "/menu/dream-burger/extreme.jpg"
+                            },
+                            {
+                                "id": "dream-veggie",
+                                "name": "Dream Veggie",
+                                "description": "Hamburguesa vegetariana con quinoa y vegetales",
+                                "price": 18000,
+                                "image": "/menu/dream-burger/veggie.jpg"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "perfetto",
+            "name": "Perfetto",
+            "description": "Cocina italiana auténtica y refinada",
+            "logo": "/logos/perfetto.png",
+            "primaryColor": "#228B22",
+            "secondaryColor": "#FFD700",
+            "accentColor": "#DC143C",
+            "category": "Italiana",
+            "menu": {
+                "categories": [
+                    {
+                        "id": "pastas",
+                        "name": "Pastas",
+                        "items": [
+                            {
+                                "id": "carbonara-perfetto",
+                                "name": "Carbonara Perfetto",
+                                "description": "Pasta artesanal con panceta, huevo y parmesano",
+                                "price": 20000,
+                                "image": "/menu/perfetto/carbonara.jpg"
+                            },
+                            {
+                                "id": "lasagna-della-casa",
+                                "name": "Lasagna della Casa",
+                                "description": "Lasagna tradicional con salsa boloñesa casera",
+                                "price": 25000,
+                                "image": "/menu/perfetto/lasagna.jpg"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}
