@@ -16,6 +16,13 @@ export interface Menu {
     categories: MenuCategory[];
 }
 
+export interface ContactInfo {
+    whatsapp?: string;
+    whatsappMessage?: string;
+    officialWebsite?: string;
+    callWaiter?: boolean;
+}
+
 export interface Brand {
     id: string;
     name: string;
@@ -26,6 +33,7 @@ export interface Brand {
     accentColor: string;
     category: string;
     menu: Menu;
+    contact: ContactInfo;
 }
 
 export interface BrandsData {

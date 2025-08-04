@@ -9,6 +9,11 @@
             "secondaryColor": "#FFE066",
             "accentColor": "#C1502E",
             "category": "Mexicana",
+            "contact": {
+                "whatsapp": "+573001234567",
+                "whatsappMessage": "¡Hola! Me gustaría hacer un pedido de Ay Wey! 🌮",
+                "callWaiter": true
+            },
             "menu": {
                 "categories": [
                     {
@@ -70,6 +75,11 @@
             "secondaryColor": "#FFA500",
             "accentColor": "#FF8C00",
             "category": "Snacks",
+            "contact": {
+                "whatsapp": "+573001234568",
+                "whatsappMessage": "¡Hola! Quiero ordenar unas deliciosas mazorcas 🌽",
+                "callWaiter": true
+            },
             "menu": {
                 "categories": [
                     {
@@ -111,6 +121,11 @@
             "secondaryColor": "#98FB98",
             "accentColor": "#20B2AA",
             "category": "Bebidas",
+            "contact": {
+                "whatsapp": "+573001234569",
+                "whatsappMessage": "¡Hola! Me gustaría ordenar bebidas refrescantes de Cocos Pacífico 🥥",
+                "callWaiter": true
+            },
             "menu": {
                 "categories": [
                     {
@@ -152,6 +167,11 @@
             "secondaryColor": "#FFD700",
             "accentColor": "#DC143C",
             "category": "Gourmet",
+            "contact": {
+                "whatsapp": "+573001234570",
+                "whatsappMessage": "¡Hola! Quiero hacer una reserva en Sabor Extremo Gourmet 🍽️",
+                "callWaiter": true
+            },
             "menu": {
                 "categories": [
                     {
@@ -186,6 +206,11 @@
             "secondaryColor": "#CD853F",
             "accentColor": "#A0522D",
             "category": "Parrilla",
+            "contact": {
+                "officialWebsite": "https://choripam.com",
+                "whatsapp": "+573001234571",
+                "whatsappMessage": "¡Hola! Me interesa el menú de Choripam 🌭"
+            },
             "menu": {
                 "categories": [
                     {
@@ -220,6 +245,11 @@
             "secondaryColor": "#FF6B6B",
             "accentColor": "#E91E63",
             "category": "Fusión",
+            "contact": {
+                "whatsapp": "+573001234572",
+                "whatsappMessage": "¡Hola! Quiero probar la fusión asiática de Togoima 🍜",
+                "callWaiter": true
+            },
             "menu": {
                 "categories": [
                     {
@@ -254,6 +284,11 @@
             "secondaryColor": "#FFC107",
             "accentColor": "#E91E63",
             "category": "Hamburguesas",
+            "contact": {
+                "whatsapp": "+573001234573",
+                "whatsappMessage": "¡Hola! Quiero una hamburguesa de ensueño de Dream Burger 🍔",
+                "callWaiter": true
+            },
             "menu": {
                 "categories": [
                     {
@@ -295,6 +330,11 @@
             "secondaryColor": "#FFD700",
             "accentColor": "#DC143C",
             "category": "Italiana",
+            "contact": {
+                "whatsapp": "+573001234574",
+                "whatsappMessage": "¡Ciao! Me gustaría ordenar auténtica comida italiana de Perfetto 🍝",
+                "callWaiter": true
+            },
             "menu": {
                 "categories": [
                     {
