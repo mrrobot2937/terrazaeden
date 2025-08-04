@@ -50,6 +50,9 @@ export default function BrandPage({ params }: Props) {
     if (brand && brand.menu.categories.length > 0) {
       setSelectedCategory(brand.menu.categories[0].id)
     }
+
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0)
   }, [brand])
 
   useEffect(() => {
@@ -227,17 +230,40 @@ export default function BrandPage({ params }: Props) {
           </div>
         </motion.div>
 
-        <motion.h1 
-          className="text-5xl md:text-7xl font-black text-white mb-4"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          style={{
-            textShadow: `0 0 30px ${brand.primaryColor}60`
-          }}
-        >
-          {brand.name}
-        </motion.h1>
+        {/* Título - Especial para Togoima */}
+        {brand.id === 'togoima' ? (
+          <motion.div
+            className="mb-4"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <div className="relative w-full max-w-2xl mx-auto h-32 md:h-40">
+              <Image
+                src="/logos/togoima_letra.png"
+                alt="Togoima Logo"
+                fill
+                className="object-contain"
+                style={{
+                  filter: `drop-shadow(0 0 30px ${brand.primaryColor}60)`
+                }}
+                priority
+              />
+            </div>
+          </motion.div>
+        ) : (
+          <motion.h1 
+            className="text-5xl md:text-7xl font-black text-white mb-4"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            style={{
+              textShadow: `0 0 30px ${brand.primaryColor}60`
+            }}
+          >
+            {brand.name}
+          </motion.h1>
+        )}
 
         <motion.p 
           className="text-xl text-gray-300 max-w-2xl mx-auto mb-8"

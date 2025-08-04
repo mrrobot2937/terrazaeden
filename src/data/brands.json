@@ -69,7 +69,7 @@
         {
             "id": "mazorca",
             "name": "Mazorca",
-            "description": "Especialistas en elotes y mazorcas gourmet",
+            "description": "Especialistas en arepas y mazorcadas gourmet",
             "logo": "/logos/mazorca.png",
             "primaryColor": "#FFD700",
             "secondaryColor": "#FFA500",
@@ -77,7 +77,7 @@
             "category": "Snacks",
             "contact": {
                 "whatsapp": "+573001234568",
-                "whatsappMessage": "¡Hola! Quiero ordenar unas deliciosas mazorcas 🌽",
+                "whatsappMessage": "¡Hola! Quiero ordenar unas deliciosas mazorcadas 🌽",
                 "callWaiter": true
             },
             "menu": {
@@ -113,91 +113,6 @@
             }
         },
         {
-            "id": "cocos-pacifico",
-            "name": "Cocos Pacífico Fresh",
-            "description": "Bebidas tropicales y cocteles de coco",
-            "logo": "/logos/cocos.png",
-            "primaryColor": "#00CED1",
-            "secondaryColor": "#98FB98",
-            "accentColor": "#20B2AA",
-            "category": "Bebidas",
-            "contact": {
-                "whatsapp": "+573001234569",
-                "whatsappMessage": "¡Hola! Me gustaría ordenar bebidas refrescantes de Cocos Pacífico 🥥",
-                "callWaiter": true
-            },
-            "menu": {
-                "categories": [
-                    {
-                        "id": "cocos",
-                        "name": "Cocos",
-                        "items": [
-                            {
-                                "id": "coco-natural",
-                                "name": "Coco Natural",
-                                "description": "Agua de coco fresca directo del fruto",
-                                "price": 5000,
-                                "image": "/menu/cocos/natural.jpg"
-                            },
-                            {
-                                "id": "coco-loca",
-                                "name": "Coco Loca",
-                                "description": "Coco con ron, piña y especias secretas",
-                                "price": 12000,
-                                "image": "/menu/cocos/loca.jpg"
-                            },
-                            {
-                                "id": "coco-tropical",
-                                "name": "Coco Tropical",
-                                "description": "Mezcla de frutas tropicales con agua de coco",
-                                "price": 8000,
-                                "image": "/menu/cocos/tropical.jpg"
-                            }
-                        ]
-                    }
-                ]
-            }
-        },
-        {
-            "id": "sabor-extremo",
-            "name": "Sabor Extremo Gourmet",
-            "description": "Alta cocina con sabores intensos",
-            "logo": "/logos/saborextremo.png",
-            "primaryColor": "#8B0000",
-            "secondaryColor": "#FFD700",
-            "accentColor": "#DC143C",
-            "category": "Gourmet",
-            "contact": {
-                "whatsapp": "+573001234570",
-                "whatsappMessage": "¡Hola! Quiero hacer una reserva en Sabor Extremo Gourmet 🍽️",
-                "callWaiter": true
-            },
-            "menu": {
-                "categories": [
-                    {
-                        "id": "platos-principales",
-                        "name": "Platos Principales",
-                        "items": [
-                            {
-                                "id": "ribeye-extreme",
-                                "name": "Ribeye Extreme",
-                                "description": "Corte premium con reducción de vino tinto y papas trufa",
-                                "price": 35000,
-                                "image": "/menu/sabor-extremo/ribeye.jpg"
-                            },
-                            {
-                                "id": "salmon-gourmet",
-                                "name": "Salmón Gourmet",
-                                "description": "Salmón atlántico con salsa de maracuyá",
-                                "price": 32000,
-                                "image": "/menu/sabor-extremo/salmon.jpg"
-                            }
-                        ]
-                    }
-                ]
-            }
-        },
-        {
             "id": "choripam",
             "name": "Choripam",
             "description": "Los mejores chorizos y sándwiches artesanales",
@@ -212,34 +127,13 @@
                 "whatsappMessage": "¡Hola! Me interesa el menú de Choripam 🌭"
             },
             "menu": {
-                "categories": [
-                    {
-                        "id": "chorizos",
-                        "name": "Chorizos",
-                        "items": [
-                            {
-                                "id": "choripan-clasico",
-                                "name": "Choripán Clásico",
-                                "description": "Chorizo artesanal con chimichurri y pan crispy",
-                                "price": 8000,
-                                "image": "/menu/choripam/clasico.jpg"
-                            },
-                            {
-                                "id": "choripan-premium",
-                                "name": "Choripán Premium",
-                                "description": "Chorizo premium con salsa especial",
-                                "price": 10000,
-                                "image": "/menu/choripam/premium.jpg"
-                            }
-                        ]
-                    }
-                ]
+                "categories": []
             }
         },
         {
             "id": "togoima",
             "name": "Togoima",
-            "description": "Fusión asiática con toques colombianos",
+            "description": "Cafe ancestral colombiano",
             "logo": "/logos/togoima.png",
             "primaryColor": "#FF1744",
             "secondaryColor": "#FF6B6B",
@@ -276,84 +170,189 @@
             }
         },
         {
-            "id": "dream-burger",
-            "name": "Dream Burger",
-            "description": "Hamburguesas gourmet que superan tus sueños",
-            "logo": "/logos/dreamburguer.png",
-            "primaryColor": "#FF4081",
-            "secondaryColor": "#FFC107",
-            "accentColor": "#E91E63",
-            "category": "Hamburguesas",
-            "contact": {
-                "whatsapp": "+573001234573",
-                "whatsappMessage": "¡Hola! Quiero una hamburguesa de ensueño de Dream Burger 🍔",
-                "callWaiter": true
-            },
-            "menu": {
-                "categories": [
-                    {
-                        "id": "burgers",
-                        "name": "Hamburguesas",
-                        "items": [
-                            {
-                                "id": "dream-classic",
-                                "name": "Dream Classic",
-                                "description": "Carne angus, queso cheddar, tomate, lechuga y salsa especial",
-                                "price": 16000,
-                                "image": "/menu/dream-burger/classic.jpg"
-                            },
-                            {
-                                "id": "dream-extreme",
-                                "name": "Dream Extreme",
-                                "description": "Doble carne, bacon, cebolla caramelizada y salsa BBQ",
-                                "price": 22000,
-                                "image": "/menu/dream-burger/extreme.jpg"
-                            },
-                            {
-                                "id": "dream-veggie",
-                                "name": "Dream Veggie",
-                                "description": "Hamburguesa vegetariana con quinoa y vegetales",
-                                "price": 18000,
-                                "image": "/menu/dream-burger/veggie.jpg"
-                            }
-                        ]
-                    }
-                ]
-            }
-        },
-        {
             "id": "perfetto",
             "name": "Perfetto",
-            "description": "Cocina italiana auténtica y refinada",
+            "description": "Gelato sano y delicioso con ingredientes naturales",
             "logo": "/logos/perfetto.png",
             "primaryColor": "#228B22",
             "secondaryColor": "#FFD700",
             "accentColor": "#DC143C",
-            "category": "Italiana",
+            "category": "Gelato",
             "contact": {
                 "whatsapp": "+573001234574",
-                "whatsappMessage": "¡Ciao! Me gustaría ordenar auténtica comida italiana de Perfetto 🍝",
+                "whatsappMessage": "¡Hola! Me gustaría ordenar delicioso gelato artesanal de Perfetto 🍨",
                 "callWaiter": true
             },
             "menu": {
                 "categories": [
                     {
-                        "id": "pastas",
-                        "name": "Pastas",
+                        "id": "frullatos",
+                        "name": "Frullatos",
                         "items": [
                             {
-                                "id": "carbonara-perfetto",
-                                "name": "Carbonara Perfetto",
-                                "description": "Pasta artesanal con panceta, huevo y parmesano",
-                                "price": 20000,
-                                "image": "/menu/perfetto/carbonara.jpg"
+                                "id": "frullatto-frutos-bosque",
+                                "name": "Frullatto Frutos del Bosque",
+                                "description": "Deliciosa mezcla de frutos rojos con textura cremosa",
+                                "price": 13900,
+                                "image": "/menu/perfetto/frullatto-bosque.jpg"
                             },
                             {
-                                "id": "lasagna-della-casa",
-                                "name": "Lasagna della Casa",
-                                "description": "Lasagna tradicional con salsa boloñesa casera",
-                                "price": 25000,
-                                "image": "/menu/perfetto/lasagna.jpg"
+                                "id": "frullatto-frutos-amarillos",
+                                "name": "Frullatto Frutos Amarillos",
+                                "description": "Refrescante combinación de frutas tropicales amarillas",
+                                "price": 13900,
+                                "image": "/menu/perfetto/frullatto-amarillos.jpg"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "parfaits-gelatos",
+                        "name": "Parfaits & Gelatos",
+                        "items": [
+                            {
+                                "id": "parfait-roma",
+                                "name": "Parfait Roma",
+                                "description": "Gelato con 4 guarniciones de su preferencia en barra + 1 salsa",
+                                "price": 12900,
+                                "image": "/menu/perfetto/parfait-roma.jpg"
+                            },
+                            {
+                                "id": "gelato-milan",
+                                "name": "Gelato Milán",
+                                "description": "Gelato con 3 guarniciones de su preferencia en barra + 1 salsa",
+                                "price": 11500,
+                                "image": "/menu/perfetto/gelato-milan.jpg"
+                            },
+                            {
+                                "id": "bowl-gelato",
+                                "name": "Bowl Gelato",
+                                "description": "Bowl de gelato con 2 guarniciones de su preferencia + 1 salsa",
+                                "price": 9900,
+                                "image": "/menu/perfetto/bowl-gelato.jpg"
+                            },
+                            {
+                                "id": "gelato-premium",
+                                "name": "Gelato Premium",
+                                "description": "Experiencia premium de gelato artesanal",
+                                "price": 15000,
+                                "image": "/menu/perfetto/gelato-premium.jpg"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "guarniciones",
+                        "name": "Guarniciones",
+                        "items": [
+                            {
+                                "id": "fresa",
+                                "name": "Fresa",
+                                "description": "Fresa fresca cortada",
+                                "price": 2000,
+                                "image": "/menu/perfetto/fresa.jpg"
+                            },
+                            {
+                                "id": "brownie-oreo",
+                                "name": "Brownie Oreo",
+                                "description": "Trozos de brownie con galletas Oreo",
+                                "price": 2000,
+                                "image": "/menu/perfetto/brownie-oreo.jpg"
+                            },
+                            {
+                                "id": "queso",
+                                "name": "Queso",
+                                "description": "Queso cremoso especial",
+                                "price": 2000,
+                                "image": "/menu/perfetto/queso.jpg"
+                            },
+                            {
+                                "id": "coco",
+                                "name": "Coco",
+                                "description": "Coco rallado natural",
+                                "price": 2000,
+                                "image": "/menu/perfetto/coco.jpg"
+                            },
+                            {
+                                "id": "m-and-m",
+                                "name": "M&M",
+                                "description": "Chocolates M&M de colores",
+                                "price": 2000,
+                                "image": "/menu/perfetto/m-and-m.jpg"
+                            },
+                            {
+                                "id": "maracuya",
+                                "name": "Maracuyá",
+                                "description": "Pulpa de maracuyá natural",
+                                "price": 2000,
+                                "image": "/menu/perfetto/maracuya.jpg"
+                            },
+                            {
+                                "id": "granola",
+                                "name": "Granola",
+                                "description": "Granola crujiente casera",
+                                "price": 2000,
+                                "image": "/menu/perfetto/granola.jpg"
+                            },
+                            {
+                                "id": "mango-chip",
+                                "name": "Mango Chip de Colores",
+                                "description": "Mango deshidratado con chip de colores",
+                                "price": 2000,
+                                "image": "/menu/perfetto/mango-chip.jpg"
+                            },
+                            {
+                                "id": "almendra",
+                                "name": "Almendra Entera",
+                                "description": "Almendras enteras naturales",
+                                "price": 2000,
+                                "image": "/menu/perfetto/almendra.jpg"
+                            },
+                            {
+                                "id": "cereal-chocolate",
+                                "name": "Cereal de Chocolate",
+                                "description": "Cereal crujiente sabor chocolate",
+                                "price": 2000,
+                                "image": "/menu/perfetto/cereal-chocolate.jpg"
+                            },
+                            {
+                                "id": "mani-natural",
+                                "name": "Maní Natural",
+                                "description": "Maní tostado natural",
+                                "price": 2000,
+                                "image": "/menu/perfetto/mani.jpg"
+                            },
+                            {
+                                "id": "banano",
+                                "name": "Banano",
+                                "description": "Rodajas de banano fresco",
+                                "price": 2000,
+                                "image": "/menu/perfetto/banano.jpg"
+                            },
+                            {
+                                "id": "explosion-cereza",
+                                "name": "Explosión Cereza",
+                                "description": "Cerezas con explosión de sabor",
+                                "price": 2000,
+                                "image": "/menu/perfetto/explosion-cereza.jpg"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "adicionales",
+                        "name": "Adicionales",
+                        "items": [
+                            {
+                                "id": "cuchara-comestible",
+                                "name": "Cuchara Comestible",
+                                "description": "Cuchara de galleta comestible",
+                                "price": 2500,
+                                "image": "/menu/perfetto/cuchara-comestible.jpg"
+                            },
+                            {
+                                "id": "agua-botella",
+                                "name": "Agua en Botella",
+                                "description": "Agua purificada en botella",
+                                "price": 3000,
+                                "image": "/menu/perfetto/agua-botella.jpg"
                             }
                         ]
                     }
