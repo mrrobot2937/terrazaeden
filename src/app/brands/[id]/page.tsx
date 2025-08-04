@@ -3,7 +3,7 @@
 import { useState, useEffect, use } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Card, CardContent } from '@/components/ui/card'
-import { ArrowLeft, MessageCircle, ExternalLink, Bell, Star, Clock, Flame, Phone } from 'lucide-react'
+import { ArrowLeft, MessageCircle, ExternalLink, Bell, Star, Clock, Flame, Phone, Coffee, Sparkles, Cookie, Wine, Sandwich, Soup, Utensils, GlassWater, Cherry, Croissant } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
@@ -34,6 +34,21 @@ const cardVariants = {
       stiffness: 100
     }
   }
+}
+
+// Iconos personalizados para las categorías de Togoima
+const togoimaCategoryIcons: { [key: string]: React.ReactNode } = {
+  'tradicionales': <Coffee className="w-6 h-6" />,
+  'rituales': <Sparkles className="w-6 h-6" />,
+  'cacaos-chocolates': <Cookie className="w-6 h-6" />,
+  'combos': <Utensils className="w-6 h-6" />,
+  'hipotermicas': <GlassWater className="w-6 h-6" />,
+  'pecados': <Cherry className="w-6 h-6" />,
+  'platos': <Soup className="w-6 h-6" />,
+  'sandwiches': <Sandwich className="w-6 h-6" />,
+  'amasijos': <Croissant className="w-6 h-6" />,
+  'destilados': <Wine className="w-6 h-6" />,
+  'mezclas': <Wine className="w-6 h-6" />
 }
 
 export default function BrandPage({ params }: Props) {
@@ -90,6 +105,9 @@ export default function BrandPage({ params }: Props) {
 
   const selectedCategoryData = brand.menu.categories.find(cat => cat.id === selectedCategory)
 
+  // Diseño especial para Togoima
+  const isTogoima = brand.id === 'togoima'
+
   return (
     <motion.div 
       className="min-h-screen relative overflow-hidden bg-black"
@@ -102,27 +120,42 @@ export default function BrandPage({ params }: Props) {
       {/* Dynamic Background - Only render after mount */}
       {mounted && (
         <div className="absolute inset-0">
-          <div 
-            className="absolute w-96 h-96 rounded-full filter blur-3xl opacity-15 transition-transform duration-1000 ease-out"
-            style={{
-              backgroundColor: brand.primaryColor,
-              transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`
-            }}
-          />
-          <div 
-            className="absolute top-1/3 right-1/4 w-72 h-72 rounded-full filter blur-3xl opacity-10 transition-transform duration-1000 ease-out"
-            style={{
-              backgroundColor: brand.secondaryColor,
-              transform: `translate(${mousePosition.x * -0.01}px, ${mousePosition.y * -0.01}px)`
-            }}
-          />
-          <div 
-            className="absolute bottom-1/4 left-1/4 w-64 h-64 rounded-full filter blur-3xl opacity-8 transition-transform duration-1000 ease-out"
-            style={{
-              backgroundColor: brand.accentColor,
-              transform: `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.015}px)`
-            }}
-          />
+          {isTogoima ? (
+            // Fondo especial para Togoima con patrón de café
+            <>
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-950 via-amber-900 to-orange-900 opacity-30" />
+              <div 
+                className="absolute inset-0 opacity-10"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+                }}
+              />
+            </>
+          ) : (
+            <>
+              <div 
+                className="absolute w-96 h-96 rounded-full filter blur-3xl opacity-15 transition-transform duration-1000 ease-out"
+                style={{
+                  backgroundColor: brand.primaryColor,
+                  transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`
+                }}
+              />
+              <div 
+                className="absolute top-1/3 right-1/4 w-72 h-72 rounded-full filter blur-3xl opacity-10 transition-transform duration-1000 ease-out"
+                style={{
+                  backgroundColor: brand.secondaryColor,
+                  transform: `translate(${mousePosition.x * -0.01}px, ${mousePosition.y * -0.01}px)`
+                }}
+              />
+              <div 
+                className="absolute bottom-1/4 left-1/4 w-64 h-64 rounded-full filter blur-3xl opacity-8 transition-transform duration-1000 ease-out"
+                style={{
+                  backgroundColor: brand.accentColor,
+                  transform: `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.015}px)`
+                }}
+              />
+            </>
+          )}
         </div>
       )}
 
@@ -343,48 +376,115 @@ export default function BrandPage({ params }: Props) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1 }}
       >
-        {/* Category Tabs */}
-        <div className="flex space-x-3 mb-8 overflow-x-auto pb-2">
-          {brand.menu.categories.map((category, index) => (
-            <motion.button
-              key={category.id}
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 whitespace-nowrap border ${
-                selectedCategory === category.id
-                  ? 'text-white shadow-lg'
-                  : 'text-gray-300 hover:text-white'
-              }`}
-              style={{
-                backgroundColor: selectedCategory === category.id 
-                  ? brand.primaryColor 
-                  : brand.primaryColor + '10',
-                borderColor: selectedCategory === category.id
-                  ? brand.secondaryColor
-                  : brand.primaryColor + '30',
-                boxShadow: selectedCategory === category.id
-                  ? `0 8px 25px ${brand.primaryColor}30`
-                  : 'none'
-              }}
-              onClick={() => setSelectedCategory(category.id)}
-              whileHover={{ 
-                scale: 1.05,
-                backgroundColor: selectedCategory === category.id ? brand.accentColor : brand.primaryColor + '20'
-              }}
-              whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
-            >
-              {category.name}
-            </motion.button>
-          ))}
-        </div>
+        {/* Category Tabs - Diseño especial para Togoima */}
+        {isTogoima ? (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
+            {brand.menu.categories.map((category, index) => (
+              <motion.button
+                key={category.id}
+                className={`relative p-6 rounded-2xl transition-all duration-300 group border ${
+                  selectedCategory === category.id
+                    ? 'shadow-2xl scale-105'
+                    : 'hover:scale-105'
+                }`}
+                style={{
+                  backgroundColor: selectedCategory === category.id 
+                    ? '#D2691E20' 
+                    : '#8B451310',
+                  borderColor: selectedCategory === category.id
+                    ? '#D2691E'
+                    : '#8B451330',
+                  boxShadow: selectedCategory === category.id
+                    ? `0 20px 40px #D2691E30`
+                    : 'none'
+                }}
+                onClick={() => setSelectedCategory(category.id)}
+                whileHover={{ 
+                  backgroundColor: '#D2691E15'
+                }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
+              >
+                <div className="flex flex-col items-center space-y-3">
+                  <div 
+                    className="w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300"
+                    style={{
+                      backgroundColor: selectedCategory === category.id 
+                        ? '#D2691E' 
+                        : '#8B451350',
+                      color: selectedCategory === category.id ? 'white' : '#D2691E'
+                    }}
+                  >
+                    {togoimaCategoryIcons[category.id] || <Coffee className="w-6 h-6" />}
+                  </div>
+                  <span 
+                    className={`font-bold text-sm md:text-base ${
+                      selectedCategory === category.id
+                        ? 'text-orange-400'
+                        : 'text-amber-200'
+                    }`}
+                  >
+                    {category.name}
+                  </span>
+                </div>
+                
+                {/* Indicador de items */}
+                <div className="absolute top-2 right-2 w-6 h-6 bg-amber-900 rounded-full flex items-center justify-center text-xs text-amber-100 font-bold">
+                  {category.items.length}
+                </div>
+              </motion.button>
+            ))}
+          </div>
+        ) : (
+          // Diseño normal para otras marcas
+          <div className="flex space-x-3 mb-8 overflow-x-auto pb-2">
+            {brand.menu.categories.map((category, index) => (
+              <motion.button
+                key={category.id}
+                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 whitespace-nowrap border ${
+                  selectedCategory === category.id
+                    ? 'text-white shadow-lg'
+                    : 'text-gray-300 hover:text-white'
+                }`}
+                style={{
+                  backgroundColor: selectedCategory === category.id 
+                    ? brand.primaryColor 
+                    : brand.primaryColor + '10',
+                  borderColor: selectedCategory === category.id
+                    ? brand.secondaryColor
+                    : brand.primaryColor + '30',
+                  boxShadow: selectedCategory === category.id
+                    ? `0 8px 25px ${brand.primaryColor}30`
+                    : 'none'
+                }}
+                onClick={() => setSelectedCategory(category.id)}
+                whileHover={{ 
+                  scale: 1.05,
+                  backgroundColor: selectedCategory === category.id ? brand.accentColor : brand.primaryColor + '20'
+                }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
+              >
+                {category.name}
+              </motion.button>
+            ))}
+          </div>
+        )}
 
-        {/* Menu Items */}
+        {/* Menu Items - Diseño especial para Togoima */}
         <AnimatePresence mode="wait">
           {selectedCategoryData && (
             <motion.div
               key={selectedCategory}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              className={`grid ${
+                isTogoima 
+                  ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' 
+                  : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+              } gap-6`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
@@ -403,25 +503,32 @@ export default function BrandPage({ params }: Props) {
                   }}
                 >
                   <Card 
-                    className="group overflow-hidden border backdrop-blur-md hover:backdrop-blur-lg transition-all duration-500 h-full"
+                    className={`group overflow-hidden border backdrop-blur-md hover:backdrop-blur-lg transition-all duration-500 h-full ${
+                      isTogoima ? 'hover:shadow-2xl' : ''
+                    }`}
                     style={{
-                      backgroundColor: 'rgba(17, 24, 39, 0.8)',
-                      borderColor: brand.primaryColor + '30'
+                      backgroundColor: isTogoima ? 'rgba(139, 69, 19, 0.1)' : 'rgba(17, 24, 39, 0.8)',
+                      borderColor: isTogoima ? '#D2691E30' : brand.primaryColor + '30'
                     }}
                   >
-                    {/* Item Image Placeholder */}
+                    {/* Item Image Placeholder - Diseño especial para Togoima */}
                     <div 
-                      className="h-40 relative overflow-hidden"
+                      className={`${isTogoima ? 'h-32' : 'h-40'} relative overflow-hidden`}
                       style={{
-                        background: `linear-gradient(45deg, ${brand.primaryColor}20, ${brand.secondaryColor}20)`
+                        background: isTogoima 
+                          ? `linear-gradient(135deg, #8B451320, #D2691E20)`
+                          : `linear-gradient(45deg, ${brand.primaryColor}20, ${brand.secondaryColor}20)`
                       }}
                     >
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div 
-                          className="w-20 h-20 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg"
+                          className={`${isTogoima ? 'w-16 h-16' : 'w-20 h-20'} rounded-full flex items-center justify-center text-white font-bold shadow-lg`}
                           style={{ 
-                            backgroundColor: brand.primaryColor,
-                            boxShadow: `0 8px 25px ${brand.primaryColor}40`
+                            backgroundColor: isTogoima ? '#D2691E' : brand.primaryColor,
+                            boxShadow: isTogoima 
+                              ? `0 8px 25px #D2691E40`
+                              : `0 8px 25px ${brand.primaryColor}40`,
+                            fontSize: isTogoima ? '1.5rem' : '1.25rem'
                           }}
                         >
                           {item.name.charAt(0)}
@@ -431,7 +538,11 @@ export default function BrandPage({ params }: Props) {
                       {/* Hover Overlay */}
                       <div 
                         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                        style={{ backgroundColor: brand.accentColor + '60' }}
+                        style={{ 
+                          backgroundColor: isTogoima 
+                            ? '#FF8C0060' 
+                            : brand.accentColor + '60' 
+                        }}
                       >
                         <span className="text-white text-sm font-medium px-4 py-2 rounded-full bg-black/50 backdrop-blur-sm">
                           ¡Delicioso!
@@ -439,39 +550,41 @@ export default function BrandPage({ params }: Props) {
                       </div>
                     </div>
 
-                    <CardContent className="p-6">
+                    <CardContent className={`${isTogoima ? 'p-4' : 'p-6'}`}>
                       <div className="space-y-4">
                         <div>
-                          <h3 className="text-lg font-bold text-white mb-2 line-clamp-2 group-hover:text-gray-200 transition-colors">
+                          <h3 className={`${isTogoima ? 'text-base' : 'text-lg'} font-bold text-white mb-2 line-clamp-2 group-hover:text-gray-200 transition-colors`}>
                             {item.name}
                           </h3>
                           
-                          <p className="text-gray-400 text-sm leading-relaxed line-clamp-3 mb-4">
+                          <p className={`text-gray-400 ${isTogoima ? 'text-xs' : 'text-sm'} leading-relaxed line-clamp-3 mb-4`}>
                             {item.description}
                           </p>
                         </div>
 
                         <div className="flex items-center justify-between">
                           <span 
-                            className="text-2xl font-bold"
+                            className={`${isTogoima ? 'text-xl' : 'text-2xl'} font-bold`}
                             style={{ 
-                              color: brand.primaryColor
+                              color: isTogoima ? '#FF8C00' : brand.primaryColor
                             }}
                           >
                             {formatPrice(item.price)}
                           </span>
 
-                          <div className="flex items-center space-x-2">
-                            <motion.button
-                              onClick={handleWhatsAppClick}
-                              className="flex items-center space-x-1 px-3 py-2 bg-green-600 hover:bg-green-700 rounded-full text-white text-sm font-medium transition-colors duration-300"
-                              whileHover={{ scale: 1.05 }}
-                              whileTap={{ scale: 0.95 }}
-                            >
-                              <MessageCircle className="w-4 h-4" />
-                              <span>Pedir</span>
-                            </motion.button>
-                          </div>
+                          {!isTogoima && (
+                            <div className="flex items-center space-x-2">
+                              <motion.button
+                                onClick={handleWhatsAppClick}
+                                className="flex items-center space-x-1 px-3 py-2 bg-green-600 hover:bg-green-700 rounded-full text-white text-sm font-medium transition-colors duration-300"
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                              >
+                                <MessageCircle className="w-4 h-4" />
+                                <span>Pedir</span>
+                              </motion.button>
+                            </div>
+                          )}
                         </div>
                       </div>
                     </CardContent>
@@ -512,12 +625,12 @@ export default function BrandPage({ params }: Props) {
                   onClick={handleCallWaiter}
                   className="flex items-center justify-center space-x-3 px-8 py-4 rounded-full text-white font-bold text-lg shadow-lg transition-all duration-300"
                   style={{ 
-                    backgroundColor: brand.primaryColor,
-                    borderColor: brand.secondaryColor
+                    backgroundColor: isTogoima ? '#D2691E' : brand.primaryColor,
+                    borderColor: isTogoima ? '#FF8C00' : brand.secondaryColor
                   }}
                   whileHover={{ 
                     scale: 1.05,
-                    backgroundColor: brand.accentColor
+                    backgroundColor: isTogoima ? '#FF8C00' : brand.accentColor
                   }}
                   whileTap={{ scale: 0.95 }}
                 >

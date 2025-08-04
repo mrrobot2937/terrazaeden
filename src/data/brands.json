@@ -133,36 +133,908 @@
         {
             "id": "togoima",
             "name": "Togoima",
-            "description": "Cafe ancestral colombiano",
+            "description": "Café ancestral colombiano - Una experiencia única de sabores",
             "logo": "/logos/togoima.png",
-            "primaryColor": "#FF1744",
-            "secondaryColor": "#FF6B6B",
-            "accentColor": "#E91E63",
-            "category": "Fusión",
+            "primaryColor": "#8B4513",
+            "secondaryColor": "#D2691E",
+            "accentColor": "#FF8C00",
+            "category": "Café",
             "contact": {
                 "whatsapp": "+573001234572",
-                "whatsappMessage": "¡Hola! Quiero probar la fusión asiática de Togoima 🍜",
+                "whatsappMessage": "¡Hola! Me gustaría ordenar del menú de Togoima ☕",
                 "callWaiter": true
             },
             "menu": {
                 "categories": [
                     {
-                        "id": "ramen",
-                        "name": "Ramen",
+                        "id": "tradicionales",
+                        "name": "TRADICIONALES",
                         "items": [
                             {
-                                "id": "ramen-colombiano",
-                                "name": "Ramen Colombiano",
-                                "description": "Ramen con cerdo, arepa y cilantro",
-                                "price": 18000,
-                                "image": "/menu/togoima/ramen-colombiano.jpg"
+                                "id": "espresso",
+                                "name": "Espresso",
+                                "description": "Café negro con espuma e intenso sabor",
+                                "price": 5000,
+                                "image": "/menu/togoima/espresso.jpg"
                             },
                             {
-                                "id": "ramen-vegetariano",
-                                "name": "Ramen Vegetariano",
-                                "description": "Ramen con verduras frescas y tofu",
+                                "id": "espresso-doble",
+                                "name": "Espresso Doble",
+                                "description": "Doble carga de café espresso",
+                                "price": 6500,
+                                "image": "/menu/togoima/espresso-doble.jpg"
+                            },
+                            {
+                                "id": "americano",
+                                "name": "Americano",
+                                "description": "Espresso con agua caliente",
+                                "price": 7000,
+                                "image": "/menu/togoima/americano.jpg"
+                            },
+                            {
+                                "id": "cappuccino",
+                                "name": "Cappuccino",
+                                "description": "Espresso con leche vaporizada y espuma",
+                                "price": 9000,
+                                "image": "/menu/togoima/cappuccino.jpg"
+                            },
+                            {
+                                "id": "latte",
+                                "name": "Latte",
+                                "description": "Espresso con leche vaporizada",
+                                "price": 7500,
+                                "image": "/menu/togoima/latte.jpg"
+                            },
+                            {
+                                "id": "macchiato",
+                                "name": "Macchiato",
+                                "description": "Espresso manchado con espuma de leche",
+                                "price": 7500,
+                                "image": "/menu/togoima/macchiato.jpg"
+                            },
+                            {
+                                "id": "moccacino",
+                                "name": "Moccacino",
+                                "description": "Espresso, chocolate y leche vaporizada",
+                                "price": 10000,
+                                "image": "/menu/togoima/moccacino.jpg"
+                            },
+                            {
+                                "id": "campesino",
+                                "name": "Campesino",
+                                "description": "Café tradicional colombiano",
+                                "price": 6000,
+                                "image": "/menu/togoima/campesino.jpg"
+                            },
+                            {
+                                "id": "carajillo",
+                                "name": "Carajillo",
+                                "description": "Espresso con brandy o licor",
+                                "price": 11000,
+                                "image": "/menu/togoima/carajillo.jpg"
+                            },
+                            {
+                                "id": "cafe-de-mi-vieja",
+                                "name": "Café de mi Vieja",
+                                "description": "Café con leche condensada y canela",
+                                "price": 12000,
+                                "image": "/menu/togoima/cafe-vieja.jpg"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "rituales",
+                        "name": "RITUALES",
+                        "items": [
+                            {
+                                "id": "syphon",
+                                "name": "Syphon",
+                                "description": "Método de extracción al vacío",
+                                "price": 15000,
+                                "image": "/menu/togoima/syphon.jpg"
+                            },
+                            {
+                                "id": "aeropress",
+                                "name": "Aeropress",
+                                "description": "Presión y filtrado para un café suave",
+                                "price": 12000,
+                                "image": "/menu/togoima/aeropress.jpg"
+                            },
+                            {
+                                "id": "dripper",
+                                "name": "Dripper",
+                                "description": "Filtrado por goteo manual",
+                                "price": 12000,
+                                "image": "/menu/togoima/dripper.jpg"
+                            },
+                            {
+                                "id": "chemex",
+                                "name": "Chemex",
+                                "description": "Filtrado elegante y limpio",
+                                "price": 15000,
+                                "image": "/menu/togoima/chemex.jpg"
+                            },
+                            {
+                                "id": "prensa",
+                                "name": "Prensa",
+                                "description": "Prensa francesa tradicional",
+                                "price": 14000,
+                                "image": "/menu/togoima/prensa.jpg"
+                            },
+                            {
+                                "id": "fretta",
+                                "name": "Fretta",
+                                "description": "Método especial de la casa",
+                                "price": 18000,
+                                "image": "/menu/togoima/fretta.jpg"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "cacaos-chocolates",
+                        "name": "CACAOS Y CHOCOLATES",
+                        "items": [
+                            {
+                                "id": "tradicional-cacao",
+                                "name": "Tradicional",
+                                "description": "Cacao puro de origen",
+                                "price": 8000,
+                                "image": "/menu/togoima/cacao-tradicional.jpg"
+                            },
+                            {
+                                "id": "menta",
+                                "name": "Menta",
+                                "description": "Cacao con hojas de menta fresca",
+                                "price": 10000,
+                                "image": "/menu/togoima/cacao-menta.jpg"
+                            },
+                            {
+                                "id": "choco",
+                                "name": "Choco",
+                                "description": "Chocolate cremoso especial",
+                                "price": 9000,
+                                "image": "/menu/togoima/choco.jpg"
+                            },
+                            {
+                                "id": "pimienta",
+                                "name": "Pimienta",
+                                "description": "Cacao con toque de pimienta",
+                                "price": 10000,
+                                "image": "/menu/togoima/cacao-pimienta.jpg"
+                            },
+                            {
+                                "id": "choco-coco",
+                                "name": "Choco Coco",
+                                "description": "Chocolate con coco rallado",
+                                "price": 11000,
+                                "image": "/menu/togoima/choco-coco.jpg"
+                            },
+                            {
+                                "id": "vainilla-choco",
+                                "name": "Vainilla",
+                                "description": "Chocolate con esencia de vainilla",
+                                "price": 11000,
+                                "image": "/menu/togoima/choco-vainilla.jpg"
+                            },
+                            {
+                                "id": "chocolate",
+                                "name": "Chocolate",
+                                "description": "Chocolate puro premium",
+                                "price": 10000,
+                                "image": "/menu/togoima/chocolate.jpg"
+                            },
+                            {
+                                "id": "limoncillo",
+                                "name": "Limoncillo",
+                                "description": "Cacao con toques cítricos",
+                                "price": 10000,
+                                "image": "/menu/togoima/cacao-limoncillo.jpg"
+                            },
+                            {
+                                "id": "miel",
+                                "name": "Miel",
+                                "description": "Cacao endulzado con miel natural",
+                                "price": 11000,
+                                "image": "/menu/togoima/cacao-miel.jpg"
+                            },
+                            {
+                                "id": "ancestral",
+                                "name": "Ancestral",
+                                "description": "Receta tradicional indígena",
+                                "price": 13000,
+                                "image": "/menu/togoima/cacao-ancestral.jpg"
+                            },
+                            {
+                                "id": "cacao-100",
+                                "name": "100%",
+                                "description": "Cacao puro sin azúcar",
+                                "price": 12000,
+                                "image": "/menu/togoima/cacao-100.jpg"
+                            },
+                            {
+                                "id": "te-chai",
+                                "name": "Té Chai Caliente",
+                                "description": "Té especiado con leche",
+                                "price": 12000,
+                                "image": "/menu/togoima/te-chai.jpg"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "combos",
+                        "name": "COMBOS",
+                        "items": [
+                            {
+                                "id": "combo1",
+                                "name": "Combo 1",
+                                "description": "Amasijo + bebida caliente (Tamaño M)",
+                                "price": 14000,
+                                "image": "/menu/togoima/combo1.jpg"
+                            },
+                            {
+                                "id": "combo2",
+                                "name": "Combo 2",
+                                "description": "Pastelito + bebida caliente (Tamaño M)",
+                                "price": 15000,
+                                "image": "/menu/togoima/combo2.jpg"
+                            },
+                            {
+                                "id": "combo3",
+                                "name": "Combo 3",
+                                "description": "Croissant con relleno + bebida caliente (Tamaño L)",
+                                "price": 18000,
+                                "image": "/menu/togoima/combo3.jpg"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "hipotermicas",
+                        "name": "HIPOTÉRMICAS",
+                        "items": [
+                            {
+                                "id": "frappuccino-clasico",
+                                "name": "Frappuccino Clásico",
+                                "description": "Café helado con crema batida",
+                                "price": 15000,
+                                "image": "/menu/togoima/frappuccino.jpg"
+                            },
+                            {
+                                "id": "granizado-frutos-rojos",
+                                "name": "Granizado de Frutos Rojos",
+                                "description": "Granizado natural de frutos del bosque",
+                                "price": 15000,
+                                "image": "/menu/togoima/granizado-rojos.jpg"
+                            },
+                            {
+                                "id": "americano-frio",
+                                "name": "Americano Frío",
+                                "description": "Café americano con hielo",
+                                "price": 9000,
+                                "image": "/menu/togoima/americano-frio.jpg"
+                            },
+                            {
+                                "id": "frappuccino-tequilero",
+                                "name": "Frappuccino Tequilero",
+                                "description": "Frappé con toque de tequila",
+                                "price": 18000,
+                                "image": "/menu/togoima/frappuccino-tequilero.jpg"
+                            },
+                            {
+                                "id": "frappuccino-amaretto",
+                                "name": "Frappuccino Amaretto",
+                                "description": "Frappé con licor de almendras",
+                                "price": 18000,
+                                "image": "/menu/togoima/frappuccino-amaretto.jpg"
+                            },
+                            {
+                                "id": "limonada-cerezada",
+                                "name": "Limonada Cerezada",
+                                "description": "Limonada con cerezas naturales",
+                                "price": 10000,
+                                "image": "/menu/togoima/limonada-cerezada.jpg"
+                            },
+                            {
+                                "id": "limonada-natural",
+                                "name": "Limonada Natural",
+                                "description": "Limonada fresca del día",
+                                "price": 9000,
+                                "image": "/menu/togoima/limonada.jpg"
+                            },
+                            {
+                                "id": "limonada-de-coco",
+                                "name": "Limonada de Coco",
+                                "description": "Limonada con leche de coco",
+                                "price": 10000,
+                                "image": "/menu/togoima/limonada-coco.jpg"
+                            },
+                            {
+                                "id": "te-frio",
+                                "name": "Té Frío",
+                                "description": "Té helado de la casa",
+                                "price": 8000,
+                                "image": "/menu/togoima/te-frio.jpg"
+                            },
+                            {
+                                "id": "barista-de-coco",
+                                "name": "Barista de Coco",
+                                "description": "Bebida fría de café con coco",
+                                "price": 17000,
+                                "image": "/menu/togoima/barista-coco.jpg"
+                            },
+                            {
+                                "id": "te-chai-matcha",
+                                "name": "Té Chai Matcha",
+                                "description": "Té chai con matcha helado",
+                                "price": 15000,
+                                "image": "/menu/togoima/te-chai-matcha.jpg"
+                            },
+                            {
+                                "id": "frappuccino-caramelo",
+                                "name": "Frappuccino de Caramelo",
+                                "description": "Frappé con salsa de caramelo",
                                 "price": 16000,
-                                "image": "/menu/togoima/ramen-vegetariano.jpg"
+                                "image": "/menu/togoima/frappuccino-caramelo.jpg"
+                            },
+                            {
+                                "id": "frappuccino-macadamia",
+                                "name": "Frappuccino de Macadamia",
+                                "description": "Frappé con nueces de macadamia",
+                                "price": 17000,
+                                "image": "/menu/togoima/frappuccino-macadamia.jpg"
+                            },
+                            {
+                                "id": "frappuccino-de-vainilla",
+                                "name": "Frappuccino de Vainilla",
+                                "description": "Frappé cremoso de vainilla",
+                                "price": 15000,
+                                "image": "/menu/togoima/frappuccino-vainilla.jpg"
+                            },
+                            {
+                                "id": "matcha-latte",
+                                "name": "Matcha Latte",
+                                "description": "Té matcha con leche helada",
+                                "price": 15000,
+                                "image": "/menu/togoima/matcha-latte.jpg"
+                            },
+                            {
+                                "id": "malteada-oreo",
+                                "name": "Malteada Oreo",
+                                "description": "Malteada con galletas Oreo",
+                                "price": 14000,
+                                "image": "/menu/togoima/malteada-oreo.jpg"
+                            },
+                            {
+                                "id": "malteada-de-chocolate",
+                                "name": "Malteada de Chocolate",
+                                "description": "Malteada cremosa de chocolate",
+                                "price": 13000,
+                                "image": "/menu/togoima/malteada-chocolate.jpg"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "pecados",
+                        "name": "PECADOS",
+                        "items": [
+                            {
+                                "id": "milo-frio",
+                                "name": "Milo Frío",
+                                "description": "Bebida fría de Milo",
+                                "price": 9000,
+                                "image": "/menu/togoima/milo-frio.jpg"
+                            },
+                            {
+                                "id": "milo-caliente",
+                                "name": "Milo Caliente",
+                                "description": "Bebida caliente de Milo",
+                                "price": 9000,
+                                "image": "/menu/togoima/milo-caliente.jpg"
+                            },
+                            {
+                                "id": "aromatica-frutas",
+                                "name": "Aromática de Frutas",
+                                "description": "Infusión natural de frutas",
+                                "price": 6000,
+                                "image": "/menu/togoima/aromatica-frutas.jpg"
+                            },
+                            {
+                                "id": "aromatica-yerbabuena",
+                                "name": "Aromática Yerbabuena",
+                                "description": "Infusión de hierbabuena fresca",
+                                "price": 5000,
+                                "image": "/menu/togoima/aromatica-yerbabuena.jpg"
+                            },
+                            {
+                                "id": "infusion-aromatica",
+                                "name": "Infusión de Aromática",
+                                "description": "Mezcla especial de hierbas",
+                                "price": 5000,
+                                "image": "/menu/togoima/infusion-aromatica.jpg"
+                            },
+                            {
+                                "id": "jugo-natural-agua",
+                                "name": "Jugo Natural en Agua",
+                                "description": "Jugo de fruta fresca en agua",
+                                "price": 8000,
+                                "image": "/menu/togoima/jugo-agua.jpg"
+                            },
+                            {
+                                "id": "jugo-natural-leche",
+                                "name": "Jugo Natural en Leche",
+                                "description": "Jugo de fruta fresca en leche",
+                                "price": 9000,
+                                "image": "/menu/togoima/jugo-leche.jpg"
+                            },
+                            {
+                                "id": "coca-cola",
+                                "name": "Coca Cola",
+                                "description": "Gaseosa Coca Cola",
+                                "price": 5000,
+                                "image": "/menu/togoima/coca-cola.jpg"
+                            },
+                            {
+                                "id": "agua",
+                                "name": "Agua",
+                                "description": "Agua embotellada",
+                                "price": 4000,
+                                "image": "/menu/togoima/agua.jpg"
+                            },
+                            {
+                                "id": "agua-con-gas",
+                                "name": "Agua con Gas",
+                                "description": "Agua gasificada",
+                                "price": 5000,
+                                "image": "/menu/togoima/agua-gas.jpg"
+                            },
+                            {
+                                "id": "red-bull",
+                                "name": "Red Bull",
+                                "description": "Bebida energizante",
+                                "price": 10000,
+                                "image": "/menu/togoima/red-bull.jpg"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "platos",
+                        "name": "PLATOS (NUEVOS)",
+                        "items": [
+                            {
+                                "id": "aguacate-waffle-veg",
+                                "name": "Aguacate Waffle (VEG)",
+                                "description": "Waffle integral con aguacate, queso fresco, tomate cherry, rúcula y reducción balsámica",
+                                "price": 23000,
+                                "image": "/menu/togoima/aguacate-waffle.jpg"
+                            },
+                            {
+                                "id": "tomate-waffle",
+                                "name": "Tomate Waffle",
+                                "description": "Waffle con tomate asado, mozzarella, albahaca y aceite de oliva",
+                                "price": 23000,
+                                "image": "/menu/togoima/tomate-waffle.jpg"
+                            },
+                            {
+                                "id": "revoltillo-envuelto-veg",
+                                "name": "Revoltillo de Envuelto (VEG)",
+                                "description": "Envuelto de maíz relleno de verduras salteadas",
+                                "price": 19000,
+                                "image": "/menu/togoima/revoltillo-envuelto.jpg"
+                            },
+                            {
+                                "id": "waffle-sandwich",
+                                "name": "Waffle Sandwich",
+                                "description": "Waffle con jamón, queso, lechuga, tomate y salsas especiales",
+                                "price": 23000,
+                                "image": "/menu/togoima/waffle-sandwich.jpg"
+                            },
+                            {
+                                "id": "dulce-waffle",
+                                "name": "Dulce Waffle",
+                                "description": "Waffle con fresas, crema batida, chocolate y miel",
+                                "price": 19000,
+                                "image": "/menu/togoima/dulce-waffle.jpg"
+                            },
+                            {
+                                "id": "arepa-tu-omelet",
+                                "name": "Arepa Tu Omelet",
+                                "description": "Arepa rellena con omelet al gusto",
+                                "price": 18000,
+                                "image": "/menu/togoima/arepa-omelet.jpg"
+                            },
+                            {
+                                "id": "omelet-caprese-veg",
+                                "name": "Omelet Caprese (VEG)",
+                                "description": "Omelet con tomate, mozzarella y albahaca",
+                                "price": 23000,
+                                "image": "/menu/togoima/omelet-caprese.jpg"
+                            },
+                            {
+                                "id": "bowl-de-avena-veg",
+                                "name": "Bowl de Avena (VEG)",
+                                "description": "Avena con frutas frescas, granola y miel",
+                                "price": 15000,
+                                "image": "/menu/togoima/bowl-avena.jpg"
+                            },
+                            {
+                                "id": "bowl-de-cisa-veg",
+                                "name": "Bowl de Cisa (VEG)",
+                                "description": "Bowl saludable con quinoa y vegetales",
+                                "price": 18000,
+                                "image": "/menu/togoima/bowl-cisa.jpg"
+                            },
+                            {
+                                "id": "tostadas-francesas",
+                                "name": "Tostadas Francesas",
+                                "description": "Pan francés con mantequilla y miel de maple",
+                                "price": 18000,
+                                "image": "/menu/togoima/tostadas-francesas.jpg"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "sandwiches",
+                        "name": "NUESTROS SANDWICHES",
+                        "items": [
+                            {
+                                "id": "tomate-mozzarella",
+                                "name": "Tomate/Mozzarella",
+                                "description": "Sandwich de tomate fresco y mozzarella",
+                                "price": 18000,
+                                "image": "/menu/togoima/sandwich-tomate.jpg"
+                            },
+                            {
+                                "id": "italiano",
+                                "name": "Italiano",
+                                "description": "Sandwich con ingredientes italianos",
+                                "price": 19000,
+                                "image": "/menu/togoima/sandwich-italiano.jpg"
+                            },
+                            {
+                                "id": "pernil-cerdo-ahumada",
+                                "name": "Pernil de Cerdo Ahumado",
+                                "description": "Sandwich de cerdo ahumado especial",
+                                "price": 21000,
+                                "image": "/menu/togoima/sandwich-pernil.jpg"
+                            },
+                            {
+                                "id": "ancestral-sandwich",
+                                "name": "Ancestral",
+                                "description": "Sandwich con receta tradicional",
+                                "price": 19000,
+                                "image": "/menu/togoima/sandwich-ancestral.jpg"
+                            },
+                            {
+                                "id": "chocolatada",
+                                "name": "Chocolatada",
+                                "description": "Sandwich dulce con chocolate",
+                                "price": 13000,
+                                "image": "/menu/togoima/sandwich-chocolatada.jpg"
+                            },
+                            {
+                                "id": "chocolatada-helado",
+                                "name": "Chocolatada Helado",
+                                "description": "Sandwich de chocolate con helado",
+                                "price": 16000,
+                                "image": "/menu/togoima/sandwich-choco-helado.jpg"
+                            },
+                            {
+                                "id": "rollitos-arabe",
+                                "name": "Rollitos Árabes",
+                                "description": "Rollitos estilo árabe",
+                                "price": 18000,
+                                "image": "/menu/togoima/rollitos-arabes.jpg"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "amasijos",
+                        "name": "AMASIJOS",
+                        "items": [
+                            {
+                                "id": "pastelito-pollo",
+                                "name": "Pastelito Pollo",
+                                "description": "Pastelito relleno de pollo",
+                                "price": 8000,
+                                "image": "/menu/togoima/pastelito-pollo.jpg"
+                            },
+                            {
+                                "id": "croissant-queso",
+                                "name": "Croissant de Queso",
+                                "description": "Croissant relleno de queso",
+                                "price": 9000,
+                                "image": "/menu/togoima/croissant-queso.jpg"
+                            },
+                            {
+                                "id": "croissant-chocolate",
+                                "name": "Croissant de Chocolate",
+                                "description": "Croissant con chocolate",
+                                "price": 10000,
+                                "image": "/menu/togoima/croissant-chocolate.jpg"
+                            },
+                            {
+                                "id": "porcion-queso",
+                                "name": "Porción de Queso",
+                                "description": "Porción de queso del día",
+                                "price": 6000,
+                                "image": "/menu/togoima/porcion-queso.jpg"
+                            },
+                            {
+                                "id": "brownie",
+                                "name": "Brownie",
+                                "description": "Brownie de chocolate casero",
+                                "price": 8000,
+                                "image": "/menu/togoima/brownie.jpg"
+                            },
+                            {
+                                "id": "brownie-helado",
+                                "name": "Brownie Helado",
+                                "description": "Brownie con helado de vainilla",
+                                "price": 12000,
+                                "image": "/menu/togoima/brownie-helado.jpg"
+                            },
+                            {
+                                "id": "torta-naranja",
+                                "name": "Torta de Naranja",
+                                "description": "Torta casera de naranja",
+                                "price": 10000,
+                                "image": "/menu/togoima/torta-naranja.jpg"
+                            },
+                            {
+                                "id": "torta-milo-way",
+                                "name": "Torta de Milo y Way",
+                                "description": "Torta especial de Milo",
+                                "price": 11000,
+                                "image": "/menu/togoima/torta-milo.jpg"
+                            },
+                            {
+                                "id": "waffle",
+                                "name": "Waffle",
+                                "description": "Waffle tradicional",
+                                "price": 9000,
+                                "image": "/menu/togoima/waffle.jpg"
+                            },
+                            {
+                                "id": "dona",
+                                "name": "Dona",
+                                "description": "Dona glaseada",
+                                "price": 5000,
+                                "image": "/menu/togoima/dona.jpg"
+                            },
+                            {
+                                "id": "galletas",
+                                "name": "Galletas",
+                                "description": "Galletas caseras surtidas",
+                                "price": 4000,
+                                "image": "/menu/togoima/galletas.jpg"
+                            },
+                            {
+                                "id": "torta-de-cafe",
+                                "name": "Torta de Café",
+                                "description": "Torta de café húmeda",
+                                "price": 12000,
+                                "image": "/menu/togoima/torta-cafe.jpg"
+                            },
+                            {
+                                "id": "muffin-vainilla",
+                                "name": "Muffin de Vainilla",
+                                "description": "Muffin esponjoso de vainilla",
+                                "price": 7000,
+                                "image": "/menu/togoima/muffin-vainilla.jpg"
+                            },
+                            {
+                                "id": "torta-genovesa",
+                                "name": "Torta Genovesa",
+                                "description": "Torta genovesa con crema",
+                                "price": 14000,
+                                "image": "/menu/togoima/torta-genovesa.jpg"
+                            },
+                            {
+                                "id": "torta-red-velvet",
+                                "name": "Torta Red Velvet",
+                                "description": "Torta red velvet con frosting",
+                                "price": 11000,
+                                "image": "/menu/togoima/torta-red-velvet.jpg"
+                            },
+                            {
+                                "id": "palito-queso",
+                                "name": "Palito de Queso",
+                                "description": "Palito de queso horneado",
+                                "price": 3000,
+                                "image": "/menu/togoima/palito-queso.jpg"
+                            },
+                            {
+                                "id": "yogurt-griego-litro",
+                                "name": "Yogurt Griego Litro",
+                                "description": "Litro de yogurt griego natural",
+                                "price": 28000,
+                                "image": "/menu/togoima/yogurt-griego-litro.jpg"
+                            },
+                            {
+                                "id": "yogurt-griego-medio",
+                                "name": "Yogurt Griego 1/2 Litro",
+                                "description": "Medio litro de yogurt griego",
+                                "price": 17000,
+                                "image": "/menu/togoima/yogurt-griego-medio.jpg"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "destilados",
+                        "name": "DESTILADOS",
+                        "items": [
+                            {
+                                "id": "aguardiente-caucano",
+                                "name": "Aguardiente Caucano",
+                                "description": "Trago de aguardiente caucano",
+                                "price": 10000,
+                                "image": "/menu/togoima/aguardiente-caucano.jpg"
+                            },
+                            {
+                                "id": "ron-viejo-caldas",
+                                "name": "Ron Viejo de Caldas",
+                                "description": "Trago de ron añejo",
+                                "price": 11000,
+                                "image": "/menu/togoima/ron-viejo.jpg"
+                            },
+                            {
+                                "id": "gin-beefeater",
+                                "name": "Gin Beefeater",
+                                "description": "Trago de gin premium",
+                                "price": 10000,
+                                "image": "/menu/togoima/gin-beefeater.jpg"
+                            },
+                            {
+                                "id": "amaretto",
+                                "name": "Amaretto",
+                                "description": "Licor de almendras",
+                                "price": 10000,
+                                "image": "/menu/togoima/amaretto.jpg"
+                            },
+                            {
+                                "id": "mezcal",
+                                "name": "Mezcal",
+                                "description": "Mezcal artesanal mexicano",
+                                "price": 14000,
+                                "image": "/menu/togoima/mezcal.jpg"
+                            },
+                            {
+                                "id": "tequila-herradura",
+                                "name": "Tequila Herradura",
+                                "description": "Tequila premium",
+                                "price": 15000,
+                                "image": "/menu/togoima/tequila-herradura.jpg"
+                            },
+                            {
+                                "id": "buchanan",
+                                "name": "Buchanan's",
+                                "description": "Whisky escocés",
+                                "price": 20000,
+                                "image": "/menu/togoima/buchanan.jpg"
+                            },
+                            {
+                                "id": "jack-daniels",
+                                "name": "Jack Daniel's",
+                                "description": "Whiskey americano",
+                                "price": 18000,
+                                "image": "/menu/togoima/jack-daniels.jpg"
+                            },
+                            {
+                                "id": "club-colombia",
+                                "name": "Club Colombia",
+                                "description": "Cerveza premium colombiana",
+                                "price": 7000,
+                                "image": "/menu/togoima/club-colombia.jpg"
+                            },
+                            {
+                                "id": "poker",
+                                "name": "Póker",
+                                "description": "Cerveza tradicional",
+                                "price": 6000,
+                                "image": "/menu/togoima/poker.jpg"
+                            },
+                            {
+                                "id": "corona",
+                                "name": "Corona",
+                                "description": "Cerveza mexicana",
+                                "price": 8000,
+                                "image": "/menu/togoima/corona.jpg"
+                            },
+                            {
+                                "id": "copa-vino",
+                                "name": "Copa de Vino",
+                                "description": "Copa de vino tinto o blanco",
+                                "price": 17000,
+                                "image": "/menu/togoima/copa-vino.jpg"
+                            },
+                            {
+                                "id": "adicion-marihuana",
+                                "name": "Adición Marihuana",
+                                "description": "Adición especial",
+                                "price": 15000,
+                                "image": "/menu/togoima/adicion.jpg"
+                            },
+                            {
+                                "id": "baileys",
+                                "name": "Bailey's",
+                                "description": "Licor de crema irlandesa",
+                                "price": 15000,
+                                "image": "/menu/togoima/baileys.jpg"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "mezclas",
+                        "name": "MEZCLAS",
+                        "items": [
+                            {
+                                "id": "mimosa",
+                                "name": "Mimosa",
+                                "description": "Champagne con jugo de naranja",
+                                "price": 25000,
+                                "image": "/menu/togoima/mimosa.jpg"
+                            },
+                            {
+                                "id": "alfresco",
+                                "name": "Alfresco",
+                                "description": "Cóctel refrescante de la casa",
+                                "price": 19000,
+                                "image": "/menu/togoima/alfresco.jpg"
+                            },
+                            {
+                                "id": "santa-elena",
+                                "name": "Santa Elena",
+                                "description": "Cóctel especial con frutas",
+                                "price": 22000,
+                                "image": "/menu/togoima/santa-elena.jpg"
+                            },
+                            {
+                                "id": "stradiva",
+                                "name": "Stradiva",
+                                "description": "Cóctel premium de la casa",
+                                "price": 22000,
+                                "image": "/menu/togoima/stradiva.jpg"
+                            },
+                            {
+                                "id": "caipirinha",
+                                "name": "Caipirinha",
+                                "description": "Cóctel brasileño con cachaça",
+                                "price": 18000,
+                                "image": "/menu/togoima/caipirinha.jpg"
+                            },
+                            {
+                                "id": "sangria",
+                                "name": "Sangría",
+                                "description": "Sangría tradicional con frutas",
+                                "price": 18000,
+                                "image": "/menu/togoima/sangria.jpg"
+                            },
+                            {
+                                "id": "ginplex",
+                                "name": "Ginplex",
+                                "description": "Gin tonic especial",
+                                "price": 20000,
+                                "image": "/menu/togoima/ginplex.jpg"
+                            },
+                            {
+                                "id": "mojito",
+                                "name": "Mojito",
+                                "description": "Mojito cubano tradicional",
+                                "price": 18000,
+                                "image": "/menu/togoima/mojito.jpg"
+                            },
+                            {
+                                "id": "margarita-blue",
+                                "name": "Margarita Blue",
+                                "description": "Margarita con blue curacao",
+                                "price": 22000,
+                                "image": "/menu/togoima/margarita-blue.jpg"
+                            },
+                            {
+                                "id": "ranchero-caramelo",
+                                "name": "Ranchero Caramelo",
+                                "description": "Cóctel dulce con tequila",
+                                "price": 23000,
+                                "image": "/menu/togoima/ranchero-caramelo.jpg"
                             }
                         ]
                     }
