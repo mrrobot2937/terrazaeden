@@ -1,6 +1,374 @@
 {
     "brands": [
         {
+            "id": "ay-wey",
+            "name": "¡Ay Wey!",
+            "description": "TAQUERÍA - Auténtica cocina mexicana para llevar o para comer en restaurante",
+            "logo": "/logos/aywey.png",
+            "primaryColor": "#4CAF50",
+            "secondaryColor": "#F44336",
+            "accentColor": "#FFC107",
+            "category": "Mexicana",
+            "contact": {
+                "whatsapp": "+573225440966",
+                "whatsappMessage": "¡Hola! Me gustaría hacer un pedido de ¡Ay Wey! 🌮🌶️",
+                "callWaiter": true
+            },
+            "menu": {
+                "categories": [
+                    {
+                        "id": "cocteleria",
+                        "name": "COCTELERÍA MEXICANA",
+                        "items": [
+                            {
+                                "id": "paloma",
+                                "name": "Paloma",
+                                "description": "Clásico bebida mexicana elaborada con tequila, jugo de limón, y refresco de toronja",
+                                "price": 15800,
+                                "image": "/menu/ay-wey/paloma.jpg"
+                            },
+                            {
+                                "id": "tequila-sunrise",
+                                "name": "Tequila Sunrise",
+                                "description": "Cóctel preparado a base de tequila, jugo de naranja y granadina",
+                                "price": 18700,
+                                "image": "/menu/ay-wey/tequila-sunrise.jpg"
+                            },
+                            {
+                                "id": "macho-prieto",
+                                "name": "Macho Prieto",
+                                "description": "Bebida refrescante con tequila, Coca-Cola y jugo de limón",
+                                "price": 15800,
+                                "image": "/menu/ay-wey/macho-prieto.jpg"
+                            },
+                            {
+                                "id": "margarita-clasica",
+                                "name": "Margarita Clásica",
+                                "description": "Uno de los más populares del mundo, combinación de notas cítricas con dulces del agave",
+                                "price": 17300,
+                                "image": "/menu/ay-wey/margarita.jpg"
+                            },
+                            {
+                                "id": "caballito-mezcal",
+                                "name": "Caballito de Mezcal",
+                                "description": "Shot tradicional de mezcal premium",
+                                "price": 15000,
+                                "image": "/menu/ay-wey/caballito-mezcal.jpg"
+                            },
+                            {
+                                "id": "caballito-tequila",
+                                "name": "Caballito de Tequila",
+                                "description": "Shot tradicional de tequila premium",
+                                "price": 9000,
+                                "image": "/menu/ay-wey/caballito-tequila.jpg"
+                            },
+                            {
+                                "id": "cerveza-tecate",
+                                "name": "Cerveza Tecate MX",
+                                "description": "Cerveza mexicana tradicional",
+                                "price": 7000,
+                                "image": "/menu/ay-wey/tecate.jpg"
+                            },
+                            {
+                                "id": "cerveza-sol",
+                                "name": "Cerveza Sol MX",
+                                "description": "Cerveza mexicana refrescante",
+                                "price": 12000,
+                                "image": "/menu/ay-wey/sol.jpg"
+                            },
+                            {
+                                "id": "cerveza-michelada-salsa",
+                                "name": "Cerveza Michelada (con salsa)",
+                                "description": "Cerveza preparada con limón, sal y salsas especiales",
+                                "price": 2500,
+                                "image": "/menu/ay-wey/michelada-salsa.jpg"
+                            },
+                            {
+                                "id": "cerveza-michelada-limon",
+                                "name": "Cerveza Escarchada (limón y sal)",
+                                "description": "Cerveza con escarcha de limón y sal",
+                                "price": 1500,
+                                "image": "/menu/ay-wey/cerveza-escarchada.jpg"
+                            },
+                            {
+                                "id": "gaseosas",
+                                "name": "Gaseosas y Jugos",
+                                "description": "Bebidas refrescantes variadas",
+                                "price": 5000,
+                                "image": "/menu/ay-wey/gaseosas.jpg"
+                            },
+                            {
+                                "id": "agua-botella",
+                                "name": "Botella de Agua",
+                                "description": "Agua embotellada",
+                                "price": 4000,
+                                "image": "/menu/ay-wey/agua.jpg"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "aguas-frescas",
+                        "name": "AGUAS FRESCAS",
+                        "items": [
+                            {
+                                "id": "jamaica",
+                                "name": "Jamaica",
+                                "description": "Agua fresca de flor de jamaica natural",
+                                "price": 7500,
+                                "image": "/menu/ay-wey/jamaica.jpg"
+                            },
+                            {
+                                "id": "limonada",
+                                "name": "Limonada",
+                                "description": "Limonada natural recién preparada",
+                                "price": 7500,
+                                "image": "/menu/ay-wey/limonada.jpg"
+                            },
+                            {
+                                "id": "horchata",
+                                "name": "Horchata",
+                                "description": "Bebida tradicional mexicana de arroz y canela",
+                                "price": 8000,
+                                "image": "/menu/ay-wey/horchata.jpg"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "entrantes",
+                        "name": "ENTRANTES",
+                        "items": [
+                            {
+                                "id": "totopos-guacamole",
+                                "name": "Totopos con Guacamole",
+                                "description": "Triángulos tostados de maíz con nuestro auténtico guacamole mexicano",
+                                "price": 19500,
+                                "image": "/menu/ay-wey/totopos-guacamole.jpg"
+                            },
+                            {
+                                "id": "nachos",
+                                "name": "Nachos ¡Ay Wey!",
+                                "description": "Triángulos de maíz tostados bañados con queso cheddar cubierto de mezcla de quesos con pico de gallo y guacamole, crema agria",
+                                "price": 22500,
+                                "image": "/menu/ay-wey/nachos.jpg"
+                            },
+                            {
+                                "id": "flautas-rellenas",
+                                "name": "Flautas Rellenas",
+                                "description": "Tortillas de maíz doradas rellenas de pollo, acompañadas de guacamole, pico de gallo, crema agria y salsa de molcajete y queso rayado",
+                                "price": 11900,
+                                "image": "/menu/ay-wey/flautas.jpg"
+                            },
+                            {
+                                "id": "cazuela-queso",
+                                "name": "Cazuela de Queso Fundido",
+                                "description": "Cazuela de queso fundido acompañada de totopos y su preparación favorita de nuestra carta",
+                                "price": 17700,
+                                "image": "/menu/ay-wey/cazuela-queso.jpg"
+                            },
+                            {
+                                "id": "asada",
+                                "name": "Asada",
+                                "description": "De Pastor",
+                                "price": 22900,
+                                "image": "/menu/ay-wey/asada.jpg"
+                            },
+                            {
+                                "id": "birria",
+                                "name": "Birria",
+                                "description": "Birria tradicional",
+                                "price": 26500,
+                                "image": "/menu/ay-wey/birria-entrada.jpg"
+                            },
+                            {
+                                "id": "variadito-chingon",
+                                "name": "Variadito Chingón",
+                                "description": "Nachos con guacamole, frijoles refritos, flautas rellenas, quesadillas y cebollitas de birria y cochinita pibil, acompañado de pico de gallo, salsa agria y salsa de molcajete",
+                                "price": 28400,
+                                "image": "/menu/ay-wey/variadito.jpg"
+                            },
+                            {
+                                "id": "agregales-carne",
+                                "name": "Agrégales Carne por",
+                                "description": "Adicional de carne para cualquier plato",
+                                "price": 7300,
+                                "image": "/menu/ay-wey/extra-carne.jpg"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tacos",
+                        "name": "TACOS",
+                        "items": [
+                            {
+                                "id": "taco-carne-asada",
+                                "name": "De Carne Res Asada",
+                                "description": "3 tortillas de maíz rellenas a mano con el proteína que usted nos indique te porte",
+                                "price": 20500,
+                                "image": "/menu/ay-wey/taco-asada.jpg"
+                            },
+                            {
+                                "id": "taco-pastor",
+                                "name": "De Pastor",
+                                "description": "Carne de cerdo marinada al pastor característico de la Ciudad de México, con piña, cebolla y cilantro",
+                                "price": 18400,
+                                "image": "/menu/ay-wey/taco-pastor.jpg"
+                            },
+                            {
+                                "id": "taco-cochinita",
+                                "name": "De Cochinita Pibil",
+                                "description": "Carne de cerdo marinada al mas puro estilo yucateco con aguacate y cebolla morada encurtida",
+                                "price": 19900,
+                                "image": "/menu/ay-wey/taco-cochinita.jpg"
+                            },
+                            {
+                                "id": "taco-birria",
+                                "name": "De Birria",
+                                "description": "Carne de res marinada al estilo jalisco con cebolla y cilantro acompañado de consomé de res",
+                                "price": 21600,
+                                "image": "/menu/ay-wey/taco-birria.jpg"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "volcanes",
+                        "name": "VOLCANES",
+                        "items": [
+                            {
+                                "id": "volcan-carne-asada",
+                                "name": "De Carne Res Asada",
+                                "description": "3 tortillas de maíz, tostadas en nuestro comal con napa de proteína que más te guste",
+                                "price": 19900,
+                                "image": "/menu/ay-wey/volcan-asada.jpg"
+                            },
+                            {
+                                "id": "volcan-pastor",
+                                "name": "De Pastor",
+                                "description": "Carne de cerdo marinada al pastor característico de la Ciudad de México, con piña, cebolla y cilantro",
+                                "price": 11800,
+                                "image": "/menu/ay-wey/volcan-pastor.jpg"
+                            },
+                            {
+                                "id": "volcan-cochinita",
+                                "name": "De Cochinita Pibil",
+                                "description": "Carne de cerdo marinada al mas puro estilo yucateco con aguacate y cebolla morada encurtida",
+                                "price": 12500,
+                                "image": "/menu/ay-wey/volcan-cochinita.jpg"
+                            },
+                            {
+                                "id": "volcan-birria",
+                                "name": "De Birria",
+                                "description": "Carne de res marinada al estilo jalisco con cebolla y cilantro acompañado de consomé de res",
+                                "price": 14800,
+                                "image": "/menu/ay-wey/volcan-birria.jpg"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "gringas",
+                        "name": "GRINGAS",
+                        "items": [
+                            {
+                                "id": "gringa-carne-asada",
+                                "name": "De Carne Res Asada",
+                                "description": "2 tortillas de harina rellenas de nuestra mezcla de quesos finas fundidos con el proteína que más te guste",
+                                "price": 22700,
+                                "image": "/menu/ay-wey/gringa-asada.jpg"
+                            },
+                            {
+                                "id": "gringa-pastor",
+                                "name": "De Pastor",
+                                "description": "Carne de cerdo marinada al pastor característico de la Ciudad de México, con piña, cebolla y cilantro",
+                                "price": 20300,
+                                "image": "/menu/ay-wey/gringa-pastor.jpg"
+                            },
+                            {
+                                "id": "gringa-cochinita",
+                                "name": "De Cochinita Pibil",
+                                "description": "Carne de cerdo marinada al mas puro estilo yucateco con aguacate y cebolla morada encurtida",
+                                "price": 21900,
+                                "image": "/menu/ay-wey/gringa-cochinita.jpg"
+                            },
+                            {
+                                "id": "gringa-birria",
+                                "name": "De Birria",
+                                "description": "Carne de res marinada al estilo jalisco con cebolla y cilantro acompañado de consomé de res",
+                                "price": 23800,
+                                "image": "/menu/ay-wey/gringa-birria.jpg"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tortas",
+                        "name": "TORTAS",
+                        "items": [
+                            {
+                                "id": "torta-carne-asada",
+                                "name": "De Carne Res Asada",
+                                "description": "En delicioso pan telera relleno con frijoles con el proteína que más te guste",
+                                "price": 29500,
+                                "image": "/menu/ay-wey/torta-asada.jpg"
+                            },
+                            {
+                                "id": "torta-pastor",
+                                "name": "De Pastor",
+                                "description": "Carne de cerdo marinada al pastor característico de la Ciudad de México con piña, cebolla y cilantro acompañado de consomé de res",
+                                "price": 24500,
+                                "image": "/menu/ay-wey/torta-pastor.jpg"
+                            },
+                            {
+                                "id": "torta-cochinita",
+                                "name": "De Cochinita Pibil",
+                                "description": "Carne de cerdo marinada al mas puro estilo yucateco con aguacate y cebolla morada encurtida",
+                                "price": 26300,
+                                "image": "/menu/ay-wey/torta-cochinita.jpg"
+                            },
+                            {
+                                "id": "torta-birria",
+                                "name": "De Birria",
+                                "description": "Carne de res marinada al estilo jalisco con cebolla y cilantro",
+                                "price": 31500,
+                                "image": "/menu/ay-wey/torta-birria.jpg"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "adicionales",
+                        "name": "ADICIONALES",
+                        "items": [
+                            {
+                                "id": "guacamole",
+                                "name": "Guacamole",
+                                "description": "Guacamole fresco hecho al momento",
+                                "price": 3500,
+                                "image": "/menu/ay-wey/guacamole.jpg"
+                            },
+                            {
+                                "id": "pico-gallo",
+                                "name": "Pico de Gallo",
+                                "description": "Mezcla fresca de tomate, cebolla y cilantro",
+                                "price": 3500,
+                                "image": "/menu/ay-wey/pico-gallo.jpg"
+                            },
+                            {
+                                "id": "salsa-molcajete",
+                                "name": "Salsa de Molcajete",
+                                "description": "Salsa tradicional hecha en molcajete",
+                                "price": 3500,
+                                "image": "/menu/ay-wey/salsa-molcajete.jpg"
+                            },
+                            {
+                                "id": "crema-agria",
+                                "name": "Crema Agria",
+                                "description": "Crema agria mexicana",
+                                "price": 3500,
+                                "image": "/menu/ay-wey/crema-agria.jpg"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
             "id": "mazorca",
             "name": "Mazorca",
             "description": "Especialistas en arepas y mazorcadas gourmet",
@@ -57,7 +425,7 @@
             "category": "Parrilla",
             "contact": {
                 "officialWebsite": "https://choripam.com",
-                "whatsapp": "+573001234571",
+                "whatsapp": "+573103412077",
                 "whatsappMessage": "¡Hola! Me interesa el menú de Choripam 🌭"
             },
             "menu": {

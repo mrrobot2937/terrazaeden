@@ -3,7 +3,7 @@
 import { useState, useEffect, use } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Card, CardContent } from '@/components/ui/card'
-import { ArrowLeft, MessageCircle, ExternalLink, Bell, Star, Clock, Flame, Phone, Coffee, Sparkles, Cookie, Wine, Sandwich, Soup, Utensils, GlassWater, Cherry, Croissant } from 'lucide-react'
+import { ArrowLeft, MessageCircle, ExternalLink, Bell, Star, Clock, Flame, Phone, Coffee, Sparkles, Cookie, Wine, Sandwich, Soup, Utensils, GlassWater, Cherry, Croissant, Beer, Droplets, ChefHat, Pizza, Package } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
@@ -49,6 +49,31 @@ const togoimaCategoryIcons: { [key: string]: React.ReactNode } = {
   'amasijos': <Croissant className="w-6 h-6" />,
   'destilados': <Wine className="w-6 h-6" />,
   'mezclas': <Wine className="w-6 h-6" />
+}
+
+// Iconos personalizados para las categorías de Ay Wey!
+const ayWeyCategoryIcons: { [key: string]: React.ReactNode } = {
+  'cocteleria': <Wine className="w-6 h-6" />,
+  'aguas-frescas': <Droplets className="w-6 h-6" />,
+  'entrantes': <ChefHat className="w-6 h-6" />,
+  'tacos': <span className="text-2xl">🌮</span>,
+  'volcanes': <span className="text-2xl">🌋</span>,
+  'gringas': <Pizza className="w-6 h-6" />,
+  'tortas': <Sandwich className="w-6 h-6" />,
+  'adicionales': <Package className="w-6 h-6" />
+}
+
+// Iconos personalizados para las categorías de Perfetto
+const perfettoCategoryIcons: { [key: string]: React.ReactNode } = {
+  'frullatos': <span className="text-2xl">🥤</span>,
+  'parfaits-gelatos': <span className="text-2xl">🍨</span>,
+  'guarniciones': <Cherry className="w-6 h-6" />,
+  'adicionales': <Package className="w-6 h-6" />
+}
+
+// Iconos personalizados para las categorías de Mazorca
+const mazorcaCategoryIcons: { [key: string]: React.ReactNode } = {
+  'mazorcas': <span className="text-2xl">🌽</span>
 }
 
 export default function BrandPage({ params }: Props) {
@@ -105,8 +130,12 @@ export default function BrandPage({ params }: Props) {
 
   const selectedCategoryData = brand.menu.categories.find(cat => cat.id === selectedCategory)
 
-  // Diseño especial para Togoima
+  // Diseño especial para marcas específicas
   const isTogoima = brand.id === 'togoima'
+  const isAyWey = brand.id === 'ay-wey'
+  const isPerfetto = brand.id === 'perfetto'
+  const isMazorca = brand.id === 'mazorca'
+  const hasSpecialDesign = isTogoima || isAyWey || isPerfetto || isMazorca
 
   return (
     <motion.div 
@@ -130,6 +159,54 @@ export default function BrandPage({ params }: Props) {
                   backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
                 }}
               />
+            </>
+          ) : isAyWey ? (
+            // Fondo especial para Ay Wey! con patrón de chiles 🌶️
+            <>
+              <div className="absolute inset-0 bg-gradient-to-br from-green-900 via-red-900 to-yellow-900 opacity-20" />
+              <div 
+                className="absolute inset-0 opacity-10"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234CAF50' fill-opacity='0.2'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E")`
+                }}
+              />
+              {/* Chiles flotantes animados */}
+              <div className="absolute top-10 left-10 text-6xl opacity-20 animate-pulse">🌶️</div>
+              <div className="absolute top-1/3 right-20 text-5xl opacity-15 animate-pulse" style={{ animationDelay: '1s' }}>🌮</div>
+              <div className="absolute bottom-20 left-1/4 text-7xl opacity-10 animate-pulse" style={{ animationDelay: '2s' }}>🌶️</div>
+              <div className="absolute bottom-1/3 right-1/3 text-4xl opacity-20 animate-pulse" style={{ animationDelay: '1.5s' }}>🥑</div>
+            </>
+          ) : isPerfetto ? (
+            // Fondo especial para Perfetto con patrón de helados
+            <>
+              <div className="absolute inset-0 bg-gradient-to-br from-green-900 via-yellow-900 to-red-900 opacity-20" />
+              <div 
+                className="absolute inset-0 opacity-10"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23228B22' fill-opacity='0.2'%3E%3Cpath d='M20 0c11 0 20 9 20 20s-9 20-20 20S0 31 0 20 9 0 20 0zm0 5c8.3 0 15 6.7 15 15s-6.7 15-15 15S5 28.3 5 20 11.7 5 20 5z'/%3E%3C/g%3E%3C/svg%3E")`
+                }}
+              />
+              {/* Helados flotantes animados */}
+              <div className="absolute top-10 left-10 text-6xl opacity-20 animate-pulse">🍨</div>
+              <div className="absolute top-1/3 right-20 text-5xl opacity-15 animate-pulse" style={{ animationDelay: '1s' }}>🍦</div>
+              <div className="absolute bottom-20 left-1/4 text-7xl opacity-10 animate-pulse" style={{ animationDelay: '2s' }}>🍧</div>
+              <div className="absolute bottom-1/3 right-1/3 text-4xl opacity-20 animate-pulse" style={{ animationDelay: '1.5s' }}>🍪</div>
+            </>
+          ) : isMazorca ? (
+            // Fondo especial para Mazorca con patrón de maíz
+            <>
+              <div className="absolute inset-0 bg-gradient-to-br from-yellow-900 via-amber-800 to-orange-900 opacity-20" />
+              <div 
+                className="absolute inset-0 opacity-10"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23FFD700' fill-opacity='0.2'%3E%3Cpath d='M0 0h10v10H0V0zm10 10h10v10H10V10zm10-10h10v10H20V0zm10 10h10v10H30V10z'/%3E%3C/g%3E%3C/svg%3E")`
+                }}
+              />
+              {/* Maíz flotante animado */}
+              <div className="absolute top-10 left-10 text-6xl opacity-20 animate-pulse">🌽</div>
+              <div className="absolute top-1/3 right-20 text-5xl opacity-15 animate-pulse" style={{ animationDelay: '1s' }}>🌾</div>
+              <div className="absolute bottom-20 left-1/4 text-7xl opacity-10 animate-pulse" style={{ animationDelay: '2s' }}>🌽</div>
+              <div className="absolute bottom-1/3 right-1/3 text-4xl opacity-20 animate-pulse" style={{ animationDelay: '1.5s' }}>🧀</div>
             </>
           ) : (
             <>
@@ -248,6 +325,10 @@ export default function BrandPage({ params }: Props) {
               <span className="text-6xl">🌽</span>
             ) : brand.id === 'choripam' ? (
               <span className="text-6xl">🌭</span>
+            ) : brand.id === 'ay-wey' ? (
+              <span className="text-6xl">🌮</span>
+            ) : brand.id === 'perfetto' ? (
+              <span className="text-6xl">🍨</span>
             ) : (
               <div className="relative w-24 h-24">
                 <Image
@@ -376,8 +457,8 @@ export default function BrandPage({ params }: Props) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1 }}
       >
-        {/* Category Tabs - Diseño especial para Togoima */}
-        {isTogoima ? (
+        {/* Category Tabs - Diseño especial */}
+        {hasSpecialDesign ? (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
             {brand.menu.categories.map((category, index) => (
               <motion.button
@@ -389,18 +470,36 @@ export default function BrandPage({ params }: Props) {
                 }`}
                 style={{
                   backgroundColor: selectedCategory === category.id 
-                    ? '#D2691E20' 
+                    ? isAyWey ? '#4CAF5020' 
+                    : isPerfetto ? '#228B2220'
+                    : isMazorca ? '#FFD70020'
+                    : '#D2691E20' 
+                    : isAyWey ? '#4CAF5010'
+                    : isPerfetto ? '#228B2210'
+                    : isMazorca ? '#FFD70010'
                     : '#8B451310',
                   borderColor: selectedCategory === category.id
-                    ? '#D2691E'
+                    ? isAyWey ? '#4CAF50'
+                    : isPerfetto ? '#228B22'
+                    : isMazorca ? '#FFD700'
+                    : '#D2691E'
+                    : isAyWey ? '#4CAF5030'
+                    : isPerfetto ? '#228B2230'
+                    : isMazorca ? '#FFD70030'
                     : '#8B451330',
                   boxShadow: selectedCategory === category.id
-                    ? `0 20px 40px #D2691E30`
+                    ? isAyWey ? `0 20px 40px #4CAF5030`
+                    : isPerfetto ? `0 20px 40px #228B2230`
+                    : isMazorca ? `0 20px 40px #FFD70030`
+                    : `0 20px 40px #D2691E30`
                     : 'none'
                 }}
                 onClick={() => setSelectedCategory(category.id)}
                 whileHover={{ 
-                  backgroundColor: '#D2691E15'
+                  backgroundColor: isAyWey ? '#4CAF5015'
+                  : isPerfetto ? '#228B2215'
+                  : isMazorca ? '#FFD70015'
+                  : '#D2691E15'
                 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -412,17 +511,40 @@ export default function BrandPage({ params }: Props) {
                     className="w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300"
                     style={{
                       backgroundColor: selectedCategory === category.id 
-                        ? '#D2691E' 
+                        ? isAyWey ? '#4CAF50'
+                        : isPerfetto ? '#228B22'
+                        : isMazorca ? '#FFD700'
+                        : '#D2691E'
+                        : isAyWey ? '#4CAF5050'
+                        : isPerfetto ? '#228B2250'
+                        : isMazorca ? '#FFD70050'
                         : '#8B451350',
-                      color: selectedCategory === category.id ? 'white' : '#D2691E'
+                      color: selectedCategory === category.id ? 'white'
+                        : isAyWey ? '#4CAF50'
+                        : isPerfetto ? '#228B22'
+                        : isMazorca ? '#8B4513'
+                        : '#D2691E'
                     }}
                   >
-                    {togoimaCategoryIcons[category.id] || <Coffee className="w-6 h-6" />}
+                    {isAyWey 
+                      ? (ayWeyCategoryIcons[category.id] || <span className="text-2xl">🌮</span>)
+                      : isPerfetto
+                        ? (perfettoCategoryIcons[category.id] || <span className="text-2xl">🍨</span>)
+                        : isMazorca
+                          ? (mazorcaCategoryIcons[category.id] || <span className="text-2xl">🌽</span>)
+                          : (togoimaCategoryIcons[category.id] || <Coffee className="w-6 h-6" />)
+                    }
                   </div>
                   <span 
                     className={`font-bold text-sm md:text-base ${
                       selectedCategory === category.id
-                        ? 'text-orange-400'
+                        ? isAyWey ? 'text-green-400'
+                        : isPerfetto ? 'text-green-400'
+                        : isMazorca ? 'text-yellow-400'
+                        : 'text-orange-400'
+                        : isAyWey ? 'text-green-200'
+                        : isPerfetto ? 'text-green-200'
+                        : isMazorca ? 'text-yellow-200'
                         : 'text-amber-200'
                     }`}
                   >
@@ -431,9 +553,34 @@ export default function BrandPage({ params }: Props) {
                 </div>
                 
                 {/* Indicador de items */}
-                <div className="absolute top-2 right-2 w-6 h-6 bg-amber-900 rounded-full flex items-center justify-center text-xs text-amber-100 font-bold">
+                <div 
+                  className="absolute top-2 right-2 w-6 h-6 rounded-full flex items-center justify-center text-xs text-white font-bold"
+                  style={{
+                    backgroundColor: isAyWey ? '#F44336'
+                    : isPerfetto ? '#DC143C'
+                    : isMazorca ? '#FF8C00'
+                    : '#8B4513'
+                  }}
+                >
                   {category.items.length}
                 </div>
+
+                {/* Efectos especiales */}
+                {isAyWey && selectedCategory === category.id && (
+                  <div className="absolute -top-2 -right-2 text-2xl animate-bounce">
+                    🌶️
+                  </div>
+                )}
+                {isPerfetto && selectedCategory === category.id && (
+                  <div className="absolute -top-2 -right-2 text-2xl animate-bounce">
+                    🍨
+                  </div>
+                )}
+                {isMazorca && selectedCategory === category.id && (
+                  <div className="absolute -top-2 -right-2 text-2xl animate-bounce">
+                    🌽
+                  </div>
+                )}
               </motion.button>
             ))}
           </div>
@@ -475,13 +622,13 @@ export default function BrandPage({ params }: Props) {
           </div>
         )}
 
-        {/* Menu Items - Diseño especial para Togoima */}
+        {/* Menu Items - Diseño especial para Togoima y Ay Wey! */}
         <AnimatePresence mode="wait">
           {selectedCategoryData && (
             <motion.div
               key={selectedCategory}
               className={`grid ${
-                isTogoima 
+                hasSpecialDesign 
                   ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' 
                   : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
               } gap-6`}
@@ -504,31 +651,68 @@ export default function BrandPage({ params }: Props) {
                 >
                   <Card 
                     className={`group overflow-hidden border backdrop-blur-md hover:backdrop-blur-lg transition-all duration-500 h-full ${
-                      isTogoima ? 'hover:shadow-2xl' : ''
+                      hasSpecialDesign ? 'hover:shadow-2xl' : ''
                     }`}
                     style={{
-                      backgroundColor: isTogoima ? 'rgba(139, 69, 19, 0.1)' : 'rgba(17, 24, 39, 0.8)',
-                      borderColor: isTogoima ? '#D2691E30' : brand.primaryColor + '30'
+                      backgroundColor: isAyWey 
+                        ? 'rgba(76, 175, 80, 0.1)' 
+                        : isPerfetto 
+                          ? 'rgba(34, 139, 34, 0.1)' 
+                          : isMazorca 
+                            ? 'rgba(255, 215, 0, 0.1)' 
+                            : isTogoima 
+                              ? 'rgba(139, 69, 19, 0.1)' 
+                              : 'rgba(17, 24, 39, 0.8)',
+                      borderColor: isAyWey 
+                        ? '#4CAF5030' 
+                        : isPerfetto 
+                          ? '#228B2230' 
+                          : isMazorca 
+                            ? '#FFD70030' 
+                            : isTogoima 
+                              ? '#D2691E30' 
+                              : brand.primaryColor + '30'
                     }}
                   >
-                    {/* Item Image Placeholder - Diseño especial para Togoima */}
+                    {/* Item Image Placeholder - Diseño especial */}
                     <div 
-                      className={`${isTogoima ? 'h-32' : 'h-40'} relative overflow-hidden`}
+                      className={`${hasSpecialDesign ? 'h-32' : 'h-40'} relative overflow-hidden`}
                       style={{
-                        background: isTogoima 
-                          ? `linear-gradient(135deg, #8B451320, #D2691E20)`
-                          : `linear-gradient(45deg, ${brand.primaryColor}20, ${brand.secondaryColor}20)`
+                        background: isAyWey 
+                          ? `linear-gradient(135deg, #4CAF5020, #F4433620)`
+                          : isPerfetto 
+                            ? `linear-gradient(135deg, #228B2220, #DC143C20)`
+                            : isMazorca 
+                              ? `linear-gradient(135deg, #FFD70020, #FF8C0020)`
+                              : isTogoima 
+                                ? `linear-gradient(135deg, #8B451320, #D2691E20)`
+                                : `linear-gradient(45deg, ${brand.primaryColor}20, ${brand.secondaryColor}20)`
                       }}
                     >
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div 
-                          className={`${isTogoima ? 'w-16 h-16' : 'w-20 h-20'} rounded-full flex items-center justify-center text-white font-bold shadow-lg`}
+                          className={`${hasSpecialDesign ? 'w-16 h-16' : 'w-20 h-20'} rounded-full flex items-center justify-center text-white font-bold shadow-lg`}
                           style={{ 
-                            backgroundColor: isTogoima ? '#D2691E' : brand.primaryColor,
-                            boxShadow: isTogoima 
-                              ? `0 8px 25px #D2691E40`
-                              : `0 8px 25px ${brand.primaryColor}40`,
-                            fontSize: isTogoima ? '1.5rem' : '1.25rem'
+                            backgroundColor: isAyWey 
+                              ? '#4CAF50' 
+                              : isPerfetto 
+                                ? '#228B22' 
+                                : isMazorca 
+                                  ? '#FFD700' 
+                                  : isTogoima 
+                                    ? '#D2691E' 
+                                    : brand.primaryColor,
+                            boxShadow: isAyWey 
+                              ? `0 8px 25px #4CAF5040`
+                              : isPerfetto 
+                                ? `0 8px 25px #228B2240`
+                                : isMazorca 
+                                  ? `0 8px 25px #FFD70040`
+                                  : isTogoima 
+                                    ? `0 8px 25px #D2691E40`
+                                    : `0 8px 25px ${brand.primaryColor}40`,
+                            fontSize: hasSpecialDesign ? '1.5rem' : '1.25rem',
+                            color: isMazorca ? '#8B4513' : 'white'
                           }}
                         >
                           {item.name.charAt(0)}
@@ -539,40 +723,74 @@ export default function BrandPage({ params }: Props) {
                       <div 
                         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
                         style={{ 
-                          backgroundColor: isTogoima 
-                            ? '#FF8C0060' 
-                            : brand.accentColor + '60' 
+                          backgroundColor: isAyWey 
+                            ? '#FFC10760' 
+                            : isPerfetto 
+                              ? '#DC143C60' 
+                              : isMazorca 
+                                ? '#FF8C0060' 
+                                : isTogoima 
+                                  ? '#FF8C0060' 
+                                  : brand.accentColor + '60' 
                         }}
                       >
                         <span className="text-white text-sm font-medium px-4 py-2 rounded-full bg-black/50 backdrop-blur-sm">
-                          ¡Delicioso!
+                          {isAyWey ? '¡Órale!'
+                          : isPerfetto ? '¡Delizioso!'
+                          : isMazorca ? '¡Qué rico!'
+                          : '¡Delicioso!'}
                         </span>
                       </div>
+
+                      {/* Decoración especial */}
+                      {isAyWey && (
+                        <div className="absolute top-2 right-2 text-xl opacity-60">
+                          🌶️
+                        </div>
+                      )}
+                      {isPerfetto && (
+                        <div className="absolute top-2 right-2 text-xl opacity-60">
+                          🍨
+                        </div>
+                      )}
+                      {isMazorca && (
+                        <div className="absolute top-2 right-2 text-xl opacity-60">
+                          🌽
+                        </div>
+                      )}
                     </div>
 
-                    <CardContent className={`${isTogoima ? 'p-4' : 'p-6'}`}>
+                    <CardContent className={`${hasSpecialDesign ? 'p-4' : 'p-6'}`}>
                       <div className="space-y-4">
                         <div>
-                          <h3 className={`${isTogoima ? 'text-base' : 'text-lg'} font-bold text-white mb-2 line-clamp-2 group-hover:text-gray-200 transition-colors`}>
+                          <h3 className={`${hasSpecialDesign ? 'text-base' : 'text-lg'} font-bold text-white mb-2 line-clamp-2 group-hover:text-gray-200 transition-colors`}>
                             {item.name}
                           </h3>
                           
-                          <p className={`text-gray-400 ${isTogoima ? 'text-xs' : 'text-sm'} leading-relaxed line-clamp-3 mb-4`}>
+                          <p className={`text-gray-400 ${hasSpecialDesign ? 'text-xs' : 'text-sm'} leading-relaxed line-clamp-3 mb-4`}>
                             {item.description}
                           </p>
                         </div>
 
                         <div className="flex items-center justify-between">
                           <span 
-                            className={`${isTogoima ? 'text-xl' : 'text-2xl'} font-bold`}
+                            className={`${hasSpecialDesign ? 'text-xl' : 'text-2xl'} font-bold`}
                             style={{ 
-                              color: isTogoima ? '#FF8C00' : brand.primaryColor
+                              color: isAyWey 
+                                ? '#FFC107' 
+                                : isPerfetto 
+                                  ? '#DC143C' 
+                                  : isMazorca 
+                                    ? '#FFD700' 
+                                    : isTogoima 
+                                      ? '#FF8C00' 
+                                      : brand.primaryColor
                             }}
                           >
                             {formatPrice(item.price)}
                           </span>
 
-                          {!isTogoima && (
+                          {!hasSpecialDesign && (
                             <div className="flex items-center space-x-2">
                               <motion.button
                                 onClick={handleWhatsAppClick}
@@ -603,7 +821,12 @@ export default function BrandPage({ params }: Props) {
           transition={{ duration: 0.8, delay: 1.5 }}
         >
           <div className="max-w-2xl mx-auto space-y-4">
-            <h3 className="text-2xl font-bold text-white mb-6">¿Listo para ordenar?</h3>
+            <h3 className="text-2xl font-bold text-white mb-6">
+              {isAyWey ? '¿Listo para ordenar, amigo? 🌮'
+              : isPerfetto ? '¿Listo para disfrutar? 🍨'
+              : isMazorca ? '¿Antojo de mazorca? 🌽'
+              : '¿Listo para ordenar?'}
+            </h3>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               {/* WhatsApp Button */}
@@ -625,12 +848,36 @@ export default function BrandPage({ params }: Props) {
                   onClick={handleCallWaiter}
                   className="flex items-center justify-center space-x-3 px-8 py-4 rounded-full text-white font-bold text-lg shadow-lg transition-all duration-300"
                   style={{ 
-                    backgroundColor: isTogoima ? '#D2691E' : brand.primaryColor,
-                    borderColor: isTogoima ? '#FF8C00' : brand.secondaryColor
+                    backgroundColor: isAyWey 
+                      ? '#F44336'
+                      : isPerfetto
+                        ? '#DC143C'
+                        : isMazorca
+                          ? '#FF8C00'
+                          : isTogoima 
+                            ? '#D2691E' 
+                            : brand.primaryColor,
+                    borderColor: isAyWey 
+                      ? '#FFC107'
+                      : isPerfetto
+                        ? '#FFD700'
+                        : isMazorca
+                          ? '#FFD700'
+                          : isTogoima 
+                            ? '#FF8C00' 
+                            : brand.secondaryColor
                   }}
                   whileHover={{ 
                     scale: 1.05,
-                    backgroundColor: isTogoima ? '#FF8C00' : brand.accentColor
+                    backgroundColor: isAyWey 
+                      ? '#D32F2F'
+                      : isPerfetto
+                        ? '#B71C1C'
+                        : isMazorca
+                          ? '#F57C00'
+                          : isTogoima 
+                            ? '#FF8C00' 
+                            : brand.accentColor
                   }}
                   whileTap={{ scale: 0.95 }}
                 >
