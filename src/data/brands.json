@@ -38,7 +38,7 @@
                                 "id": "aros-cebolla",
                                 "name": "Aros de Cebolla",
                                 "description": "Aros de cebolla apanados y fritos",
-                                "price": "18000",
+                                "price": 18000,
                                 "imageIcon": "🧅"
                             }
                         ]
@@ -789,29 +789,199 @@
             "menu": {
                 "categories": [
                     {
-                        "id": "mazorcas",
-                        "name": "Mazorcas",
+                        "id": "arepas",
+                        "name": "Arepas",
                         "items": [
                             {
-                                "id": "mazorca-clasica",
-                                "name": "Mazorca Clásica",
-                                "description": "Con mantequilla, mayo, queso y chile",
-                                "price": 6000,
+                                "id": "antioqueña",
+                                "name": "Antioqueña",
+                                "description": "Carne + chicharrón + guacamole, lechuga, tomate",
+                                "price": 16900,
+                                "imageIcon": "🫓"
+                            },
+                            {
+                                "id": "valluna",
+                                "name": "Valluna",
+                                "description": "Pollo + carne + tocineta + tomate + lechuga + queso",
+                                "price": 17900,
+                                "imageIcon": "🫓"
+                            },
+                            {
+                                "id": "mazorca-arepa",
+                                "name": "Mazorca",
+                                "description": "Tocineta, maíz, maduro, carne, queso, lechuga y tomate",
+                                "price": 17900,
                                 "imageIcon": "🌽"
                             },
                             {
-                                "id": "mazorca-premium",
-                                "name": "Mazorca Premium",
-                                "description": "Con todos los ingredientes + bacon y salsa especial",
-                                "price": 8500,
+                                "id": "choriarepa",
+                                "name": "Choriarepa",
+                                "description": "Chorizo + maduros + tocineta",
+                                "price": 16900,
+                                "imageIcon": "🌭"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "patacones",
+                        "name": "Patacones",
+                        "items": [
+                            {
+                                "id": "patacon-carne",
+                                "name": "Carne",
+                                "description": "Patacón con carne desmechada",
+                                "price": 18900,
+                                "imageIcon": "🥩"
+                            },
+                            {
+                                "id": "patacon-pollo",
+                                "name": "Pollo",
+                                "description": "Patacón con pollo desmechado",
+                                "price": 18900,
+                                "imageIcon": "🍗"
+                            },
+                            {
+                                "id": "patacon-mixto",
+                                "name": "Mixto",
+                                "description": "Patacón con carne y pollo",
+                                "price": 21900,
+                                "imageIcon": "🍽️"
+                            },
+                            {
+                                "id": "patacon-grande",
+                                "name": "Mixto Grande",
+                                "description": "Patacón grande con carne y pollo",
+                                "price": 30000,
+                                "imageIcon": "🍽️"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "mazorcadas",
+                        "name": "Mazorcadas",
+                        "items": [
+                            {
+                                "id": "mazorcada-carne",
+                                "name": "De Carne",
+                                "description": "Mazorca con carne desmechada",
+                                "price": 25900,
                                 "imageIcon": "🌽"
                             },
                             {
-                                "id": "mazorca-dulce",
-                                "name": "Mazorca Dulce",
-                                "description": "Con leche condensada y coco rallado",
+                                "id": "mazorcada-pollo",
+                                "name": "De Pollo",
+                                "description": "Mazorca con pollo desmechado",
+                                "price": 25900,
+                                "imageIcon": "🌽"
+                            },
+                            {
+                                "id": "mazorcada-grande-mixta",
+                                "name": "Grande Mixta (2 personas)",
+                                "description": "Mazorca grande con carne y pollo para compartir",
+                                "price": 35900,
+                                "imageIcon": "🌽"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "ensaladas",
+                        "name": "Comida Saludable",
+                        "items": [
+                            {
+                                "id": "ensalada-pollo",
+                                "name": "Ensalada de Pollo",
+                                "description": "Ensalada fresca con pollo a la plancha",
+                                "price": 15900,
+                                "imageIcon": "🥗"
+                            },
+                            {
+                                "id": "ensalada-carne",
+                                "name": "Ensalada de Carne",
+                                "description": "Ensalada fresca con carne asada",
+                                "price": 16900,
+                                "imageIcon": "🥗"
+                            },
+                            {
+                                "id": "maiz-carne-nachos",
+                                "name": "Maíz con Carne y Nachos",
+                                "description": "Maíz tierno con carne y nachos",
+                                "price": 16900,
+                                "imageIcon": "🌽"
+                            },
+                            {
+                                "id": "maiz-pollo-nachos",
+                                "name": "Maíz con Pollo y Nachos",
+                                "description": "Maíz tierno con pollo y nachos",
+                                "price": 15900,
+                                "imageIcon": "🌽"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "wraps",
+                        "name": "Wraps",
+                        "items": [
+                            {
+                                "id": "wrap-pollo",
+                                "name": "Wrap de Pollo",
+                                "description": "Wrap con pollo, lechuga y vegetales",
+                                "price": 15900,
+                                "imageIcon": "🌯"
+                            },
+                            {
+                                "id": "wrap-carne",
+                                "name": "Wrap de Carne",
+                                "description": "Wrap con carne, lechuga y vegetales",
+                                "price": 16900,
+                                "imageIcon": "🌯"
+                            },
+                            {
+                                "id": "wrap-mixto",
+                                "name": "Wrap Mixto",
+                                "description": "Wrap con carne, pollo y vegetales",
+                                "price": 16900,
+                                "imageIcon": "🌯"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "bebidas",
+                        "name": "Bebidas",
+                        "items": [
+                            {
+                                "id": "gaseosas",
+                                "name": "Gaseosas",
+                                "description": "Gaseosas variadas",
+                                "price": 5000,
+                                "imageIcon": "🥤"
+                            },
+                            {
+                                "id": "limonada-natural",
+                                "name": "Limonada",
+                                "description": "Limonada natural fresca",
                                 "price": 7000,
-                                "imageIcon": "🌽"
+                                "imageIcon": "🍋"
+                            },
+                            {
+                                "id": "limonada-cerezada",
+                                "name": "Limonada Cerezada",
+                                "description": "Limonada con cerezas",
+                                "price": 10000,
+                                "imageIcon": "🍒"
+                            },
+                            {
+                                "id": "limonada-coco",
+                                "name": "Limonada de Coco",
+                                "description": "Limonada cremosa con coco",
+                                "price": 13000,
+                                "imageIcon": "🥥"
+                            },
+                            {
+                                "id": "jugo-natural",
+                                "name": "Jugo Natural",
+                                "description": "Jugo natural (mango, mora, piña)",
+                                "price": 8000,
+                                "imageIcon": "🧃"
                             }
                         ]
                     }
