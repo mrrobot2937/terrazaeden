@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Card } from '@/components/ui/card'
-import { ArrowRight, Sparkles, ChefHat } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import brandsData from '@/data/brands.json'
@@ -116,60 +116,76 @@ export default function HomePage() {
       )}
 
       <div className="relative z-10">
-        {/* Header */}
+        {/* Header with Logo and scroll indicator */}
         <motion.header 
-          className="text-center py-20 px-4"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          className="min-h-screen flex flex-col justify-center items-center relative z-10 py-8 sm:py-12"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5 }}
         >
+          {/* Logo Principal */}
           <motion.div
-            className="inline-flex items-center justify-center space-x-3 mb-8"
-            whileHover={{ scale: 1.05 }}
+            className="flex justify-center mb-8 sm:mb-12 md:mb-16 w-full px-4"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1.2, type: "spring" as const, delay: 0.5 }}
           >
-            <div className="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center">
-              <ChefHat className="w-10 h-10 text-black" />
+            <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl aspect-square">
+              <Image
+                src="/logos/terrazaeden.png"
+                alt="Terraza Eden"
+                fill
+                className="object-contain drop-shadow-2xl"
+                sizes="(max-width: 640px) 90vw, (max-width: 768px) 60vw, (max-width: 1024px) 50vw, (max-width: 1280px) 40vw, 35vw"
+                priority
+              />
             </div>
-            <Sparkles className="w-8 h-8 text-yellow-400" />
           </motion.div>
-          
-          <motion.h1 
-            className="text-7xl md:text-9xl font-black text-white mb-6"
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            style={{
-              textShadow: '0 0 50px rgba(234, 179, 8, 0.3)'
-            }}
-          >
-            TERRAZA
-            <span className="text-yellow-500 block">EDEN</span>
-          </motion.h1>
-          
-          <motion.p 
-            className="text-2xl md:text-3xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.8 }}
-          >
-            EL DESTINO GASTRONÓMICO <span className="text-yellow-500 font-bold">MÁS EXCLUSIVO</span>
-          </motion.p>
 
+          {/* Scroll Down Indicator */}
           <motion.div
-            className="mt-10"
+            className="flex flex-col items-center space-y-3 sm:space-y-4 cursor-pointer px-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1.2 }}
+            transition={{ duration: 1, delay: 2 }}
+            onClick={() => {
+              document.getElementById('brands-section')?.scrollIntoView({ 
+                behavior: 'smooth' 
+              })
+            }}
           >
-            <div className="inline-block px-8 py-4 bg-yellow-500 text-black font-bold text-lg rounded-full hover:bg-yellow-400 transition-colors cursor-pointer">
-              ⚡ EXPLORA NUESTRAS MARCAS ⚡
+            <div className="text-white text-center hover:text-yellow-400 transition-colors duration-300">
+              <p className="text-base sm:text-lg font-medium mb-3 sm:mb-4">Desliza para explorar nuestras marcas</p>
+              <div className="flex justify-center">
+                <motion.div
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{ 
+                    duration: 2, 
+                    repeat: Infinity, 
+                    ease: "easeInOut" 
+                  }}
+                  className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-yellow-400 rounded-full flex justify-center hover:border-yellow-300 transition-colors duration-300"
+                >
+                  <motion.div
+                    animate={{ y: [0, 10, 0] }}
+                    transition={{ 
+                      duration: 2, 
+                      repeat: Infinity, 
+                      ease: "easeInOut",
+                      delay: 0.3
+                    }}
+                    className="w-1 h-2.5 sm:h-3 bg-yellow-400 rounded-full mt-1.5 sm:mt-2"
+                  />
+                </motion.div>
+              </div>
             </div>
           </motion.div>
         </motion.header>
 
         {/* Brands Grid */}
         <motion.main 
-          className="container mx-auto px-6 pb-20"
+          id="brands-section"
+          className="container mx-auto px-6 pb-20 pt-16"
           variants={containerVariants}
           initial="hidden"
           animate="visible"

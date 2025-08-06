@@ -3,7 +3,7 @@
 import { useState, useEffect, use } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Card, CardContent } from '@/components/ui/card'
-import { ArrowLeft, MessageCircle, ExternalLink, Bell, Star, Clock, Flame, Phone, Coffee, Sparkles, Cookie, Wine, Sandwich, Soup, Utensils, GlassWater, Cherry, Croissant, Beer, Droplets, ChefHat, Pizza, Package } from 'lucide-react'
+import { ArrowLeft, MessageCircle, ExternalLink, Bell, Star, Clock, Flame, Coffee, Wine, Sandwich, Cherry, Droplets, ChefHat, Pizza, Package } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
@@ -74,6 +74,195 @@ const perfettoCategoryIcons: { [key: string]: React.ReactNode } = {
 // Iconos personalizados para las categorías de Mazorca
 const mazorcaCategoryIcons: { [key: string]: React.ReactNode } = {
   'mazorcas': <span className="text-2xl">🌽</span>
+}
+
+// Sistema de iconos específicos para productos
+const getProductIcon = (productName: string, categoryId: string): string => {
+  const name = productName.toLowerCase()
+  
+  // Iconos específicos por nombre de producto
+  if (name.includes('taco')) return '🌮'
+  if (name.includes('burrito')) return '🌯'
+  if (name.includes('quesadilla')) return '🧀'
+  if (name.includes('nachos')) return '🧀'
+  if (name.includes('guacamole')) return '🥑'
+  if (name.includes('salsa')) return '🌶️'
+  if (name.includes('chile') || name.includes('chili')) return '🌶️'
+  if (name.includes('jalapeño')) return '🌶️'
+  if (name.includes('aguacate')) return '🥑'
+  if (name.includes('tomate')) return '🍅'
+  if (name.includes('cebolla')) return '🧅'
+  if (name.includes('limón') || name.includes('limon')) return '🍋'
+  
+  // Bebidas
+  if (name.includes('café') || name.includes('coffee')) return '☕'
+  if (name.includes('cappuccino')) return '☕'
+  if (name.includes('latte')) return '☕'
+  if (name.includes('espresso')) return '☕'
+  if (name.includes('americano')) return '☕'
+  if (name.includes('frappé') || name.includes('frappe')) return '🥤'
+  if (name.includes('frullatto') || name.includes('smoothie')) return '🥤'
+  if (name.includes('jugo') || name.includes('juice')) return '🧃'
+  if (name.includes('agua')) return '💧'
+  if (name.includes('refresco') || name.includes('soda')) return '🥤'
+  if (name.includes('té') || name.includes('tea')) return '🍵'
+  if (name.includes('chocolate caliente')) return '☕'
+  if (name.includes('limonada')) return '🍋'
+  if (name.includes('naranjada')) return '🍊'
+  
+  // Alcohol
+  if (name.includes('cerveza') || name.includes('beer')) return '🍺'
+  if (name.includes('vino') || name.includes('wine')) return '🍷'
+  if (name.includes('tequila')) return '🥃'
+  if (name.includes('mezcal')) return '🥃'
+  if (name.includes('ron')) return '🥃'
+  if (name.includes('whisky') || name.includes('whiskey')) return '🥃'
+  if (name.includes('vodka')) return '🥃'
+  if (name.includes('margarita')) return '🍹'
+  if (name.includes('mojito')) return '🍹'
+  if (name.includes('piña colada')) return '🍹'
+  
+  // Comidas principales
+  if (name.includes('pollo') || name.includes('chicken')) return '🍗'
+  if (name.includes('carne') || name.includes('beef')) return '🥩'
+  if (name.includes('res')) return '🥩'
+  if (name.includes('cerdo') || name.includes('pork')) return '🐷'
+  if (name.includes('pescado') || name.includes('fish')) return '🐟'
+  if (name.includes('salmón') || name.includes('salmon')) return '🐟'
+  if (name.includes('atún') || name.includes('tuna')) return '🐟'
+  if (name.includes('camarón') || name.includes('shrimp')) return '🦐'
+  if (name.includes('langosta') || name.includes('lobster')) return '🦞'
+  if (name.includes('cordero') || name.includes('lamb')) return '🐑'
+  if (name.includes('chuleta')) return '🥩'
+  if (name.includes('filete')) return '🥩'
+  if (name.includes('ribeye')) return '🥩'
+  
+  // Pastas y arroces
+  if (name.includes('pasta')) return '🍝'
+  if (name.includes('espagueti') || name.includes('spaghetti')) return '🍝'
+  if (name.includes('lasagna') || name.includes('lasaña')) return '🍝'
+  if (name.includes('risotto')) return '🍚'
+  if (name.includes('arroz')) return '🍚'
+  if (name.includes('paella')) return '🥘'
+  
+  // Sopas
+  if (name.includes('sopa') || name.includes('soup')) return '🍲'
+  if (name.includes('caldo')) return '🍲'
+  if (name.includes('crema')) return '🍲'
+  if (name.includes('consomé')) return '🍲'
+  
+  // Ensaladas
+  if (name.includes('ensalada') || name.includes('salad')) return '🥗'
+  if (name.includes('césar')) return '🥗'
+  if (name.includes('caprese')) return '🥗'
+  
+  // Pan y sandwiches
+  if (name.includes('sandwich') || name.includes('sándwich')) return '🥪'
+  if (name.includes('torta')) return '🥪'
+  if (name.includes('hamburguesa') || name.includes('burger')) return '🍔'
+  if (name.includes('hot dog') || name.includes('perro')) return '🌭'
+  if (name.includes('choripan') || name.includes('chorizo')) return '🌭'
+  if (name.includes('pan')) return '🍞'
+  if (name.includes('baguette')) return '🥖'
+  if (name.includes('croissant')) return '🥐'
+  if (name.includes('empanada')) return '🥟'
+  if (name.includes('arepa')) return '🫓'
+  
+  // Postres y dulces
+  if (name.includes('gelato') || name.includes('helado')) return '🍨'
+  if (name.includes('parfait')) return '🍨'
+  if (name.includes('tiramisú') || name.includes('tiramisu')) return '🍰'
+  if (name.includes('cheesecake')) return '🍰'
+  if (name.includes('brownie')) return '🍫'
+  if (name.includes('chocolate')) return '🍫'
+  if (name.includes('flan')) return '🍮'
+  if (name.includes('pudín') || name.includes('pudding')) return '🍮'
+  if (name.includes('mousse')) return '🍮'
+  if (name.includes('tarta')) return '🥧'
+  if (name.includes('pie')) return '🥧'
+  if (name.includes('galleta') || name.includes('cookie')) return '🍪'
+  if (name.includes('donut') || name.includes('dona')) return '🍩'
+  if (name.includes('muffin')) return '🧁'
+  if (name.includes('cupcake')) return '🧁'
+  
+  // Frutas
+  if (name.includes('fresa') || name.includes('strawberry')) return '🍓'
+  if (name.includes('mango')) return '🥭'
+  if (name.includes('piña') || name.includes('pineapple')) return '🍍'
+  if (name.includes('banana') || name.includes('plátano')) return '🍌'
+  if (name.includes('manzana') || name.includes('apple')) return '🍎'
+  if (name.includes('naranja') || name.includes('orange')) return '🍊'
+  if (name.includes('limón') || name.includes('lemon')) return '🍋'
+  if (name.includes('uva') || name.includes('grape')) return '🍇'
+  if (name.includes('cereza') || name.includes('cherry')) return '🍒'
+  if (name.includes('durazno') || name.includes('peach')) return '🍑'
+  if (name.includes('kiwi')) return '🥝'
+  if (name.includes('coco') || name.includes('coconut')) return '🥥'
+  if (name.includes('maracuyá') || name.includes('passion')) return '🥭'
+  
+  // Verduras y vegetales
+  if (name.includes('mazorca') || name.includes('elote') || name.includes('corn')) return '🌽'
+  if (name.includes('papa') || name.includes('patata') || name.includes('potato')) return '🥔'
+  if (name.includes('zanahoria') || name.includes('carrot')) return '🥕'
+  if (name.includes('brócoli') || name.includes('broccoli')) return '🥦'
+  if (name.includes('espinaca') || name.includes('spinach')) return '🥬'
+  if (name.includes('lechuga') || name.includes('lettuce')) return '🥬'
+  if (name.includes('apio') || name.includes('celery')) return '🥬'
+  
+  // Frutos secos y cereales
+  if (name.includes('almendra') || name.includes('almond')) return '🥜'
+  if (name.includes('nuez') || name.includes('walnut')) return '🥜'
+  if (name.includes('maní') || name.includes('peanut')) return '🥜'
+  if (name.includes('granola')) return '🥣'
+  if (name.includes('cereal')) return '🥣'
+  if (name.includes('avena') || name.includes('oats')) return '🥣'
+  
+  // Lácteos
+  if (name.includes('queso') || name.includes('cheese')) return '🧀'
+  if (name.includes('leche') || name.includes('milk')) return '🥛'
+  if (name.includes('yogurt')) return '🥛'
+  if (name.includes('crema')) return '🥛'
+  
+  // Condimentos y extras
+  if (name.includes('salsa')) return '🥄'
+  if (name.includes('aderezo')) return '🥄'
+  if (name.includes('mayonesa')) return '🥄'
+  if (name.includes('mostaza')) return '🥄'
+  if (name.includes('ketchup')) return '🥄'
+  if (name.includes('vinagre')) return '🥄'
+  if (name.includes('aceite')) return '🥄'
+  if (name.includes('mantequilla')) return '🧈'
+  
+  // Iconos por categoría como respaldo
+  const categoryIcons: { [key: string]: string } = {
+    'tradicionales': '☕',
+    'rituales': '☕',
+    'frullatos': '🥤',
+    'hipotermicas': '🧊',
+    'aguas-frescas': '💧',
+    'cocteleria-mexicana': '🍹',
+    'platos-principales': '🍽️',
+    'entradas': '🥗',
+    'tacos': '🌮',
+    'volcanes': '🌋',
+    'gringas': '🌯',
+    'tortas': '🥪',
+    'sandwiches': '🥖',
+    'postres': '🍰',
+    'parfaits-gelatos': '🍨',
+    'cacaos-chocolates': '🍫',
+    'guarniciones': '🥬',
+    'adicionales': '➕',
+    'amasijos': '🥐',
+    'combos': '🍱',
+    'pecados': '😈',
+    'destilados': '🥃',
+    'mezclas': '🍸',
+    'platos': '🍽️',
+    'mazorcas': '🌽'
+  }
+  
+  return categoryIcons[categoryId] || '🍽️'
 }
 
 export default function BrandPage({ params }: Props) {
@@ -448,7 +637,7 @@ export default function BrandPage({ params }: Props) {
               }}
             >
               <ExternalLink className="w-6 h-6" />
-              <span>VISITAR PÁGINA OFICIAL</span>
+              <span>ORDENAR DESDE PÁGINA OFICIAL</span>
               <ExternalLink className="w-6 h-6" />
             </motion.button>
           </motion.div>
@@ -693,50 +882,50 @@ export default function BrandPage({ params }: Props) {
                               : brand.primaryColor + '30'
                     }}
                   >
-                    {/* Item Image Placeholder - Diseño especial */}
+                    {/* Item Image or Icon */}
                     <div 
                       className={`${hasSpecialDesign ? 'h-32' : 'h-40'} relative overflow-hidden`}
                       style={{
                         background: isAyWey 
                           ? `linear-gradient(135deg, #4CAF5020, #F4433620)`
-                          : isPerfetto 
+                          : isPerfetto
                             ? `linear-gradient(135deg, #228B2220, #DC143C20)`
-                            : isMazorca 
+                            : isMazorca
                               ? `linear-gradient(135deg, #FFD70020, #FF8C0020)`
                               : isTogoima 
                                 ? `linear-gradient(135deg, #8B451320, #D2691E20)`
                                 : `linear-gradient(45deg, ${brand.primaryColor}20, ${brand.secondaryColor}20)`
                       }}
                     >
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div 
-                          className={`${hasSpecialDesign ? 'w-16 h-16' : 'w-20 h-20'} rounded-full flex items-center justify-center text-white font-bold shadow-lg`}
-                          style={{ 
-                            backgroundColor: isAyWey 
-                              ? '#4CAF50' 
-                              : isPerfetto 
-                                ? '#228B22' 
-                                : isMazorca 
-                                  ? '#FFD700' 
-                                  : isTogoima 
-                                    ? '#D2691E' 
-                                    : brand.primaryColor,
-                            boxShadow: isAyWey 
-                              ? `0 8px 25px #4CAF5040`
-                              : isPerfetto 
-                                ? `0 8px 25px #228B2240`
-                                : isMazorca 
-                                  ? `0 8px 25px #FFD70040`
-                                  : isTogoima 
-                                    ? `0 8px 25px #D2691E40`
-                                    : `0 8px 25px ${brand.primaryColor}40`,
-                            fontSize: hasSpecialDesign ? '1.5rem' : '1.25rem',
-                            color: isMazorca ? '#8B4513' : 'white'
-                          }}
-                        >
-                          {item.name.charAt(0)}
-                        </div>
-                      </div>
+                                        <div className="absolute inset-0 flex items-center justify-center">
+                    <div 
+                      className={`${hasSpecialDesign ? 'w-16 h-16' : 'w-20 h-20'} rounded-full flex items-center justify-center text-white font-bold shadow-lg`}
+                      style={{ 
+                        backgroundColor: isAyWey 
+                          ? '#4CAF50'
+                          : isPerfetto
+                            ? '#228B22'
+                            : isMazorca
+                              ? '#FFD700'
+                              : isTogoima 
+                                ? '#8B4513'
+                                : brand.primaryColor,
+                        boxShadow: isAyWey 
+                          ? `0 8px 25px #4CAF5040`
+                          : isPerfetto
+                            ? `0 8px 25px #228B2240`
+                            : isMazorca
+                              ? `0 8px 25px #FFD70040`
+                              : isTogoima 
+                                ? `0 8px 25px #D2691E40`
+                                : `0 8px 25px ${brand.primaryColor}40`,
+                        fontSize: hasSpecialDesign ? '2rem' : '1.75rem',
+                        color: isMazorca ? '#8B4513' : 'white'
+                      }}
+                    >
+                      {item.imageIcon || getProductIcon(item.name, selectedCategory)}
+                    </div>
+                  </div>
                       
                       {/* Hover Overlay */}
                       <div 
@@ -838,81 +1027,83 @@ export default function BrandPage({ params }: Props) {
         </AnimatePresence>
 
         {/* Action Buttons Footer */}
-        <motion.div
-          className="mt-16 text-center"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.5 }}
-        >
-          <div className="max-w-2xl mx-auto space-y-4">
-            <h3 className="text-2xl font-bold text-white mb-6">
-              {isAyWey ? '¿Listo para ordenar, amigo? 🌮'
-              : isPerfetto ? '¿Listo para disfrutar? 🍨'
-              : isMazorca ? '¿Antojo de mazorca? 🌽'
-              : isTogoima ? '¿Un café ancestral? ☕'
-              : '¿Listo para ordenar?'}
-            </h3>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              {/* WhatsApp Button */}
-              {brand.contact.whatsapp && (
-                <motion.button
-                  onClick={handleWhatsAppClick}
-                  className="flex items-center justify-center space-x-3 px-8 py-4 bg-green-600 hover:bg-green-700 rounded-full text-white font-bold text-lg shadow-lg transition-all duration-300"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <MessageCircle className="w-6 h-6" />
-                  <span>Ordenar por WhatsApp</span>
-                </motion.button>
-              )}
+        {(brand.contact.whatsapp || brand.contact.callWaiter) && (
+          <motion.div
+            className="mt-16 text-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.5 }}
+          >
+            <div className="max-w-2xl mx-auto space-y-4">
+              <h3 className="text-2xl font-bold text-white mb-6">
+                {isAyWey ? '¿Listo para ordenar, amigo? ��'
+                : isPerfetto ? '¿Listo para disfrutar? 🍨'
+                : isMazorca ? '¿Antojo de mazorca? 🌽'
+                : isTogoima ? '¿Un café ancestral? ☕'
+                : '¿Listo para ordenar?'}
+              </h3>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                {/* WhatsApp Button */}
+                {brand.contact.whatsapp && (
+                  <motion.button
+                    onClick={handleWhatsAppClick}
+                    className="flex items-center justify-center space-x-3 px-8 py-4 bg-green-600 hover:bg-green-700 rounded-full text-white font-bold text-lg shadow-lg transition-all duration-300"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <MessageCircle className="w-6 h-6" />
+                    <span>Ordenar por WhatsApp</span>
+                  </motion.button>
+                )}
 
-              {/* Call Waiter Button */}
-              {brand.contact.callWaiter && (
-                <motion.button
-                  onClick={handleCallWaiter}
-                  className="flex items-center justify-center space-x-3 px-8 py-4 rounded-full text-white font-bold text-lg shadow-lg transition-all duration-300"
-                  style={{ 
-                    backgroundColor: isAyWey 
-                      ? '#F44336'
-                      : isPerfetto
-                        ? '#DC143C'
-                        : isMazorca
-                          ? '#FF8C00'
-                          : isTogoima 
-                            ? '#8B4513'
-                            : brand.primaryColor,
-                    borderColor: isAyWey 
-                      ? '#FFC107'
-                      : isPerfetto
-                        ? '#FFD700'
+                {/* Call Waiter Button */}
+                {brand.contact.callWaiter && (
+                  <motion.button
+                    onClick={handleCallWaiter}
+                    className="flex items-center justify-center space-x-3 px-8 py-4 rounded-full text-white font-bold text-lg shadow-lg transition-all duration-300"
+                    style={{ 
+                      backgroundColor: isAyWey 
+                        ? '#F44336'
+                        : isPerfetto
+                          ? '#DC143C'
+                          : isMazorca
+                            ? '#FF8C00'
+                            : isTogoima
+                              ? '#8B4513'
+                              : brand.primaryColor,
+                      borderColor: isAyWey 
+                        ? '#FFC107'
+                        : isPerfetto
+                          ? '#FFD700'
                         : isMazorca
                           ? '#FFD700'
-                          : isTogoima 
-                            ? '#DEB887'
-                            : brand.secondaryColor
-                  }}
-                  whileHover={{ 
-                    scale: 1.05,
-                    backgroundColor: isAyWey 
-                      ? '#D32F2F'
-                      : isPerfetto
-                        ? '#B71C1C'
-                        : isMazorca
-                          ? '#F57C00'
-                          : isTogoima 
-                            ? '#654321'
-                            : brand.accentColor
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Bell className="w-6 h-6" />
-                  <span>Llamar Mesero</span>
-                </motion.button>
-              )}
+                        : isTogoima
+                          ? '#DEB887'
+                          : brand.secondaryColor
+                    }}
+                    whileHover={{ 
+                      scale: 1.05,
+                      backgroundColor: isAyWey 
+                        ? '#D32F2F'
+                        : isPerfetto
+                          ? '#B71C1C'
+                          : isMazorca
+                            ? '#F57C00'
+                            : isTogoima
+                              ? '#654321'
+                              : brand.accentColor
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Bell className="w-6 h-6" />
+                    <span>Llamar Mesero</span>
+                  </motion.button>
+                )}
+              </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        )}
       </motion.main>
     </motion.div>
   )
