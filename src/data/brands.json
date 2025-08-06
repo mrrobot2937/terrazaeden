@@ -3,90 +3,401 @@
         {
             "id": "sabor-extremo",
             "name": "Sabor Extremo Gourmet",
-            "description": "Alta cocina con sabores intensos y experiencias únicas",
+            "description": "Comidas rápidas gourmet con el mejor sabor",
             "logo": "/logos/saborextremo.png",
-            "primaryColor": "#8B0000",
-            "secondaryColor": "#FFD700",
-            "accentColor": "#DC143C",
-            "category": "Gourmet",
+            "primaryColor": "#FFA500",
+            "secondaryColor": "#FF4136",
+            "accentColor": "#FFDC00",
+            "category": "Comidas Rápidas",
             "contact": {
-                "whatsapp": "+573001234570",
-                "whatsappMessage": "¡Hola! Quiero hacer una reserva en Sabor Extremo Gourmet 🍽️",
+                "whatsapp": "+573124925387",
+                "whatsappMessage": "¡Hola! Me gustaría ordenar de Sabor Extremo Gourmet 🍔",
                 "callWaiter": true
             },
             "menu": {
                 "categories": [
                     {
-                        "id": "platos-principales",
-                        "name": "Platos Principales",
-                        "items": [
-                            {
-                                "id": "ribeye-extreme",
-                                "name": "Ribeye Extreme",
-                                "description": "Corte premium con reducción de vino tinto y papas trufa",
-                                "price": 35000,
-                                "imageIcon": "🥩"
-                            },
-                            {
-                                "id": "salmon-gourmet",
-                                "name": "Salmón Gourmet",
-                                "description": "Salmón atlántico con salsa de maracuyá",
-                                "price": 32000,
-                                "imageIcon": "🐟"
-                            },
-                            {
-                                "id": "risotto-funghi",
-                                "name": "Risotto Funghi",
-                                "description": "Risotto cremoso con variedad de hongos silvestres",
-                                "price": 28000,
-                                "imageIcon": "🍚"
-                            },
-                            {
-                                "id": "rack-cordero",
-                                "name": "Rack de Cordero",
-                                "description": "Rack de cordero con costra de hierbas y puré de papa trufada",
-                                "price": 45000,
-                                "imageIcon": "🐑"
-                            }
-                        ]
-                    },
-                    {
                         "id": "entradas",
                         "name": "Entradas",
                         "items": [
                             {
-                                "id": "carpaccio-res",
-                                "name": "Carpaccio de Res",
-                                "description": "Finas láminas de res con rúcula y parmesano",
-                                "price": 25000,
-                                "imageIcon": "🥩"
+                                "id": "papas-cheddar",
+                                "name": "Papas Cheddar",
+                                "description": "Papas fritas bañadas en salsa de queso cheddar",
+                                "price": 16000,
+                                "imageIcon": "🍟"
                             },
                             {
-                                "id": "tartar-atun",
-                                "name": "Tartar de Atún",
-                                "description": "Atún fresco con aguacate y aderezo asiático",
-                                "price": 28000,
-                                "imageIcon": "🐟"
+                                "id": "mini-tostones",
+                                "name": "Mini Tostones",
+                                "description": "Plátanos verdes aplastados y fritos",
+                                "price": 18000,
+                                "imageIcon": "🍌"
+                            },
+                            {
+                                "id": "aros-cebolla",
+                                "name": "Aros de Cebolla",
+                                "description": "Aros de cebolla apanados y fritos",
+                                "price": "18000",
+                                "imageIcon": "🧅"
                             }
                         ]
                     },
                     {
-                        "id": "postres",
-                        "name": "Postres",
+                        "id": "sandwich",
+                        "name": "Sandwich",
                         "items": [
                             {
-                                "id": "chocolate-deconstruido",
-                                "name": "Chocolate Deconstruido",
-                                "description": "Texturas de chocolate con helado de vainilla",
-                                "price": 18000,
-                                "imageIcon": "🍫"
+                                "id": "pollo-tocineta",
+                                "name": "Pollo Tocineta",
+                                "description": "Sándwich de pollo con tocineta",
+                                "price": 30000,
+                                "imageIcon": "🥪"
                             },
                             {
-                                "id": "crema-catalana",
-                                "name": "Crema Catalana",
-                                "description": "Crema catalana con frutos rojos",
+                                "id": "panceta-ahumada",
+                                "name": "Panceta Ahumada",
+                                "description": "Sándwich de panceta ahumada",
+                                "price": 30000,
+                                "imageIcon": "🥓"
+                            },
+                            {
+                                "id": "jamon-york",
+                                "name": "Jamón York",
+                                "description": "Sándwich de jamón york",
+                                "price": 30000,
+                                "imageIcon": "🥪"
+                            },
+                            {
+                                "id": "pulled-pork-sandwich",
+                                "name": "Pulled Pork",
+                                "description": "Sándwich de cerdo desmechado",
+                                "price": 28000,
+                                "imageIcon": "🐷"
+                            },
+                            {
+                                "id": "cerdo-parrilla",
+                                "name": "Cerdo a la Parrilla",
+                                "description": "Sándwich de cerdo a la parrilla",
+                                "price": 28000,
+                                "imageIcon": "🥩"
+                            },
+                            {
+                                "id": "jack-daniels-sandwich",
+                                "name": "Jack Daniel's",
+                                "description": "Sándwich con salsa Jack Daniel's",
+                                "price": 26000,
+                                "imageIcon": "🥃"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "salchipapas",
+                        "name": "Salchipapas",
+                        "items": [
+                            {
+                                "id": "sencilla",
+                                "name": "Sencilla",
+                                "description": "Papas fritas con salchicha",
+                                "price": 18000,
+                                "imageIcon": "🌭"
+                            },
+                            {
+                                "id": "gratinada",
+                                "name": "Gratinada",
+                                "description": "Papas fritas con salchicha y queso gratinado",
+                                "price": 22000,
+                                "imageIcon": "🧀"
+                            },
+                            {
+                                "id": "con-chorizo",
+                                "name": "Con Chorizo",
+                                "description": "Papas fritas con chorizo",
+                                "price": 25000,
+                                "imageIcon": "🌭"
+                            },
+                            {
+                                "id": "pulled-pork-salchi",
+                                "name": "Pulled Pork",
+                                "description": "Papas fritas con cerdo desmechado",
+                                "price": 28000,
+                                "imageIcon": "🐷"
+                            },
+                            {
+                                "id": "jack-daniels-salchi",
+                                "name": "Jack Daniel's",
+                                "description": "Papas fritas con salsa Jack Daniel's",
+                                "price": 30000,
+                                "imageIcon": "🥃"
+                            },
+                            {
+                                "id": "costilla",
+                                "name": "Costilla",
+                                "description": "Papas fritas con costilla",
+                                "price": 30000,
+                                "imageIcon": "🍖"
+                            },
+                            {
+                                "id": "carne-bbq",
+                                "name": "Carne BBQ",
+                                "description": "Papas fritas con carne en salsa BBQ",
+                                "price": 30000,
+                                "imageIcon": "🥩"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "asados",
+                        "name": "Asados",
+                        "items": [
+                            {
+                                "id": "costilla-humo-personal",
+                                "name": "Costilla al Humo Personal",
+                                "description": "Costilla ahumada porción personal",
+                                "price": 22000,
+                                "imageIcon": "🍖"
+                            },
+                            {
+                                "id": "costilla-humo-familiar",
+                                "name": "Costilla al Humo Familiar",
+                                "description": "Costilla ahumada porción familiar",
+                                "price": 42000,
+                                "imageIcon": "🍖"
+                            },
+                            {
+                                "id": "cerdo-parrilla-personal",
+                                "name": "Cerdo a la Parrilla Personal",
+                                "description": "Cerdo a la parrilla porción personal",
+                                "price": 20000,
+                                "imageIcon": "🥩"
+                            },
+                            {
+                                "id": "cerdo-parrilla-familiar",
+                                "name": "Cerdo a la Parrilla Familiar",
+                                "description": "Cerdo a la parrilla porción familiar",
+                                "price": 40000,
+                                "imageIcon": "🥩"
+                            },
+                            {
+                                "id": "filete-pollo-personal",
+                                "name": "Filete de Pollo Personal",
+                                "description": "Filete de pollo porción personal",
+                                "price": 22000,
+                                "imageIcon": "🍗"
+                            },
+                            {
+                                "id": "filete-pollo-familiar",
+                                "name": "Filete de Pollo Familiar",
+                                "description": "Filete de pollo porción familiar",
+                                "price": 42000,
+                                "imageIcon": "🍗"
+                            },
+                            {
+                                "id": "filete-gratinado-personal",
+                                "name": "Filete Gratinado Personal",
+                                "description": "Filete gratinado porción personal",
+                                "price": 25000,
+                                "imageIcon": "🧀"
+                            },
+                            {
+                                "id": "filete-gratinado-familiar",
+                                "name": "Filete Gratinado Familiar",
+                                "description": "Filete gratinado porción familiar",
+                                "price": 48000,
+                                "imageIcon": "🧀"
+                            },
+                            {
+                                "id": "milanesa-argentina-personal",
+                                "name": "Milanesa Argentina Personal",
+                                "description": "Milanesa estilo argentino personal",
+                                "price": 28000,
+                                "imageIcon": "🥩"
+                            },
+                            {
+                                "id": "milanesa-argentina-familiar",
+                                "name": "Milanesa Argentina Familiar",
+                                "description": "Milanesa estilo argentino familiar",
+                                "price": 55000,
+                                "imageIcon": "🥩"
+                            },
+                            {
+                                "id": "chorizo-espanol",
+                                "name": "Chorizo Español",
+                                "description": "Chorizo español a la parrilla",
+                                "price": 17000,
+                                "imageIcon": "🌭"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "picadas",
+                        "name": "Picadas",
+                        "items": [
+                            {
+                                "id": "picada-personal",
+                                "name": "Personal",
+                                "description": "Pollo, cerdo, costilla, chorizo",
+                                "price": 32000,
+                                "imageIcon": "🍖"
+                            },
+                            {
+                                "id": "picada-doble",
+                                "name": "Doble",
+                                "description": "Porción doble de carnes mixtas",
+                                "price": 60000,
+                                "imageIcon": "🍖"
+                            },
+                            {
+                                "id": "picada-familiar",
+                                "name": "Familiar",
+                                "description": "Porción familiar de carnes mixtas",
+                                "price": 92000,
+                                "imageIcon": "🍖"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "bebidas",
+                        "name": "Bebidas",
+                        "items": [
+                            {
+                                "id": "soda-lychee",
+                                "name": "Soda Lychee",
+                                "description": "Soda sabor lychee",
                                 "price": 15000,
-                                "imageIcon": "🍮"
+                                "imageIcon": "🥤"
+                            },
+                            {
+                                "id": "soda-maracuya",
+                                "name": "Soda Maracuyá",
+                                "description": "Soda sabor maracuyá",
+                                "price": 15000,
+                                "imageIcon": "🥤"
+                            },
+                            {
+                                "id": "soda-mora-azul",
+                                "name": "Soda Mora Azul",
+                                "description": "Soda sabor mora azul",
+                                "price": 15000,
+                                "imageIcon": "🥤"
+                            },
+                            {
+                                "id": "soda-mango-biche",
+                                "name": "Soda Mango Biche",
+                                "description": "Soda sabor mango biche",
+                                "price": 15000,
+                                "imageIcon": "🥤"
+                            },
+                            {
+                                "id": "limonada-natural",
+                                "name": "Limonada Natural",
+                                "description": "Limonada natural",
+                                "price": 8000,
+                                "imageIcon": "🍋"
+                            },
+                            {
+                                "id": "limonada-cerezada",
+                                "name": "Limonada Cerezada",
+                                "description": "Limonada con cereza",
+                                "price": 12000,
+                                "imageIcon": "🍒"
+                            },
+                            {
+                                "id": "limonada-hierbabuena",
+                                "name": "Limonada Hierbabuena",
+                                "description": "Limonada con hierbabuena",
+                                "price": 12000,
+                                "imageIcon": "🌿"
+                            },
+                            {
+                                "id": "limonada-coco",
+                                "name": "Limonada de Coco",
+                                "description": "Limonada con coco",
+                                "price": 13000,
+                                "imageIcon": "🥥"
+                            },
+                            {
+                                "id": "limonada-vino-tinto",
+                                "name": "Limonada de Vino Tinto",
+                                "description": "Limonada con vino tinto",
+                                "price": 13000,
+                                "imageIcon": "🍷"
+                            },
+                            {
+                                "id": "gaseosa-personal",
+                                "name": "Gaseosa Personal",
+                                "description": "Gaseosa personal",
+                                "price": 5000,
+                                "imageIcon": "🥤"
+                            },
+                            {
+                                "id": "te",
+                                "name": "Té",
+                                "description": "Té frío o caliente",
+                                "price": 5000,
+                                "imageIcon": "🫖"
+                            },
+                            {
+                                "id": "agua",
+                                "name": "Agua Natural o con Gas",
+                                "description": "Agua embotellada",
+                                "price": 4000,
+                                "imageIcon": "💧"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "jugos",
+                        "name": "Jugos Naturales",
+                        "items": [
+                            {
+                                "id": "maracu-mango",
+                                "name": "Maracuyá-Mango",
+                                "description": "Jugo natural de maracuyá y mango",
+                                "price": 9000,
+                                "imageIcon": "🥭"
+                            },
+                            {
+                                "id": "maracuya",
+                                "name": "Maracuyá",
+                                "description": "Jugo natural de maracuyá",
+                                "price": 8000,
+                                "imageIcon": "🥭"
+                            },
+                            {
+                                "id": "mango",
+                                "name": "Mango",
+                                "description": "Jugo natural de mango",
+                                "price": 8000,
+                                "imageIcon": "🥭"
+                            },
+                            {
+                                "id": "mora",
+                                "name": "Mora",
+                                "description": "Jugo natural de mora",
+                                "price": 8000,
+                                "imageIcon": "🫐"
+                            },
+                            {
+                                "id": "lulo",
+                                "name": "Lulo",
+                                "description": "Jugo natural de lulo",
+                                "price": 8000,
+                                "imageIcon": "🥤"
+                            },
+                            {
+                                "id": "uva",
+                                "name": "Uva",
+                                "description": "Jugo natural de uva",
+                                "price": 8000,
+                                "imageIcon": "🍇"
+                            },
+                            {
+                                "id": "fresa",
+                                "name": "Fresa",
+                                "description": "Jugo natural de fresa",
+                                "price": 8000,
+                                "imageIcon": "🍓"
                             }
                         ]
                     }
