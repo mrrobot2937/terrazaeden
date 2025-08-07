@@ -10,6 +10,7 @@ import { notFound } from 'next/navigation'
 import brandsData from '@/data/brands.json'
 import { Brand } from '@/types/brand'
 import { formatPrice } from '@/lib/utils'
+import { graphqlRequest } from '@/lib/graphql'
 
 interface Props {
   params: Promise<{
@@ -55,12 +56,55 @@ const togoimaCategoryIcons: { [key: string]: React.ReactNode } = {
 const ayWeyCategoryIcons: { [key: string]: React.ReactNode } = {
   'cocteleria': <Wine className="w-6 h-6" />,
   'aguas-frescas': <Droplets className="w-6 h-6" />,
-  'entrantes': <ChefHat className="w-6 h-6" />,
-  'tacos': <span className="text-2xl">🌮</span>,
-  'volcanes': <span className="text-2xl">🌋</span>,
+  'entrantes': <span className="text-2xl">🌶️</span>,
+  'tacos': <span className="text-2xl">🌶️</span>,
+  'volcanes': <span className="text-2xl">🌶️</span>,
   'gringas': <Pizza className="w-6 h-6" />,
   'tortas': <Sandwich className="w-6 h-6" />,
-  'adicionales': <Package className="w-6 h-6" />
+  'adicionales': <span className="text-2xl">🌶️</span>
+}
+
+// Paleta por categoría para Ay Wey (rojo/amarillo)
+const getAyWeyColors = (categoryId: string) => {
+  const redCategories = new Set(['volcanes', 'entrantes'])
+  const yellowCategories = new Set(['gringas', 'tacos', 'adicionales'])
+
+  if (redCategories.has(categoryId)) {
+    return {
+      primary: '#C62828',
+      bgSelected: '#C62828',
+      bgHover: '#E53935',
+      border: '#C62828',
+      textSelected: '#FFFFFF',
+      overlay: '#E5393560'
+    }
+  }
+  if (yellowCategories.has(categoryId)) {
+    return {
+      primary: '#F9A825',
+      bgSelected: '#F9A825',
+      bgHover: '#FBC02D',
+      border: '#F9A825',
+      textSelected: '#212121',
+      overlay: '#FBC02D60'
+    }
+  }
+  // fallback a la paleta verde original
+  return {
+    primary: '#4CAF50',
+    bgSelected: '#4CAF50',
+    bgHover: '#66BB6A',
+    border: '#4CAF50',
+    textSelected: '#FFFFFF',
+    overlay: '#FFC10760'
+  }
+}
+
+// Color de precio con alto contraste para Ay Wey
+const getAyWeyPriceColor = (categoryId: string) => {
+  const colors = getAyWeyColors(categoryId)
+  // Si el fondo es rojo (texto claro), usamos blanco; si es amarillo (fondo claro), usamos un tono oscuro para contraste
+  return colors.primary === '#C62828' ? '#FFFFFF' : '#3E2723'
 }
 
 // Iconos personalizados para las categorías de Perfetto
@@ -270,6 +314,7 @@ export default function BrandPage({ params }: Props) {
   const [selectedCategory, setSelectedCategory] = useState<string>('')
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [mounted, setMounted] = useState(false)
+  const [tableNumber, setTableNumber] = useState<number>(1)
 
   const brand: Brand | undefined = brandsData.brands.find(b => b.id === resolvedParams.id)
 
@@ -313,8 +358,26 @@ export default function BrandPage({ params }: Props) {
   }
 
   const handleCallWaiter = () => {
-    // Aquí podrías integrar con un sistema de notificaciones real
-    alert(`¡Mesero notificado! Alguien vendrá a tu mesa para atender tu pedido de ${brand.name} 🔔`)
+    const mutation = `
+      mutation CallWaiter($brandId: ID!, $tableNumber: Int!) {
+        callWaiter(brandId: $brandId, tableNumber: $tableNumber) {
+          success
+          message
+        }
+      }
+    `
+    graphqlRequest<{ callWaiter: { success: boolean; message?: string } }>(mutation, {
+      brandId: brand.id,
+      tableNumber
+    })
+      .then((data: { callWaiter: { success: boolean; message?: string } }) => {
+        const ok = data?.callWaiter?.success
+        alert(ok ? `¡Mesero llamado a la mesa ${tableNumber}! 🔔` : (data?.callWaiter?.message || 'No se pudo llamar al mesero'))
+      })
+      .catch((err: unknown) => {
+        console.error(err)
+        alert('No se pudo conectar al servicio. Configura NEXT_PUBLIC_GRAPHQL_URL.')
+      })
   }
 
   const selectedCategoryData = brand.menu.categories.find(cat => cat.id === selectedCategory)
@@ -355,20 +418,22 @@ export default function BrandPage({ params }: Props) {
               <div className="absolute bottom-1/3 right-1/3 text-4xl opacity-20 animate-pulse" style={{ animationDelay: '1.5s' }}>🍫</div>
             </>
           ) : isAyWey ? (
-            // Fondo especial para Ay Wey! con patrón de chiles 🌶️
+            // Fondo especial para Ay Wey! usando imagen provista
             <>
-              <div className="absolute inset-0 bg-gradient-to-br from-green-900 via-red-900 to-yellow-900 opacity-20" />
-              <div 
-                className="absolute inset-0 opacity-10"
+              <div
+                className="absolute inset-0"
                 style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234CAF50' fill-opacity='0.2'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E")`
+                  backgroundColor: '#F5F1E6',
+                  backgroundImage: "url('/logos/fondo.png')",
+                  backgroundRepeat: 'repeat',
+                  backgroundSize: '200px 200px'
                 }}
               />
               {/* Chiles flotantes animados */}
               <div className="absolute top-10 left-10 text-6xl opacity-20 animate-pulse">🌶️</div>
-              <div className="absolute top-1/3 right-20 text-5xl opacity-15 animate-pulse" style={{ animationDelay: '1s' }}>🌮</div>
+              <div className="absolute top-1/3 right-20 text-5xl opacity-15 animate-pulse" style={{ animationDelay: '1s' }}>🌶️</div>
               <div className="absolute bottom-20 left-1/4 text-7xl opacity-10 animate-pulse" style={{ animationDelay: '2s' }}>🌶️</div>
-              <div className="absolute bottom-1/3 right-1/3 text-4xl opacity-20 animate-pulse" style={{ animationDelay: '1.5s' }}>🥑</div>
+              <div className="absolute bottom-1/3 right-1/3 text-4xl opacity-20 animate-pulse" style={{ animationDelay: '1.5s' }}>🌶️</div>
             </>
           ) : isPerfetto ? (
             // Fondo especial para Perfetto con patrón de helados
@@ -440,11 +505,11 @@ export default function BrandPage({ params }: Props) {
         <div className="flex items-center justify-between max-w-7xl mx-auto">
           <Link href="/">
             <motion.div 
-              className="flex items-center space-x-3 text-white hover:text-yellow-400 transition-colors group"
+              className={`flex items-center space-x-3 ${isAyWey ? 'text-gray-900 hover:text-red-700' : 'text-white hover:text-yellow-400'} transition-colors group`}
               whileHover={{ x: -5 }}
               whileTap={{ scale: 0.95 }}
             >
-              <div className="w-10 h-10 bg-gray-800 hover:bg-yellow-500 rounded-full flex items-center justify-center transition-colors duration-300 group-hover:text-black">
+              <div className={`w-10 h-10 ${isAyWey ? 'bg-red-600 hover:bg-red-700' : 'bg-gray-800 hover:bg-yellow-500'} rounded-full flex items-center justify-center transition-colors duration-300 ${isAyWey ? 'text-white' : 'group-hover:text-black'}`}>
                 <ArrowLeft className="w-5 h-5" />
               </div>
               <span className="font-medium">Volver a Terraza Eden</span>
@@ -454,7 +519,7 @@ export default function BrandPage({ params }: Props) {
           {/* Contact Actions */}
           <div className="flex items-center space-x-3">
             {/* WhatsApp Button */}
-            {brand.contact.whatsapp && (
+            {brand.contact.whatsapp && !isAyWey && (
               <motion.button
                 onClick={handleWhatsAppClick}
                 className="flex items-center space-x-2 px-4 py-2 bg-green-600 hover:bg-green-700 rounded-full text-white font-medium transition-colors duration-300"
@@ -470,20 +535,32 @@ export default function BrandPage({ params }: Props) {
             {brand.contact.callWaiter && (
               <motion.button
                 onClick={handleCallWaiter}
-                className="flex items-center space-x-2 px-4 py-2 rounded-full text-white font-medium transition-colors duration-300"
+                className={`flex items-center space-x-2 px-4 py-2 rounded-full ${isAyWey ? 'text-white' : 'text-white'} font-medium transition-colors duration-300`}
                 style={{ 
-                  backgroundColor: brand.primaryColor + '80',
+                  backgroundColor: isAyWey ? '#C62828' : brand.primaryColor + '80',
                   borderColor: brand.primaryColor
                 }}
                 whileHover={{ 
                   scale: 1.05,
-                  backgroundColor: brand.accentColor + '90'
+                  backgroundColor: isAyWey ? '#B71C1C' : brand.accentColor + '90'
                 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <Bell className="w-5 h-5" />
                 <span className="hidden sm:inline">Llamar Mesero</span>
               </motion.button>
+            )}
+            {/* Selector de mesa solo para Ay Wey */}
+            {isAyWey && (
+              <select
+                value={tableNumber}
+                onChange={(e) => setTableNumber(Number(e.target.value))}
+                className="bg-white text-gray-900 border border-gray-300 rounded-full px-3 py-2 text-sm"
+              >
+                {Array.from({ length: 20 }, (_, i) => i + 1).map(n => (
+                  <option key={n} value={n}>Mesa {n}</option>
+                ))}
+              </select>
             )}
           </div>
         </div>
@@ -508,9 +585,9 @@ export default function BrandPage({ params }: Props) {
           }}
         >
           <div 
-            className="w-32 h-32 rounded-2xl flex items-center justify-center shadow-2xl backdrop-blur-md border-2 overflow-hidden"
+            className={`w-32 h-32 rounded-2xl flex items-center justify-center shadow-2xl backdrop-blur-md border-2 overflow-hidden ${isAyWey ? 'bg-white' : ''}`}
             style={{ 
-              backgroundColor: 'white',
+              backgroundColor: isAyWey ? 'white' : 'white',
               borderColor: brand.primaryColor,
               boxShadow: `0 20px 60px ${brand.primaryColor}30`
             }}
@@ -520,7 +597,16 @@ export default function BrandPage({ params }: Props) {
             ) : brand.id === 'choripam' ? (
               <span className="text-6xl">🌭</span>
             ) : brand.id === 'ay-wey' ? (
-              <span className="text-6xl">🌮</span>
+              <div className="relative w-24 h-24">
+                <Image
+                  src={brand.logo}
+                  alt={`Logo de ${brand.name}`}
+                  fill
+                  className="object-contain p-1"
+                  sizes="96px"
+                  priority
+                />
+              </div>
             ) : brand.id === 'perfetto' ? (
               <span className="text-6xl">🍨</span>
             ) : (
@@ -538,7 +624,7 @@ export default function BrandPage({ params }: Props) {
           </div>
         </motion.div>
 
-        {/* Título - Especial para Togoima */}
+        {/* Título - Especial para Togoima y Ay Wey */}
         {brand.id === 'togoima' ? (
           <motion.div
             className="mb-4"
@@ -559,6 +645,23 @@ export default function BrandPage({ params }: Props) {
               />
             </div>
           </motion.div>
+        ) : brand.id === 'ay-wey' ? (
+          <motion.div
+            className="mb-4"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <div className="relative w-full max-w-2xl mx-auto h-28 md:h-36">
+              <Image
+                src={brand.logo}
+                alt="Ay Wey Logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+          </motion.div>
         ) : (
           <motion.h1 
             className="text-5xl md:text-7xl font-black text-white mb-4"
@@ -574,7 +677,7 @@ export default function BrandPage({ params }: Props) {
         )}
 
         <motion.p 
-          className="text-xl text-gray-300 max-w-2xl mx-auto mb-8"
+          className={`text-xl ${isAyWey ? 'text-gray-800' : 'text-gray-300'} max-w-2xl mx-auto mb-8`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
@@ -589,34 +692,34 @@ export default function BrandPage({ params }: Props) {
           transition={{ duration: 0.8, delay: 0.8 }}
         >
           <div 
-            className="flex items-center space-x-2 px-4 py-2 backdrop-blur-md rounded-full border"
+            className={`flex items-center space-x-2 px-4 py-2 rounded-full border ${isAyWey ? 'bg-white' : 'backdrop-blur-md'}`}
             style={{
-              backgroundColor: brand.primaryColor + '15',
-              borderColor: brand.primaryColor + '30'
+              backgroundColor: isAyWey ? '#FFFFFF' : brand.primaryColor + '15',
+              borderColor: isAyWey ? '#DDD' : brand.primaryColor + '30'
             }}
           >
-            <Star className="w-5 h-5 text-yellow-400" />
-            <span className="text-white font-medium">4.8</span>
+            <Star className={`w-5 h-5 ${isAyWey ? 'text-yellow-600' : 'text-yellow-400'}`} />
+            <span className={`${isAyWey ? 'text-gray-800' : 'text-white'} font-medium`}>4.8</span>
           </div>
           <div 
-            className="flex items-center space-x-2 px-4 py-2 backdrop-blur-md rounded-full border"
+            className={`flex items-center space-x-2 px-4 py-2 rounded-full border ${isAyWey ? 'bg-white' : 'backdrop-blur-md'}`}
             style={{
-              backgroundColor: brand.secondaryColor + '15',
-              borderColor: brand.secondaryColor + '30'
+              backgroundColor: isAyWey ? '#FFFFFF' : brand.secondaryColor + '15',
+              borderColor: isAyWey ? '#DDD' : brand.secondaryColor + '30'
             }}
           >
-            <Clock className="w-5 h-5 text-green-400" />
-            <span className="text-white font-medium">15-25 min</span>
+            <Clock className={`w-5 h-5 ${isAyWey ? 'text-green-700' : 'text-green-400'}`} />
+            <span className={`${isAyWey ? 'text-gray-800' : 'text-white'} font-medium`}>15-25 min</span>
           </div>
           <div 
-            className="flex items-center space-x-2 px-4 py-2 backdrop-blur-md rounded-full border"
+            className={`flex items-center space-x-2 px-4 py-2 rounded-full border ${isAyWey ? 'bg-white' : 'backdrop-blur-md'}`}
             style={{
-              backgroundColor: brand.accentColor + '15',
-              borderColor: brand.accentColor + '30'
+              backgroundColor: isAyWey ? '#FFFFFF' : brand.accentColor + '15',
+              borderColor: isAyWey ? '#DDD' : brand.accentColor + '30'
             }}
           >
-            <Flame className="w-5 h-5 text-red-400" />
-            <span className="text-white font-medium">Popular</span>
+            <Flame className={`w-5 h-5 ${isAyWey ? 'text-red-700' : 'text-red-400'}`} />
+            <span className={`${isAyWey ? 'text-gray-800' : 'text-white'} font-medium`}>Popular</span>
           </div>
         </motion.div>
 
@@ -663,30 +766,30 @@ export default function BrandPage({ params }: Props) {
                     : 'hover:scale-105'
                 }`}
                 style={{
-                  backgroundColor: selectedCategory === category.id 
-                    ? isAyWey ? '#4CAF5020' 
-                    : isPerfetto ? '#228B2220'
-                    : isMazorca ? '#FFD70020'
-                    : isTogoima ? '#8B451320'
-                    : '#D2691E20'
-                    : isAyWey ? '#4CAF5010'
-                    : isPerfetto ? '#228B2210'
-                    : isMazorca ? '#FFD70010'
-                    : isTogoima ? '#3E272310'
-                    : '#8B451310',
-                  borderColor: selectedCategory === category.id
-                    ? isAyWey ? '#4CAF50'
-                    : isPerfetto ? '#228B22'
-                    : isMazorca ? '#FFD700'
-                    : isTogoima ? '#8B4513'
-                    : '#D2691E'
-                    : isAyWey ? '#4CAF5030'
-                    : isPerfetto ? '#228B2230'
-                    : isMazorca ? '#FFD70030'
-                    : isTogoima ? '#8B451330'
-                    : '#8B451330',
+                  backgroundColor: isAyWey
+                    ? (selectedCategory === category.id ? getAyWeyColors(category.id).bgSelected : getAyWeyColors(category.id).bgHover)
+                    : selectedCategory === category.id 
+                      ? isPerfetto ? '#228B2220'
+                      : isMazorca ? '#FFD70020'
+                      : isTogoima ? '#8B451320'
+                      : '#D2691E20'
+                      : isPerfetto ? '#228B2210'
+                      : isMazorca ? '#FFD70010'
+                      : isTogoima ? '#3E272310'
+                      : '#8B451310',
+                  borderColor: isAyWey
+                    ? getAyWeyColors(category.id).border
+                    : selectedCategory === category.id
+                      ? isPerfetto ? '#228B22'
+                      : isMazorca ? '#FFD700'
+                      : isTogoima ? '#8B4513'
+                      : '#D2691E'
+                      : isPerfetto ? '#228B2230'
+                      : isMazorca ? '#FFD70030'
+                      : isTogoima ? '#8B451330'
+                      : '#8B451330',
                   boxShadow: selectedCategory === category.id
-                    ? isAyWey ? `0 20px 40px #4CAF5030`
+                    ? isAyWey ? `0 20px 40px ${getAyWeyColors(category.id).primary}30`
                     : isPerfetto ? `0 20px 40px #228B2230`
                     : isMazorca ? `0 20px 40px #FFD70030`
                     : isTogoima ? `0 20px 40px #8B451340`
@@ -695,11 +798,11 @@ export default function BrandPage({ params }: Props) {
                 }}
                 onClick={() => setSelectedCategory(category.id)}
                 whileHover={{ 
-                  backgroundColor: isAyWey ? '#4CAF5015'
-                  : isPerfetto ? '#228B2215'
-                  : isMazorca ? '#FFD70015'
-                  : isTogoima ? '#3E272315'
-                  : '#D2691E15'
+                  backgroundColor: isAyWey ? getAyWeyColors(category.id).bgHover
+                    : isPerfetto ? '#228B2215'
+                    : isMazorca ? '#FFD70015'
+                    : isTogoima ? '#3E272315'
+                    : '#D2691E15'
                 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -710,19 +813,19 @@ export default function BrandPage({ params }: Props) {
                   <div 
                     className="w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300"
                     style={{
-                      backgroundColor: selectedCategory === category.id 
-                        ? isAyWey ? '#4CAF50'
-                        : isPerfetto ? '#228B22'
-                        : isMazorca ? '#FFD700'
-                        : isTogoima ? '#8B4513'
-                        : '#D2691E'
-                        : isAyWey ? '#4CAF5050'
-                        : isPerfetto ? '#228B2250'
-                        : isMazorca ? '#FFD70050'
-                        : isTogoima ? '#8B451350'
-                        : '#8B451350',
+                      backgroundColor: isAyWey 
+                        ? getAyWeyColors(category.id).primary
+                        : selectedCategory === category.id 
+                          ? isPerfetto ? '#228B22'
+                          : isMazorca ? '#FFD700'
+                          : isTogoima ? '#8B4513'
+                          : '#D2691E'
+                          : isPerfetto ? '#228B2250'
+                          : isMazorca ? '#FFD70050'
+                          : isTogoima ? '#8B451350'
+                          : '#8B451350',
                       color: selectedCategory === category.id ? 'white'
-                        : isAyWey ? '#4CAF50'
+                        : isAyWey ? getAyWeyColors(category.id).primary
                         : isPerfetto ? '#228B22'
                         : isMazorca ? '#8B4513'
                         : isTogoima ? '#DEB887'
@@ -741,11 +844,11 @@ export default function BrandPage({ params }: Props) {
                   <span 
                     className={`font-bold text-sm md:text-base ${
                       selectedCategory === category.id
-                        ? isAyWey ? 'text-green-400'
+                        ? isAyWey ? 'text-white'
                         : isPerfetto ? 'text-green-400'
                         : isMazorca ? 'text-yellow-400'
                         : 'text-orange-400'
-                        : isAyWey ? 'text-green-200'
+                        : isAyWey ? 'text-gray-800'
                         : isPerfetto ? 'text-green-200'
                         : isMazorca ? 'text-yellow-200'
                         : 'text-amber-200'
@@ -759,7 +862,7 @@ export default function BrandPage({ params }: Props) {
                 <div 
                   className="absolute top-2 right-2 w-6 h-6 rounded-full flex items-center justify-center text-xs text-white font-bold"
                   style={{
-                    backgroundColor: isAyWey ? '#F44336'
+                    backgroundColor: isAyWey ? getAyWeyColors(category.id).primary
                     : isPerfetto ? '#DC143C'
                     : isMazorca ? '#FF8C00'
                     : '#8B4513'
@@ -770,24 +873,16 @@ export default function BrandPage({ params }: Props) {
 
                 {/* Efectos especiales */}
                 {isAyWey && selectedCategory === category.id && (
-                  <div className="absolute -top-2 -right-2 text-2xl animate-bounce">
-                    🌶️
-                  </div>
+                  <div className="absolute -top-2 -right-2 text-2xl animate-bounce">🌶️</div>
                 )}
                 {isPerfetto && selectedCategory === category.id && (
-                  <div className="absolute -top-2 -right-2 text-2xl animate-bounce">
-                    🍨
-                  </div>
+                  <div className="absolute -top-2 -right-2 text-2xl animate-bounce">🍨</div>
                 )}
                 {isMazorca && selectedCategory === category.id && (
-                  <div className="absolute -top-2 -right-2 text-2xl animate-bounce">
-                    🌽
-                  </div>
+                  <div className="absolute -top-2 -right-2 text-2xl animate-bounce">🌽</div>
                 )}
                 {isTogoima && selectedCategory === category.id && (
-                  <div className="absolute -top-2 -right-2 text-2xl animate-bounce">
-                    ☕
-                  </div>
+                  <div className="absolute -top-2 -right-2 text-2xl animate-bounce">☕</div>
                 )}
               </motion.button>
             ))}
@@ -863,7 +958,7 @@ export default function BrandPage({ params }: Props) {
                     }`}
                     style={{
                       backgroundColor: isAyWey 
-                        ? 'rgba(76, 175, 80, 0.1)' 
+                        ? getAyWeyColors(selectedCategory).bgHover
                         : isPerfetto 
                           ? 'rgba(34, 139, 34, 0.1)' 
                           : isMazorca 
@@ -872,7 +967,7 @@ export default function BrandPage({ params }: Props) {
                               ? 'rgba(139, 69, 19, 0.1)' 
                               : 'rgba(17, 24, 39, 0.8)',
                       borderColor: isAyWey 
-                        ? '#4CAF5030' 
+                        ? `${getAyWeyColors(selectedCategory).primary}30` 
                         : isPerfetto 
                           ? '#228B2230' 
                           : isMazorca 
@@ -887,7 +982,7 @@ export default function BrandPage({ params }: Props) {
                       className={`${hasSpecialDesign ? 'h-32' : 'h-40'} relative overflow-hidden`}
                       style={{
                         background: isAyWey 
-                          ? `linear-gradient(135deg, #4CAF5020, #F4433620)`
+                          ? `linear-gradient(135deg, ${getAyWeyColors(selectedCategory).bgSelected}, ${getAyWeyColors(selectedCategory).bgHover})`
                           : isPerfetto
                             ? `linear-gradient(135deg, #228B2220, #DC143C20)`
                             : isMazorca
@@ -897,42 +992,42 @@ export default function BrandPage({ params }: Props) {
                                 : `linear-gradient(45deg, ${brand.primaryColor}20, ${brand.secondaryColor}20)`
                       }}
                     >
-                                        <div className="absolute inset-0 flex items-center justify-center">
-                    <div 
-                      className={`${hasSpecialDesign ? 'w-16 h-16' : 'w-20 h-20'} rounded-full flex items-center justify-center text-white font-bold shadow-lg`}
-                      style={{ 
-                        backgroundColor: isAyWey 
-                          ? '#4CAF50'
-                          : isPerfetto
-                            ? '#228B22'
-                            : isMazorca
-                              ? '#FFD700'
-                              : isTogoima 
-                                ? '#8B4513'
-                                : brand.primaryColor,
-                        boxShadow: isAyWey 
-                          ? `0 8px 25px #4CAF5040`
-                          : isPerfetto
-                            ? `0 8px 25px #228B2240`
-                            : isMazorca
-                              ? `0 8px 25px #FFD70040`
-                              : isTogoima 
-                                ? `0 8px 25px #D2691E40`
-                                : `0 8px 25px ${brand.primaryColor}40`,
-                        fontSize: hasSpecialDesign ? '2rem' : '1.75rem',
-                        color: isMazorca ? '#8B4513' : 'white'
-                      }}
-                    >
-                      {item.imageIcon || getProductIcon(item.name, selectedCategory)}
-                    </div>
-                  </div>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div 
+                          className={`${hasSpecialDesign ? 'w-16 h-16' : 'w-20 h-20'} rounded-full flex items-center justify-center text-white font-bold shadow-lg`}
+                          style={{ 
+                            backgroundColor: isAyWey 
+                              ? getAyWeyColors(selectedCategory).primary
+                              : isPerfetto
+                                ? '#228B22'
+                                : isMazorca
+                                  ? '#FFD700'
+                                  : isTogoima 
+                                    ? '#8B4513'
+                                    : brand.primaryColor,
+                            boxShadow: isAyWey 
+                              ? `0 8px 25px ${getAyWeyColors(selectedCategory).primary}40`
+                              : isPerfetto
+                                ? `0 8px 25px #228B2240`
+                                : isMazorca
+                                  ? `0 8px 25px #FFD70040`
+                                : isTogoima 
+                                  ? `0 8px 25px #D2691E40`
+                                  : `0 8px 25px ${brand.primaryColor}40`,
+                            fontSize: hasSpecialDesign ? '2rem' : '1.75rem',
+                            color: isMazorca ? '#8B4513' : 'white'
+                          }}
+                        >
+                          {item.imageIcon || getProductIcon(item.name, selectedCategory)}
+                        </div>
+                      </div>
                       
                       {/* Hover Overlay */}
                       <div 
                         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
                         style={{ 
                           backgroundColor: isAyWey 
-                            ? '#FFC10760' 
+                            ? getAyWeyColors(selectedCategory).overlay
                             : isPerfetto 
                               ? '#DC143C60' 
                               : isMazorca 
@@ -952,24 +1047,16 @@ export default function BrandPage({ params }: Props) {
 
                       {/* Decoración especial */}
                       {isAyWey && (
-                        <div className="absolute top-2 right-2 text-xl opacity-60">
-                          🌶️
-                        </div>
+                        <div className="absolute top-2 right-2 text-xl opacity-60">🌶️</div>
                       )}
                       {isPerfetto && (
-                        <div className="absolute top-2 right-2 text-xl opacity-60">
-                          🍨
-                        </div>
+                        <div className="absolute top-2 right-2 text-xl opacity-60">🍨</div>
                       )}
                       {isMazorca && (
-                        <div className="absolute top-2 right-2 text-xl opacity-60">
-                          🌽
-                        </div>
+                        <div className="absolute top-2 right-2 text-xl opacity-60">🌽</div>
                       )}
                       {isTogoima && (
-                        <div className="absolute -top-2 -right-2 text-2xl animate-bounce">
-                          ☕
-                        </div>
+                        <div className="absolute -top-2 -right-2 text-2xl animate-bounce">☕</div>
                       )}
                     </div>
 
@@ -990,7 +1077,7 @@ export default function BrandPage({ params }: Props) {
                             className={`${hasSpecialDesign ? 'text-xl' : 'text-2xl'} font-bold`}
                             style={{ 
                               color: isAyWey 
-                                ? '#FFC107' 
+                                ? getAyWeyPriceColor(selectedCategory)
                                 : isPerfetto 
                                   ? '#DC143C' 
                                   : isMazorca 
@@ -1035,8 +1122,8 @@ export default function BrandPage({ params }: Props) {
             transition={{ duration: 0.8, delay: 1.5 }}
           >
             <div className="max-w-2xl mx-auto space-y-4">
-              <h3 className="text-2xl font-bold text-white mb-6">
-                {isAyWey ? '¿Listo para ordenar, amigo? ��'
+              <h3 className={`text-2xl font-bold ${isAyWey ? 'text-gray-900' : 'text-white'} mb-6`}>
+                {isAyWey ? '¿Listo para ordenar, amigo? 🌮'
                 : isPerfetto ? '¿Listo para disfrutar? 🍨'
                 : isMazorca ? '¿Antojo de mazorca? 🌽'
                 : isTogoima ? '¿Un café ancestral? ☕'
@@ -1045,7 +1132,7 @@ export default function BrandPage({ params }: Props) {
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 {/* WhatsApp Button */}
-                {brand.contact.whatsapp && (
+                {brand.contact.whatsapp && !isAyWey && (
                   <motion.button
                     onClick={handleWhatsAppClick}
                     className="flex items-center justify-center space-x-3 px-8 py-4 bg-green-600 hover:bg-green-700 rounded-full text-white font-bold text-lg shadow-lg transition-all duration-300"
@@ -1064,7 +1151,7 @@ export default function BrandPage({ params }: Props) {
                     className="flex items-center justify-center space-x-3 px-8 py-4 rounded-full text-white font-bold text-lg shadow-lg transition-all duration-300"
                     style={{ 
                       backgroundColor: isAyWey 
-                        ? '#F44336'
+                        ? '#C62828'
                         : isPerfetto
                           ? '#DC143C'
                           : isMazorca
@@ -1073,14 +1160,14 @@ export default function BrandPage({ params }: Props) {
                               ? '#8B4513'
                               : brand.primaryColor,
                       borderColor: isAyWey 
-                        ? '#FFC107'
+                        ? '#8E0000'
                         : isPerfetto
                           ? '#FFD700'
-                        : isMazorca
-                          ? '#FFD700'
-                        : isTogoima
-                          ? '#DEB887'
-                          : brand.secondaryColor
+                          : isMazorca
+                            ? '#FFD700'
+                            : isTogoima
+                              ? '#DEB887'
+                              : brand.secondaryColor
                     }}
                     whileHover={{ 
                       scale: 1.05,
@@ -1099,6 +1186,17 @@ export default function BrandPage({ params }: Props) {
                     <Bell className="w-6 h-6" />
                     <span>Llamar Mesero</span>
                   </motion.button>
+                )}
+                {isAyWey && (
+                  <select
+                    value={tableNumber}
+                    onChange={(e) => setTableNumber(Number(e.target.value))}
+                    className="bg-white text-gray-900 border border-gray-300 rounded-full px-4 py-3 text-base"
+                  >
+                    {Array.from({ length: 20 }, (_, i) => i + 1).map(n => (
+                      <option key={n} value={n}>Mesa {n}</option>
+                    ))}
+                  </select>
                 )}
               </div>
             </div>

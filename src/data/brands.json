@@ -605,29 +605,29 @@
                         "items": [
                             {
                                 "id": "taco-carne-asada",
-                                "name": "De Carne Res Asada",
-                                "description": "3 tortillas de maíz rellenas a mano con el proteína que usted nos indique te porte",
+                                "name": "Taco de Carne Res Asada",
+                                "description": "3 tortillas de maíz rellenas a mano con carne asada, cilantro y cebolla. Acompañados de limón y salsas.",
                                 "price": 20500,
                                 "imageIcon": "🌮"
                             },
                             {
                                 "id": "taco-pastor",
-                                "name": "De Pastor",
-                                "description": "Carne de cerdo marinada al pastor característico de la Ciudad de México, con piña, cebolla y cilantro",
+                                "name": "Taco de Pastor",
+                                "description": "Cerdo marinado al pastor con piña asada, cebolla y cilantro. 3 tortillas de maíz hechas a mano.",
                                 "price": 18400,
                                 "imageIcon": "🌮"
                             },
                             {
                                 "id": "taco-cochinita",
-                                "name": "De Cochinita Pibil",
-                                "description": "Carne de cerdo marinada al mas puro estilo yucateco con aguacate y cebolla morada encurtida",
+                                "name": "Taco de Cochinita Pibil",
+                                "description": "Cerdo marinado al estilo yucateco con achiote, acompañado de aguacate y cebolla morada encurtida. 3 tortillas de maíz.",
                                 "price": 19900,
                                 "imageIcon": "🌮"
                             },
                             {
                                 "id": "taco-birria",
-                                "name": "De Birria",
-                                "description": "Carne de res marinada al estilo jalisco con cebolla y cilantro acompañado de consomé de res",
+                                "name": "Taco de Birria",
+                                "description": "Res marinada al estilo Jalisco con consomé, cilantro y cebolla. 3 tacos con tortillas de maíz.",
                                 "price": 21600,
                                 "imageIcon": "🌮"
                             }
@@ -641,27 +641,27 @@
                                 "id": "volcan-carne-asada",
                                 "name": "De Carne Res Asada",
                                 "description": "3 tortillas de maíz, tostadas en nuestro comal con napa de proteína que más te guste",
-                                "price": 19900,
+                                "price": 13900,
                                 "imageIcon": "🌋"
                             },
                             {
                                 "id": "volcan-pastor",
-                                "name": "De Pastor",
-                                "description": "Carne de cerdo marinada al pastor característico de la Ciudad de México, con piña, cebolla y cilantro",
+                                "name": "Volcán de Pastor",
+                                "description": "Tostadas de maíz en comal con pastor, mezcla de quesos, piña, cebolla y cilantro.",
                                 "price": 11800,
                                 "imageIcon": "🌋"
                             },
                             {
                                 "id": "volcan-cochinita",
-                                "name": "De Cochinita Pibil",
-                                "description": "Carne de cerdo marinada al mas puro estilo yucateco con aguacate y cebolla morada encurtida",
+                                "name": "Volcán de Cochinita Pibil",
+                                "description": "Tostadas con cochinita pibil al estilo yucateco, aguacate y cebolla morada encurtida.",
                                 "price": 12500,
                                 "imageIcon": "🌋"
                             },
                             {
                                 "id": "volcan-birria",
-                                "name": "De Birria",
-                                "description": "Carne de res marinada al estilo jalisco con cebolla y cilantro acompañado de consomé de res",
+                                "name": "Volcán de Birria",
+                                "description": "Tostadas con birria de res estilo Jalisco, cilantro y cebolla. Acompañado de consomé.",
                                 "price": 14800,
                                 "imageIcon": "🌋"
                             }
@@ -673,29 +673,29 @@
                         "items": [
                             {
                                 "id": "gringa-carne-asada",
-                                "name": "De Carne Res Asada",
-                                "description": "2 tortillas de harina rellenas de nuestra mezcla de quesos finas fundidos con el proteína que más te guste",
+                                "name": "Gringa de Carne Res Asada",
+                                "description": "2 tortillas de harina rellenas con mezcla de quesos y carne asada. Doradas al comal.",
                                 "price": 22700,
                                 "imageIcon": "🌯"
                             },
                             {
                                 "id": "gringa-pastor",
-                                "name": "De Pastor",
-                                "description": "Carne de cerdo marinada al pastor característico de la Ciudad de México, con piña, cebolla y cilantro",
+                                "name": "Gringa de Pastor",
+                                "description": "Pastor con piña, mezcla de quesos, cebolla y cilantro entre dos tortillas de harina.",
                                 "price": 20300,
                                 "imageIcon": "🌯"
                             },
                             {
                                 "id": "gringa-cochinita",
-                                "name": "De Cochinita Pibil",
-                                "description": "Carne de cerdo marinada al mas puro estilo yucateco con aguacate y cebolla morada encurtida",
-                                "price": 21900,
+                                "name": "Gringa de Cochinita Pibil",
+                                "description": "Cochinita pibil al estilo yucateco con aguacate, cebolla morada encurtida y queso fundido entre tortillas de harina.",
+                                "price": 21600,
                                 "imageIcon": "🌯"
                             },
                             {
                                 "id": "gringa-birria",
-                                "name": "De Birria",
-                                "description": "Carne de res marinada al estilo jalisco con cebolla y cilantro acompañado de consomé de res",
+                                "name": "Gringa de Birria",
+                                "description": "Birria de res estilo Jalisco con queso fundido entre tortillas de harina. Acompañada de consomé.",
                                 "price": 23800,
                                 "imageIcon": "🌯"
                             }
