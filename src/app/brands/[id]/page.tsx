@@ -426,7 +426,7 @@ export default function BrandPage({ params }: Props) {
                   backgroundColor: '#F5F1E6',
                   backgroundImage: "url('/logos/fondo.png')",
                   backgroundRepeat: 'repeat',
-                  backgroundSize: '200px 200px'
+                  backgroundSize: '360px 360px'
                 }}
               />
               {/* Chiles flotantes animados */}
@@ -505,7 +505,7 @@ export default function BrandPage({ params }: Props) {
         <div className="flex items-center justify-between max-w-7xl mx-auto">
           <Link href="/">
             <motion.div 
-              className={`flex items-center space-x-3 ${isAyWey ? 'text-gray-900 hover:text-red-700' : 'text-white hover:text-yellow-400'} transition-colors group`}
+              className={`flex items-center space-x-3 ${isAyWey ? 'text-gray-900 hover:text-red-700' : 'text-white hover:text-yellow-400'} transition-colors group ${isAyWey ? 'rounded-full px-3 py-1 bg-white/90 border border-gray-200 shadow-sm' : ''}`}
               whileHover={{ x: -5 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -661,6 +661,11 @@ export default function BrandPage({ params }: Props) {
                 priority
               />
             </div>
+            <div className="mt-4 flex justify-center">
+              <div className="px-6 py-3 bg-[#C62828] text-white rounded-lg border border-red-800 shadow-md font-semibold text-sm md:text-base text-center leading-relaxed">
+                {brand.description}
+              </div>
+            </div>
           </motion.div>
         ) : (
           <motion.h1 
@@ -676,14 +681,16 @@ export default function BrandPage({ params }: Props) {
           </motion.h1>
         )}
 
-        <motion.p 
-          className={`text-xl ${isAyWey ? 'text-gray-800' : 'text-gray-300'} max-w-2xl mx-auto mb-8`}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          {brand.description}
-        </motion.p>
+        {brand.id !== 'ay-wey' && (
+          <motion.p 
+            className={`text-xl ${isAyWey ? 'text-gray-800' : 'text-gray-300'} max-w-2xl mx-auto mb-8`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            {brand.description}
+          </motion.p>
+        )}
 
         <motion.div
           className="flex justify-center space-x-4 flex-wrap gap-2 mb-8"
