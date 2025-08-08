@@ -573,57 +573,49 @@ export default function BrandPage({ params }: Props) {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        <motion.div
-          className="inline-block mb-8"
-          animate={{
-            y: [0, -8, 0],
-            transition: {
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }
-          }}
-        >
-          <div 
-            className={`w-32 h-32 rounded-2xl flex items-center justify-center shadow-2xl backdrop-blur-md border-2 overflow-hidden ${isAyWey ? 'bg-white' : ''}`}
-            style={{ 
-              backgroundColor: isAyWey ? 'white' : 'white',
-              borderColor: brand.primaryColor,
-              boxShadow: `0 20px 60px ${brand.primaryColor}30`
+        {/* Floating logo card (excluded for Ay Wey and Togoima to avoid duplication) */}
+        {!(isAyWey || isTogoima) && (
+          <motion.div
+            className="inline-block mb-8"
+            animate={{
+              y: [0, -8, 0],
+              transition: {
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }
             }}
           >
-            {brand.id === 'mazorca' ? (
-              <span className="text-6xl">🌽</span>
-            ) : brand.id === 'choripam' ? (
-              <span className="text-6xl">🌭</span>
-            ) : brand.id === 'ay-wey' ? (
-              <div className="relative w-24 h-24">
-                <Image
-                  src={brand.logo}
-                  alt={`Logo de ${brand.name}`}
-                  fill
-                  className="object-contain p-1"
-                  sizes="96px"
-                  priority
-                />
-              </div>
-            ) : brand.id === 'perfetto' ? (
-              <span className="text-6xl">🍨</span>
-            ) : (
-              <div className="relative w-24 h-24">
-                <Image
-                  src={brand.logo}
-                  alt={`Logo de ${brand.name}`}
-                  fill
-                  className="object-contain p-2"
-                  sizes="96px"
-                  priority
-                />
-              </div>
-            )}
-          </div>
-        </motion.div>
-
+            <div 
+              className={`w-44 h-44 md:w-56 md:h-56 rounded-2xl flex items-center justify-center shadow-2xl backdrop-blur-md border-2 overflow-hidden`}
+              style={{ 
+                backgroundColor: 'white',
+                borderColor: brand.primaryColor,
+                boxShadow: `0 20px 60px ${brand.primaryColor}30`
+              }}
+            >
+              {brand.id === 'mazorca' ? (
+                <span className="text-7xl md:text-8xl">🌽</span>
+              ) : brand.id === 'choripam' ? (
+                <span className="text-7xl md:text-8xl">🌭</span>
+              ) : brand.id === 'perfetto' ? (
+                <span className="text-7xl md:text-8xl">🍨</span>
+              ) : (
+                <div className="relative w-32 h-32 md:w-40 md:h-40">
+                  <Image
+                    src={brand.logo}
+                    alt={`Logo de ${brand.name}`}
+                    fill
+                    className="object-contain p-2"
+                    sizes="160px"
+                    priority
+                  />
+                </div>
+              )}
+            </div>
+          </motion.div>
+        )}
+ 
         {/* Título - Especial para Togoima y Ay Wey */}
         {brand.id === 'togoima' ? (
           <motion.div
@@ -632,7 +624,7 @@ export default function BrandPage({ params }: Props) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <div className="relative w-full max-w-2xl mx-auto h-32 md:h-40">
+            <div className="relative w-full max-w-3xl mx-auto h-40 md:h-56">
               <Image
                 src="/logos/togoima_letra.png"
                 alt="Togoima Logo"
@@ -652,7 +644,7 @@ export default function BrandPage({ params }: Props) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <div className="relative w-full max-w-2xl mx-auto h-28 md:h-36">
+            <div className="relative w-full max-w-3xl mx-auto h-36 md:h-48">
               <Image
                 src={brand.logo}
                 alt="Ay Wey Logo"

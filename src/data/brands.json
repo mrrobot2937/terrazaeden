@@ -570,15 +570,15 @@
                                 "imageIcon": "🧀"
                             },
                             {
-                                "id": "asada",
-                                "name": "Asada",
+                                "id": "cazuela-asada",
+                                "name": "Cazuela de Queso Fundido con Carne Asada",
                                 "description": "De Pastor",
                                 "price": 22900,
                                 "imageIcon": "🥩"
                             },
                             {
-                                "id": "birria",
-                                "name": "Birria",
+                                "id": "cazuela-birria",
+                                "name": "Cazuela de Queso Fundido con Birria",
                                 "description": "Birria tradicional",
                                 "price": 26500,
                                 "imageIcon": "🍲"
@@ -591,10 +591,10 @@
                                 "imageIcon": "🍽️"
                             },
                             {
-                                "id": "agregales-carne",
-                                "name": "Agrégales Carne por",
+                                "id": "nachos-carne",
+                                "name": "Nachos ¡Ay Wey! con Carne",
                                 "description": "Adicional de carne para cualquier plato",
-                                "price": 7300,
+                                "price": 29800,
                                 "imageIcon": "🥩"
                             }
                         ]
