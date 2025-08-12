@@ -2100,6 +2100,334 @@
                     }
                 ]
             }
+        },
+        {
+            "id": "cocos-pacifico-fresh",
+            "name": "Cocos Pacífico Fresh",
+            "description": "Sabores del Pacífico: cocos, dulces, bebidas y helados artesanales",
+            "logo": "/logos/cocos.png",
+            "primaryColor": "#2E7D32",
+            "secondaryColor": "#81C784",
+            "accentColor": "#FFC107",
+            "category": "Cocina del Pacífico",
+            "contact": {},
+            "menu": {
+                "categories": [
+                    {
+                        "id": "dulces-del-pacifico",
+                        "name": "Dulces del Pacífico",
+                        "items": [
+                            {
+                                "id": "cocadas-coco",
+                                "name": "Cocadas de Coco",
+                                "description": "Tradicionales del Pacífico",
+                                "price": 5000,
+                                "imageIcon": "🥥"
+                            },
+                            {
+                                "id": "hojuelas-coco",
+                                "name": "Hojuelas de Coco",
+                                "description": "Crujientes y dulces",
+                                "price": 5000,
+                                "imageIcon": "🥥"
+                            },
+                            {
+                                "id": "cocadas-caja",
+                                "name": "Cocadas artesanales en caja",
+                                "description": "Presentación para llevar",
+                                "price": 10000,
+                                "imageIcon": "🥥"
+                            },
+                            {
+                                "id": "coquitos-rojos",
+                                "name": "Coquitos tradicionales (rojos)",
+                                "description": "Clásicos de la región",
+                                "price": 10000,
+                                "imageIcon": "🍬"
+                            },
+                            {
+                                "id": "coco-frito",
+                                "name": "Coco Frito",
+                                "description": "Coco tostado crocante",
+                                "price": 10000,
+                                "imageIcon": "🥥"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tortas-artesanales",
+                        "name": "Tortas artesanales saludables",
+                        "items": [
+                            {
+                                "id": "torta-coco-porcion",
+                                "name": "Torta de Coco (Porción)",
+                                "description": "Porción individual",
+                                "price": 8000,
+                                "imageIcon": "🍰"
+                            },
+                            {
+                                "id": "torta-naranja-porcion",
+                                "name": "Torta de Naranja (Porción)",
+                                "description": "Porción individual",
+                                "price": 8000,
+                                "imageIcon": "🍊"
+                            },
+                            {
+                                "id": "torta-zanahoria-porcion",
+                                "name": "Torta de Zanahoria (Porción)",
+                                "description": "Porción individual",
+                                "price": 8000,
+                                "imageIcon": "🥕"
+                            },
+                            {
+                                "id": "torta-completa",
+                                "name": "Torta Completa (cualquier sabor)",
+                                "description": "Tamaño completo",
+                                "price": 40000,
+                                "imageIcon": "🎂"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "comida-tipica",
+                        "name": "Comida típica del Pacífico",
+                        "items": [
+                            {
+                                "id": "ceviche-camaron",
+                                "name": "Ceviche de Camarón",
+                                "description": "Receta tradicional del Pacífico",
+                                "price": 25000,
+                                "imageIcon": "🦐"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "aceites-de-coco",
+                        "name": "Aceites de coco 100% extra virgen",
+                        "items": [
+                            {
+                                "id": "aceite-500ml",
+                                "name": "Aceite de Coco 500ml",
+                                "description": "100% extra virgen",
+                                "price": 60000,
+                                "imageIcon": "🥥"
+                            },
+                            {
+                                "id": "aceite-120ml",
+                                "name": "Aceite de Coco 120ml",
+                                "description": "100% extra virgen",
+                                "price": 18000,
+                                "imageIcon": "🥥"
+                            },
+                            {
+                                "id": "aceite-50ml",
+                                "name": "Aceite de Coco 50ml",
+                                "description": "100% extra virgen",
+                                "price": 12000,
+                                "imageIcon": "🥥"
+                            },
+                            {
+                                "id": "aceite-30ml",
+                                "name": "Aceite de Coco 30ml",
+                                "description": "100% extra virgen",
+                                "price": 10000,
+                                "imageIcon": "🥥"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "helados-artesanales",
+                        "name": "Helados artesanales 100% natural",
+                        "items": [
+                            {
+                                "id": "helado-coco",
+                                "name": "Coco Tradicional",
+                                "description": "Helado artesanal",
+                                "price": 5000,
+                                "imageIcon": "🍨"
+                            },
+                            {
+                                "id": "helado-queso-bocadillo",
+                                "name": "Queso y Bocadillo",
+                                "description": "Helado artesanal",
+                                "price": 5000,
+                                "imageIcon": "🍨"
+                            },
+                            {
+                                "id": "helado-mora",
+                                "name": "Veteado de Mora",
+                                "description": "Helado artesanal",
+                                "price": 5000,
+                                "imageIcon": "🍨"
+                            },
+                            {
+                                "id": "helado-salpicon",
+                                "name": "Salpicón",
+                                "description": "Helado artesanal",
+                                "price": 5000,
+                                "imageIcon": "🍨"
+                            },
+                            {
+                                "id": "helado-mango-viche",
+                                "name": "Mango Viche",
+                                "description": "Helado artesanal",
+                                "price": 5000,
+                                "imageIcon": "🥭"
+                            },
+                            {
+                                "id": "helado-frutos-rojos",
+                                "name": "Frutos rojos",
+                                "description": "Helado artesanal",
+                                "price": 5000,
+                                "imageIcon": "🍓"
+                            },
+                            {
+                                "id": "helado-arequipe",
+                                "name": "Arequipe",
+                                "description": "Helado artesanal",
+                                "price": 5000,
+                                "imageIcon": "🍨"
+                            },
+                            {
+                                "id": "helado-chocolate",
+                                "name": "Chocolate",
+                                "description": "Helado artesanal",
+                                "price": 5000,
+                                "imageIcon": "🍫"
+                            },
+                            {
+                                "id": "helado-chicle",
+                                "name": "Chicle",
+                                "description": "Helado artesanal",
+                                "price": 5000,
+                                "imageIcon": "🍬"
+                            },
+                            {
+                                "id": "helado-choco-chips",
+                                "name": "Choco Chips",
+                                "description": "Helado artesanal",
+                                "price": 5000,
+                                "imageIcon": "🍪"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "agua-de-coco",
+                        "name": "Agua de coco",
+                        "items": [
+                            {
+                                "id": "agua-coco",
+                                "name": "Agua de Coco",
+                                "description": "Refrescante directamente del coco",
+                                "price": 6000,
+                                "imageIcon": "🥥"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "productos-coca-cola",
+                        "name": "Productos de Coca Cola",
+                        "items": [
+                            {
+                                "id": "coca-400",
+                                "name": "Coca Cola 400ml",
+                                "description": "Bebida gaseosa",
+                                "price": 5000,
+                                "imageIcon": "🥤"
+                            },
+                            {
+                                "id": "cuatro-400",
+                                "name": "Cuatro 400ml",
+                                "description": "Bebida gaseosa",
+                                "price": 5000,
+                                "imageIcon": "🥤"
+                            },
+                            {
+                                "id": "agua-gas",
+                                "name": "Agua con gas",
+                                "description": "Botella",
+                                "price": 4500,
+                                "imageIcon": "💧"
+                            },
+                            {
+                                "id": "agua-sin-gas",
+                                "name": "Agua sin gas",
+                                "description": "Botella",
+                                "price": 4000,
+                                "imageIcon": "💧"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "refrescos-naturales",
+                        "name": "Refrescos naturales",
+                        "items": [
+                            {
+                                "id": "limonada-coco",
+                                "name": "Limonada de Coco",
+                                "description": "Refresco natural",
+                                "price": 13000,
+                                "imageIcon": "🍋"
+                            },
+                            {
+                                "id": "frappe-coco",
+                                "name": "Frappé de Coco",
+                                "description": "Bebida fría",
+                                "price": 17000,
+                                "imageIcon": "🥤"
+                            },
+                            {
+                                "id": "malteada-coco",
+                                "name": "Malteada de Coco",
+                                "description": "Bebida fría",
+                                "price": 17000,
+                                "imageIcon": "🥤"
+                            },
+                            {
+                                "id": "cerezada-coco",
+                                "name": "Cerezada de Coco",
+                                "description": "Refresco natural",
+                                "price": 13000,
+                                "imageIcon": "🍒"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "vinos-artesanales",
+                        "name": "Vinos artesanales 100% natural",
+                        "items": [
+                            {
+                                "id": "crema-coco-370",
+                                "name": "Crema de Coco — 370ml",
+                                "description": "Artesanal",
+                                "price": 40000,
+                                "imageIcon": "🍷"
+                            },
+                            {
+                                "id": "crema-coco-750",
+                                "name": "Crema de Coco — 750ml",
+                                "description": "Artesanal",
+                                "price": 70000,
+                                "imageIcon": "🍷"
+                            },
+                            {
+                                "id": "vino-uva-750",
+                                "name": "Vino de Uva 'Amor de María' — 750cc",
+                                "description": "Artesanal",
+                                "price": 44000,
+                                "imageIcon": "🍷"
+                            },
+                            {
+                                "id": "vino-maracuya-750",
+                                "name": "Vino de Maracuyá — 750cc",
+                                "description": "Artesanal",
+                                "price": 44000,
+                                "imageIcon": "🍷"
+                            }
+                        ]
+                    }
+                ]
+            }
         }
     ]
 }

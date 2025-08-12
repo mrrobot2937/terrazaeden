@@ -3,14 +3,13 @@
 import { useState, useEffect, use } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Card, CardContent } from '@/components/ui/card'
-import { ArrowLeft, MessageCircle, ExternalLink, Bell, Star, Clock, Flame, Coffee, Wine, Sandwich, Cherry, Droplets, ChefHat, Pizza, Package } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Star, Clock, Flame, Coffee, Wine, Sandwich, Cherry, Droplets, ChefHat, Pizza, Package } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import brandsData from '@/data/brands.json'
 import { Brand } from '@/types/brand'
 import { formatPrice } from '@/lib/utils'
-import { graphqlRequest } from '@/lib/graphql'
 
 interface Props {
   params: Promise<{
@@ -344,40 +343,10 @@ export default function BrandPage({ params }: Props) {
     notFound()
   }
 
-  const handleWhatsAppClick = () => {
-    if (brand.contact.whatsapp) {
-      const message = encodeURIComponent(brand.contact.whatsappMessage || `Hola, me interesa el menú de ${brand.name}`)
-      window.open(`https://wa.me/${brand.contact.whatsapp.replace('+', '')}?text=${message}`, '_blank')
-    }
-  }
-
   const handleOfficialWebsite = () => {
     if (brand.contact.officialWebsite) {
       window.open(brand.contact.officialWebsite, '_blank')
     }
-  }
-
-  const handleCallWaiter = () => {
-    const mutation = `
-      mutation CallWaiter($brandId: ID!, $tableNumber: Int!) {
-        callWaiter(brandId: $brandId, tableNumber: $tableNumber) {
-          success
-          message
-        }
-      }
-    `
-    graphqlRequest<{ callWaiter: { success: boolean; message?: string } }>(mutation, {
-      brandId: brand.id,
-      tableNumber
-    })
-      .then((data: { callWaiter: { success: boolean; message?: string } }) => {
-        const ok = data?.callWaiter?.success
-        alert(ok ? `¡Mesero llamado a la mesa ${tableNumber}! 🔔` : (data?.callWaiter?.message || 'No se pudo llamar al mesero'))
-      })
-      .catch((err: unknown) => {
-        console.error(err)
-        alert('No se pudo conectar al servicio. Configura NEXT_PUBLIC_GRAPHQL_URL.')
-      })
   }
 
   const selectedCategoryData = brand.menu.categories.find(cat => cat.id === selectedCategory)
@@ -516,53 +485,7 @@ export default function BrandPage({ params }: Props) {
             </motion.div>
           </Link>
 
-          {/* Contact Actions */}
-          <div className="flex items-center space-x-3">
-            {/* WhatsApp Button */}
-            {brand.contact.whatsapp && !isAyWey && (
-              <motion.button
-                onClick={handleWhatsAppClick}
-                className="flex items-center space-x-2 px-4 py-2 bg-green-600 hover:bg-green-700 rounded-full text-white font-medium transition-colors duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <MessageCircle className="w-5 h-5" />
-                <span className="hidden sm:inline">WhatsApp</span>
-              </motion.button>
-            )}
-
-            {/* Call Waiter Button */}
-            {brand.contact.callWaiter && (
-              <motion.button
-                onClick={handleCallWaiter}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-full ${isAyWey ? 'text-white' : 'text-white'} font-medium transition-colors duration-300`}
-                style={{ 
-                  backgroundColor: isAyWey ? '#C62828' : brand.primaryColor + '80',
-                  borderColor: brand.primaryColor
-                }}
-                whileHover={{ 
-                  scale: 1.05,
-                  backgroundColor: isAyWey ? '#B71C1C' : brand.accentColor + '90'
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Bell className="w-5 h-5" />
-                <span className="hidden sm:inline">Llamar Mesero</span>
-              </motion.button>
-            )}
-            {/* Selector de mesa solo para Ay Wey */}
-            {isAyWey && (
-              <select
-                value={tableNumber}
-                onChange={(e) => setTableNumber(Number(e.target.value))}
-                className="bg-white text-gray-900 border border-gray-300 rounded-full px-3 py-2 text-sm"
-              >
-                {Array.from({ length: 20 }, (_, i) => i + 1).map(n => (
-                  <option key={n} value={n}>Mesa {n}</option>
-                ))}
-              </select>
-            )}
-          </div>
+          {/* Contact Actions removed (WhatsApp, Call Waiter) */}
         </div>
       </motion.header>
 
@@ -1089,19 +1012,7 @@ export default function BrandPage({ params }: Props) {
                             {formatPrice(item.price)}
                           </span>
 
-                          {!hasSpecialDesign && (
-                            <div className="flex items-center space-x-2">
-                              <motion.button
-                                onClick={handleWhatsAppClick}
-                                className="flex items-center space-x-1 px-3 py-2 bg-green-600 hover:bg-green-700 rounded-full text-white text-sm font-medium transition-colors duration-300"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                              >
-                                <MessageCircle className="w-4 h-4" />
-                                <span>Pedir</span>
-                              </motion.button>
-                            </div>
-                          )}
+                          {/* Order buttons removed */}
                         </div>
                       </div>
                     </CardContent>
@@ -1112,95 +1023,7 @@ export default function BrandPage({ params }: Props) {
           )}
         </AnimatePresence>
 
-        {/* Action Buttons Footer */}
-        {(brand.contact.whatsapp || brand.contact.callWaiter) && (
-          <motion.div
-            className="mt-16 text-center"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.5 }}
-          >
-            <div className="max-w-2xl mx-auto space-y-4">
-              <h3 className={`text-2xl font-bold ${isAyWey ? 'text-gray-900' : 'text-white'} mb-6`}>
-                {isAyWey ? '¿Listo para ordenar, amigo? 🌮'
-                : isPerfetto ? '¿Listo para disfrutar? 🍨'
-                : isMazorca ? '¿Antojo de mazorca? 🌽'
-                : isTogoima ? '¿Un café ancestral? ☕'
-                : '¿Listo para ordenar?'}
-              </h3>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                {/* WhatsApp Button */}
-                {brand.contact.whatsapp && !isAyWey && (
-                  <motion.button
-                    onClick={handleWhatsAppClick}
-                    className="flex items-center justify-center space-x-3 px-8 py-4 bg-green-600 hover:bg-green-700 rounded-full text-white font-bold text-lg shadow-lg transition-all duration-300"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <MessageCircle className="w-6 h-6" />
-                    <span>Ordenar por WhatsApp</span>
-                  </motion.button>
-                )}
-
-                {/* Call Waiter Button */}
-                {brand.contact.callWaiter && (
-                  <motion.button
-                    onClick={handleCallWaiter}
-                    className="flex items-center justify-center space-x-3 px-8 py-4 rounded-full text-white font-bold text-lg shadow-lg transition-all duration-300"
-                    style={{ 
-                      backgroundColor: isAyWey 
-                        ? '#C62828'
-                        : isPerfetto
-                          ? '#DC143C'
-                          : isMazorca
-                            ? '#FF8C00'
-                            : isTogoima
-                              ? '#8B4513'
-                              : brand.primaryColor,
-                      borderColor: isAyWey 
-                        ? '#8E0000'
-                        : isPerfetto
-                          ? '#FFD700'
-                          : isMazorca
-                            ? '#FFD700'
-                            : isTogoima
-                              ? '#DEB887'
-                              : brand.secondaryColor
-                    }}
-                    whileHover={{ 
-                      scale: 1.05,
-                      backgroundColor: isAyWey 
-                        ? '#D32F2F'
-                        : isPerfetto
-                          ? '#B71C1C'
-                          : isMazorca
-                            ? '#F57C00'
-                            : isTogoima
-                              ? '#654321'
-                              : brand.accentColor
-                    }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Bell className="w-6 h-6" />
-                    <span>Llamar Mesero</span>
-                  </motion.button>
-                )}
-                {isAyWey && (
-                  <select
-                    value={tableNumber}
-                    onChange={(e) => setTableNumber(Number(e.target.value))}
-                    className="bg-white text-gray-900 border border-gray-300 rounded-full px-4 py-3 text-base"
-                  >
-                    {Array.from({ length: 20 }, (_, i) => i + 1).map(n => (
-                      <option key={n} value={n}>Mesa {n}</option>
-                    ))}
-                  </select>
-                )}
-              </div>
-            </div>
-          </motion.div>
-        )}
+        {/* Action Buttons Footer removed */}
       </motion.main>
     </motion.div>
   )
