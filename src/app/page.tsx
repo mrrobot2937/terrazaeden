@@ -216,26 +216,23 @@ export default function HomePage() {
                     />
 
                     <div className="relative z-10 p-6 h-full flex flex-col">
-                      {/* Logo Section - Fixed size container */}
-                      <div className="flex-shrink-0 flex items-center justify-center mb-6 h-24">
+                      {/* Logo Section - Adaptive, no white background */}
+                      <div className="flex-shrink-0 flex items-center justify-center mb-6 h-28">
                         <div
-                          className="w-20 h-20 bg-white rounded-xl flex items-center justify-center shadow-lg overflow-hidden"
+                          className="w-24 h-24 rounded-xl flex items-center justify-center overflow-hidden"
                           style={{
-                            boxShadow: `0 4px 20px ${brand.primaryColor}30`
+                            border: `2px solid ${brand.primaryColor}40`,
+                            boxShadow: `0 8px 30px ${brand.primaryColor}20`
                           }}
                         >
-                          {brand.id === 'mazorca' ? (
-                            <span className="text-3xl">🌽</span>
-                          ) : brand.id === 'choripam' ? (
-                            <span className="text-3xl">🌭</span>
-                          ) : (
-                            <div className="relative w-16 h-16">
+                          {(
+                            <div className="relative w-full h-full">
                               <Image
                                 src={brand.logo}
                                 alt={`Logo de ${brand.name}`}
                                 fill
-                                className="object-contain p-1"
-                                sizes="64px"
+                                className="object-contain"
+                                sizes="96px"
                                 priority={index < 4}
                               />
                             </div>

@@ -510,27 +510,22 @@ export default function BrandPage({ params }: Props) {
             }}
           >
             <div 
-              className={`w-44 h-44 md:w-56 md:h-56 rounded-2xl flex items-center justify-center shadow-2xl backdrop-blur-md border-2 overflow-hidden`}
+              className={`w-52 h-52 md:w-64 md:h-64 rounded-2xl flex items-center justify-center shadow-2xl overflow-hidden`}
               style={{ 
-                backgroundColor: 'white',
-                borderColor: brand.primaryColor,
-                boxShadow: `0 20px 60px ${brand.primaryColor}30`
+                border: `2px solid ${brand.primaryColor}40`,
+                boxShadow: `0 20px 60px ${brand.primaryColor}20`
               }}
             >
-              {brand.id === 'mazorca' ? (
-                <span className="text-7xl md:text-8xl">🌽</span>
-              ) : brand.id === 'choripam' ? (
-                <span className="text-7xl md:text-8xl">🌭</span>
-              ) : brand.id === 'perfetto' ? (
+              {brand.id === 'perfetto' ? (
                 <span className="text-7xl md:text-8xl">🍨</span>
               ) : (
-                <div className="relative w-32 h-32 md:w-40 md:h-40">
+                <div className="relative w-full h-full">
                   <Image
                     src={brand.logo}
                     alt={`Logo de ${brand.name}`}
                     fill
-                    className="object-contain p-2"
-                    sizes="160px"
+                    className="object-contain"
+                    sizes="256px"
                     priority
                   />
                 </div>
@@ -901,7 +896,7 @@ export default function BrandPage({ params }: Props) {
                   >
                     {/* Item Image or Icon */}
                     <div 
-                      className={`${hasSpecialDesign ? 'h-32' : 'h-40'} relative overflow-hidden`}
+                      className={`${hasSpecialDesign ? (isPerfetto ? 'h-56 md:h-64' : 'h-32') : 'h-40'} relative overflow-hidden`}
                       style={{
                         background: isAyWey 
                           ? `linear-gradient(135deg, ${getAyWeyColors(selectedCategory).bgSelected}, ${getAyWeyColors(selectedCategory).bgHover})`
@@ -915,33 +910,37 @@ export default function BrandPage({ params }: Props) {
                       }}
                     >
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <div 
-                          className={`${hasSpecialDesign ? 'w-16 h-16' : 'w-20 h-20'} rounded-full flex items-center justify-center text-white font-bold shadow-lg`}
-                          style={{ 
-                            backgroundColor: isAyWey 
-                              ? getAyWeyColors(selectedCategory).primary
-                              : isPerfetto
-                                ? '#228B22'
-                                : isMazorca
-                                  ? '#FFD700'
-                                  : isTogoima 
-                                    ? '#8B4513'
-                                    : brand.primaryColor,
-                            boxShadow: isAyWey 
-                              ? `0 8px 25px ${getAyWeyColors(selectedCategory).primary}40`
-                              : isPerfetto
-                                ? `0 8px 25px #228B2240`
-                                : isMazorca
-                                  ? `0 8px 25px #FFD70040`
-                                : isTogoima 
-                                  ? `0 8px 25px #D2691E40`
-                                  : `0 8px 25px ${brand.primaryColor}40`,
-                            fontSize: hasSpecialDesign ? '2rem' : '1.75rem',
-                            color: isMazorca ? '#8B4513' : 'white'
-                          }}
-                        >
-                          {item.imageIcon || getProductIcon(item.name, selectedCategory)}
-                        </div>
+                        {isPerfetto && item.image ? (
+                          <img src={item.image} alt={item.name} className="w-full h-full object-contain p-3 md:p-4" />
+                        ) : (
+                          <div 
+                            className={`${hasSpecialDesign ? 'w-16 h-16' : 'w-20 h-20'} rounded-full flex items-center justify-center text-white font-bold shadow-lg`}
+                            style={{ 
+                              backgroundColor: isAyWey 
+                                ? getAyWeyColors(selectedCategory).primary
+                                : isPerfetto
+                                  ? '#228B22'
+                                  : isMazorca
+                                    ? '#FFD700'
+                                    : isTogoima 
+                                      ? '#8B4513'
+                                      : brand.primaryColor,
+                              boxShadow: isAyWey 
+                                ? `0 8px 25px ${getAyWeyColors(selectedCategory).primary}40`
+                                : isPerfetto
+                                  ? `0 8px 25px #228B2240`
+                                  : isMazorca
+                                    ? `0 8px 25px #FFD70040`
+                                    : isTogoima 
+                                      ? `0 8px 25px #D2691E40`
+                                      : `0 8px 25px ${brand.primaryColor}40`,
+                              fontSize: hasSpecialDesign ? '2rem' : '1.75rem',
+                              color: isMazorca ? '#8B4513' : 'white'
+                            }}
+                          >
+                            {item.imageIcon || getProductIcon(item.name, selectedCategory)}
+                          </div>
+                        )}
                       </div>
                       
                       {/* Hover Overlay */}

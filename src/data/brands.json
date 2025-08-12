@@ -776,7 +776,7 @@
             "id": "mazorca",
             "name": "Mazorca",
             "description": "Especialistas en arepas y mazorcadas gourmet",
-            "logo": "/logos/mazorca.png",
+            "logo": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/4b65e237-7f56-44df-b4ef-60e734a31584.png",
             "primaryColor": "#FFD700",
             "secondaryColor": "#FFA500",
             "accentColor": "#FF8C00",
@@ -992,7 +992,7 @@
             "id": "choripam",
             "name": "Choripam",
             "description": "Los mejores chorizos y sándwiches artesanales",
-            "logo": "/logos/choripam.png",
+            "logo": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/WhatsApp+Image+2025-07-04+at+4.36.20+PM.jpeg",
             "primaryColor": "#D2691E",
             "secondaryColor": "#CD853F",
             "accentColor": "#A0522D",
@@ -1936,14 +1936,16 @@
                                 "name": "Frullatto Frutos del Bosque",
                                 "description": "Deliciosa mezcla de frutos rojos con textura cremosa",
                                 "price": 13900,
-                                "imageIcon": "🍓"
+                                "imageIcon": "🍓",
+                                "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/perfetto/frullatto.png"
                             },
                             {
                                 "id": "frullatto-frutos-amarillos",
                                 "name": "Frullatto Frutos Amarillos",
                                 "description": "Refrescante combinación de frutas tropicales amarillas",
                                 "price": 13900,
-                                "imageIcon": "🥭"
+                                "imageIcon": "🥭",
+                                "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/perfetto/frullato-amarillo.png"
                             }
                         ]
                     },
@@ -1952,32 +1954,36 @@
                         "name": "Parfaits & Gelatos",
                         "items": [
                             {
-                                "id": "parfait-roma",
+                                "id": "Perfetto",
                                 "name": "Parfait Roma",
                                 "description": "Gelato con 4 guarniciones de su preferencia en barra + 1 salsa",
                                 "price": 12900,
-                                "imageIcon": "🍨"
+                                "imageIcon": "🍨",
+                                "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/perfetto/perfetto.png"
+                            },
+                            {
+                                "id": "parfait-roma",
+                                "name": "Parfait Roma",
+                                "description": "Gelato con 4 guarniciones de su preferencia en barra + 1 salsa",
+                                "price": 11500,
+                                "imageIcon": "🍨",
+                                "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/perfetto/roma.png"
                             },
                             {
                                 "id": "gelato-milan",
                                 "name": "Gelato Milán",
                                 "description": "Gelato con 3 guarniciones de su preferencia en barra + 1 salsa",
                                 "price": 11500,
-                                "imageIcon": "🍨"
+                                "imageIcon": "🍨",
+                                "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/perfetto/milan.png"
                             },
                             {
                                 "id": "bowl-gelato",
                                 "name": "Bowl Gelato",
                                 "description": "Bowl de gelato con 2 guarniciones de su preferencia + 1 salsa",
-                                "price": 9900,
-                                "imageIcon": "🍨"
-                            },
-                            {
-                                "id": "gelato-premium",
-                                "name": "Gelato Premium",
-                                "description": "Experiencia premium de gelato artesanal",
                                 "price": 15000,
-                                "imageIcon": "🍨"
+                                "imageIcon": "🍨",
+                                "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/perfetto/bowl.png"
                             }
                         ]
                     },
