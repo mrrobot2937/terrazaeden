@@ -780,7 +780,7 @@
             "primaryColor": "#FFD700",
             "secondaryColor": "#FFA500",
             "accentColor": "#FF8C00",
-            "category": "Snacks",
+            "category": "Comida en base a maíz",
             "contact": {
                 "whatsapp": "+573001234568",
                 "whatsappMessage": "¡Hola! Quiero ordenar unas deliciosas mazorcadas 🌽",
@@ -2433,6 +2433,20 @@
                         ]
                     }
                 ]
+            }
+        },
+        {
+            "id": "dream-burguer",
+            "name": "Dream Burguer",
+            "description": "Hamburguesas artesanales y más",
+            "logo": "/logos/dreamburguer.png",
+            "primaryColor": "#F59E0B",
+            "secondaryColor": "#B45309",
+            "accentColor": "#1F2937",
+            "category": "Hamburguesas",
+            "contact": {},
+            "menu": {
+                "categories": []
             }
         }
     ]

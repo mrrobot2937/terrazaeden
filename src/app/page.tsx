@@ -50,24 +50,34 @@ const generateParticles = () => {
 export default function HomePage() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [mounted, setMounted] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(false)
   const [particles] = useState(generateParticles)
   const brands: Brand[] = brandsData.brands
 
   useEffect(() => {
     setMounted(true)
+    const updateIsDesktop = () => setIsDesktop(window.innerWidth >= 768)
+    updateIsDesktop()
+    window.addEventListener('resize', updateIsDesktop)
     
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY })
     }
 
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
+    if (window.innerWidth >= 768) {
+      window.addEventListener('mousemove', handleMouseMove)
+    }
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+      window.removeEventListener('resize', updateIsDesktop)
+    }
   }, [])
 
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
-      {/* Animated Background Elements - Only render after mount */}
-      {mounted && (
+      {/* Animated Background Elements - Desktop only to optimize mobile */}
+      {mounted && isDesktop && (
         <div className="absolute inset-0">
           <div 
             className="absolute w-96 h-96 bg-yellow-500 rounded-full filter blur-3xl opacity-10 transition-transform duration-1000 ease-out"
@@ -90,8 +100,8 @@ export default function HomePage() {
         </div>
       )}
 
-      {/* Floating particles - Only render after mount */}
-      {mounted && (
+      {/* Floating particles - Desktop only to optimize mobile */}
+      {mounted && isDesktop && (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {particles.map((particle) => (
             <motion.div
@@ -182,10 +192,45 @@ export default function HomePage() {
           </motion.div>
         </motion.header>
 
-        {/* Brands Grid */}
-        <motion.main 
+        {/* Brands Grid - Mobile: compact logo-only tiles */}
+        <motion.section
           id="brands-section"
-          className="container mx-auto px-6 pb-20 pt-16"
+          className="container mx-auto px-3 pb-16 pt-10 md:hidden"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-4 gap-3">
+              {brands.map((brand) => (
+                <Link key={brand.id} href={`/brands/${brand.id}`} className="group">
+                  <div
+                    className="relative rounded-xl border border-gray-800 bg-gray-900/60 p-2 overflow-hidden"
+                    style={{ aspectRatio: '1 / 1' }}
+                  >
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-15 transition-opacity duration-300"
+                         style={{ backgroundColor: brand.primaryColor }}
+                    />
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={brand.logo}
+                        alt={`Logo de ${brand.name}`}
+                        fill
+                        className="object-contain"
+                        sizes="(max-width: 640px) 22vw, 160px"
+                      />
+                    </div>
+                  </div>
+                  <span className="sr-only">{brand.name}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </motion.section>
+
+        {/* Brands Grid - Desktop: rich cards */}
+        <motion.main 
+          className="container mx-auto px-6 pb-20 pt-16 hidden md:block"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -203,20 +248,16 @@ export default function HomePage() {
               >
                 <Link href={`/brands/${brand.id}`}>
                   <Card className="group relative overflow-hidden h-96 cursor-pointer border border-gray-800 bg-gray-900/50 backdrop-blur-sm hover:bg-gray-800/70 hover:border-yellow-500/50 transition-all duration-500">
-                    {/* Brand Color Accent */}
                     <div 
                       className="absolute top-0 left-0 right-0 h-1"
                       style={{ backgroundColor: brand.primaryColor }}
                     />
-                    
-                    {/* Hover Glow Effect */}
                     <div 
                       className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-2xl"
                       style={{ backgroundColor: brand.primaryColor }}
                     />
 
                     <div className="relative z-10 p-6 h-full flex flex-col">
-                      {/* Logo Section - Adaptive, no white background */}
                       <div className="flex-shrink-0 flex items-center justify-center mb-6 h-28">
                         <div
                           className="w-24 h-24 rounded-xl flex items-center justify-center overflow-hidden"
@@ -225,22 +266,19 @@ export default function HomePage() {
                             boxShadow: `0 8px 30px ${brand.primaryColor}20`
                           }}
                         >
-                          {(
-                            <div className="relative w-full h-full">
-                              <Image
-                                src={brand.logo}
-                                alt={`Logo de ${brand.name}`}
-                                fill
-                                className="object-contain"
-                                sizes="96px"
-                                priority={index < 4}
-                              />
-                            </div>
-                          )}
+                          <div className="relative w-full h-full">
+                            <Image
+                              src={brand.logo}
+                              alt={`Logo de ${brand.name}`}
+                              fill
+                              className="object-contain"
+                              sizes="96px"
+                              priority={index < 4}
+                            />
+                          </div>
                         </div>
                       </div>
 
-                      {/* Brand Info - Flexible container */}
                       <div className="flex-grow flex flex-col justify-between text-center">
                         <div className="space-y-3">
                           <h3 className="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors duration-300 leading-tight">
@@ -274,7 +312,6 @@ export default function HomePage() {
                       </div>
                     </div>
 
-                    {/* Animated Border */}
                     <div className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-yellow-500/30 transition-all duration-500" />
                   </Card>
                 </Link>

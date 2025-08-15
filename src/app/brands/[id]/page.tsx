@@ -1,9 +1,9 @@
 'use client'
 
-import { useState, useEffect, use } from 'react'
+import { useState, useEffect, use, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Card, CardContent } from '@/components/ui/card'
-import { ArrowLeft, ExternalLink, Star, Clock, Flame, Coffee, Wine, Sandwich, Cherry, Droplets, ChefHat, Pizza, Package } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Star, Clock, Flame, Coffee, Wine, Sandwich, Cherry, Droplets, ChefHat, Pizza, Package, ArrowDown } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
@@ -314,6 +314,8 @@ export default function BrandPage({ params }: Props) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [mounted, setMounted] = useState(false)
   const [tableNumber, setTableNumber] = useState<number>(1)
+  const productsRef = useRef<HTMLDivElement | null>(null)
+  const [showHint, setShowHint] = useState(false)
 
   const brand: Brand | undefined = brandsData.brands.find(b => b.id === resolvedParams.id)
 
@@ -326,6 +328,17 @@ export default function BrandPage({ params }: Props) {
 
     // Scroll to top when component mounts
     window.scrollTo(0, 0)
+
+    // Mostrar hint solo la primera vez por marca
+    try {
+      const key = `te_hint_seen_${brand?.id ?? 'unknown'}`
+      const seen = typeof window !== 'undefined' ? window.localStorage.getItem(key) : 'true'
+      if (!seen) {
+        setShowHint(true)
+        const t = window.setTimeout(() => setShowHint(false), 4500)
+        return () => window.clearTimeout(t)
+      }
+    } catch {}
   }, [brand])
 
   useEffect(() => {
@@ -350,6 +363,19 @@ export default function BrandPage({ params }: Props) {
   }
 
   const selectedCategoryData = brand.menu.categories.find(cat => cat.id === selectedCategory)
+
+  const scrollToProducts = () => {
+    const el = productsRef.current || document.getElementById('products-section')
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+    try {
+      if (brand?.id) {
+        window.localStorage.setItem(`te_hint_seen_${brand.id}`, 'true')
+      }
+    } catch {}
+    setShowHint(false)
+  }
 
   // Diseño especial para marcas específicas
   const isTogoima = brand.id === 'togoima'
@@ -438,27 +464,27 @@ export default function BrandPage({ params }: Props) {
             </>
           ) : (
             <>
-              <div 
-                className="absolute w-96 h-96 rounded-full filter blur-3xl opacity-15 transition-transform duration-1000 ease-out"
-                style={{
-                  backgroundColor: brand.primaryColor,
-                  transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`
-                }}
-              />
-              <div 
-                className="absolute top-1/3 right-1/4 w-72 h-72 rounded-full filter blur-3xl opacity-10 transition-transform duration-1000 ease-out"
-                style={{
-                  backgroundColor: brand.secondaryColor,
-                  transform: `translate(${mousePosition.x * -0.01}px, ${mousePosition.y * -0.01}px)`
-                }}
-              />
-              <div 
-                className="absolute bottom-1/4 left-1/4 w-64 h-64 rounded-full filter blur-3xl opacity-8 transition-transform duration-1000 ease-out"
-                style={{
-                  backgroundColor: brand.accentColor,
-                  transform: `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.015}px)`
-                }}
-              />
+          <div 
+            className="absolute w-96 h-96 rounded-full filter blur-3xl opacity-15 transition-transform duration-1000 ease-out"
+            style={{
+              backgroundColor: brand.primaryColor,
+              transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`
+            }}
+          />
+          <div 
+            className="absolute top-1/3 right-1/4 w-72 h-72 rounded-full filter blur-3xl opacity-10 transition-transform duration-1000 ease-out"
+            style={{
+              backgroundColor: brand.secondaryColor,
+              transform: `translate(${mousePosition.x * -0.01}px, ${mousePosition.y * -0.01}px)`
+            }}
+          />
+          <div 
+            className="absolute bottom-1/4 left-1/4 w-64 h-64 rounded-full filter blur-3xl opacity-8 transition-transform duration-1000 ease-out"
+            style={{
+              backgroundColor: brand.accentColor,
+              transform: `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.015}px)`
+            }}
+          />
             </>
           )}
         </div>
@@ -496,22 +522,39 @@ export default function BrandPage({ params }: Props) {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
+        {/* Hint visual para indicar que abajo están los productos */}
+        <AnimatePresence>
+          {showHint && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="absolute left-1/2 -translate-x-1/2 top-4 z-20"
+            >
+              <div className="flex items-center space-x-2 bg-black/70 text-white px-4 py-2 rounded-full border border-white/10 shadow-lg backdrop-blur">
+                <span className="text-sm">Toca una categoría y verás los productos</span>
+                <ArrowDown className="w-4 h-4" />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
         {/* Floating logo card (excluded for Ay Wey and Togoima to avoid duplication) */}
         {!(isAyWey || isTogoima) && (
-          <motion.div
-            className="inline-block mb-8"
-            animate={{
-              y: [0, -8, 0],
-              transition: {
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }
-            }}
-          >
-            <div 
+        <motion.div
+          className="inline-block mb-8"
+          animate={{
+            y: [0, -8, 0],
+            transition: {
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }
+          }}
+        >
+          <div 
               className={`w-52 h-52 md:w-64 md:h-64 rounded-2xl flex items-center justify-center shadow-2xl overflow-hidden`}
-              style={{ 
+            style={{ 
                 border: `2px solid ${brand.primaryColor}40`,
                 boxShadow: `0 20px 60px ${brand.primaryColor}20`
               }}
@@ -520,18 +563,18 @@ export default function BrandPage({ params }: Props) {
                 <span className="text-7xl md:text-8xl">🍨</span>
               ) : (
                 <div className="relative w-full h-full">
-                  <Image
-                    src={brand.logo}
-                    alt={`Logo de ${brand.name}`}
-                    fill
+                <Image
+                  src={brand.logo}
+                  alt={`Logo de ${brand.name}`}
+                  fill
                     className="object-contain"
                     sizes="256px"
-                    priority
-                  />
-                </div>
-              )}
-            </div>
-          </motion.div>
+                  priority
+                />
+              </div>
+            )}
+          </div>
+        </motion.div>
         )}
  
         {/* Título - Especial para Togoima y Ay Wey */}
@@ -578,28 +621,28 @@ export default function BrandPage({ params }: Props) {
             </div>
           </motion.div>
         ) : (
-          <motion.h1 
-            className="text-5xl md:text-7xl font-black text-white mb-4"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            style={{
-              textShadow: `0 0 30px ${brand.primaryColor}60`
-            }}
-          >
-            {brand.name}
-          </motion.h1>
+        <motion.h1 
+          className="text-5xl md:text-7xl font-black text-white mb-4"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          style={{
+            textShadow: `0 0 30px ${brand.primaryColor}60`
+          }}
+        >
+          {brand.name}
+        </motion.h1>
         )}
 
         {brand.id !== 'ay-wey' && (
-          <motion.p 
+        <motion.p 
             className={`text-xl ${isAyWey ? 'text-gray-800' : 'text-gray-300'} max-w-2xl mx-auto mb-8`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            {brand.description}
-          </motion.p>
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          {brand.description}
+        </motion.p>
         )}
 
         <motion.div
@@ -671,6 +714,7 @@ export default function BrandPage({ params }: Props) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1 }}
       >
+        <div id="products-section" ref={productsRef} className="-mt-6" />
         {/* Category Tabs - Diseño especial */}
         {hasSpecialDesign ? (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
@@ -726,7 +770,7 @@ export default function BrandPage({ params }: Props) {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
               >
-                <div className="flex flex-col items-center space-y-3">
+                <div className="flex flex-col items-center space-y-3" onClick={scrollToProducts}>
                   <div 
                     className="w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300"
                     style={{
@@ -806,40 +850,40 @@ export default function BrandPage({ params }: Props) {
           </div>
         ) : (
           // Diseño normal para otras marcas
-          <div className="flex space-x-3 mb-8 overflow-x-auto pb-2">
-            {brand.menu.categories.map((category, index) => (
-              <motion.button
-                key={category.id}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 whitespace-nowrap border ${
-                  selectedCategory === category.id
-                    ? 'text-white shadow-lg'
-                    : 'text-gray-300 hover:text-white'
-                }`}
-                style={{
-                  backgroundColor: selectedCategory === category.id 
-                    ? brand.primaryColor 
-                    : brand.primaryColor + '10',
-                  borderColor: selectedCategory === category.id
-                    ? brand.secondaryColor
-                    : brand.primaryColor + '30',
-                  boxShadow: selectedCategory === category.id
-                    ? `0 8px 25px ${brand.primaryColor}30`
-                    : 'none'
-                }}
-                onClick={() => setSelectedCategory(category.id)}
-                whileHover={{ 
-                  scale: 1.05,
-                  backgroundColor: selectedCategory === category.id ? brand.accentColor : brand.primaryColor + '20'
-                }}
-                whileTap={{ scale: 0.95 }}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
-              >
-                {category.name}
-              </motion.button>
-            ))}
-          </div>
+        <div className="flex space-x-3 mb-8 overflow-x-auto pb-2">
+          {brand.menu.categories.map((category, index) => (
+            <motion.button
+              key={category.id}
+              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 whitespace-nowrap border ${
+                selectedCategory === category.id
+                  ? 'text-white shadow-lg'
+                  : 'text-gray-300 hover:text-white'
+              }`}
+              style={{
+                backgroundColor: selectedCategory === category.id 
+                  ? brand.primaryColor 
+                  : brand.primaryColor + '10',
+                borderColor: selectedCategory === category.id
+                  ? brand.secondaryColor
+                  : brand.primaryColor + '30',
+                boxShadow: selectedCategory === category.id
+                  ? `0 8px 25px ${brand.primaryColor}30`
+                  : 'none'
+              }}
+              onClick={() => { setSelectedCategory(category.id); scrollToProducts() }}
+              whileHover={{ 
+                scale: 1.05,
+                backgroundColor: selectedCategory === category.id ? brand.accentColor : brand.primaryColor + '20'
+              }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
+            >
+              {category.name}
+            </motion.button>
+          ))}
+        </div>
         )}
 
         {/* Menu Items - Diseño especial para Togoima y Ay Wey! */}
@@ -913,9 +957,9 @@ export default function BrandPage({ params }: Props) {
                         {isPerfetto && item.image ? (
                           <img src={item.image} alt={item.name} className="w-full h-full object-contain p-3 md:p-4" />
                         ) : (
-                          <div 
+                        <div 
                             className={`${hasSpecialDesign ? 'w-16 h-16' : 'w-20 h-20'} rounded-full flex items-center justify-center text-white font-bold shadow-lg`}
-                            style={{ 
+                          style={{ 
                               backgroundColor: isAyWey 
                                 ? getAyWeyColors(selectedCategory).primary
                                 : isPerfetto
@@ -939,7 +983,7 @@ export default function BrandPage({ params }: Props) {
                             }}
                           >
                             {item.imageIcon || getProductIcon(item.name, selectedCategory)}
-                          </div>
+                        </div>
                         )}
                       </div>
                       
