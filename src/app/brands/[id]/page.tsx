@@ -70,12 +70,12 @@ const getAyWeyColors = (categoryId: string) => {
 
   if (redCategories.has(categoryId)) {
     return {
-      primary: '#C62828',
-      bgSelected: '#C62828',
-      bgHover: '#E53935',
-      border: '#C62828',
+      primary: '#F44336',
+      bgSelected: '#F44336',
+      bgHover: '#EF5350',
+      border: '#F44336',
       textSelected: '#FFFFFF',
-      overlay: '#E5393560'
+      overlay: '#EF535060'
     }
   }
   if (yellowCategories.has(categoryId)) {
@@ -103,7 +103,7 @@ const getAyWeyColors = (categoryId: string) => {
 const getAyWeyPriceColor = (categoryId: string) => {
   const colors = getAyWeyColors(categoryId)
   // Si el fondo es rojo (texto claro), usamos blanco; si es amarillo (fondo claro), usamos un tono oscuro para contraste
-  return colors.primary === '#C62828' ? '#FFFFFF' : '#3E2723'
+  return colors.primary === '#F44336' ? '#FFFFFF' : '#3E2723'
 }
 
 // Iconos personalizados para las categorías de Perfetto
@@ -620,7 +620,7 @@ export default function BrandPage({ params }: Props) {
               />
             </div>
             <div className="mt-4 flex justify-center">
-              <div className="px-6 py-3 bg-[#C62828] text-black rounded-lg border border-red-800 shadow-md font-semibold text-sm md:text-base text-center leading-relaxed">
+              <div className="px-6 py-3 bg-[#F44336] text-white rounded-lg border border-red-600 shadow-md font-semibold text-sm md:text-base text-center leading-relaxed">
                 {brand.description}
               </div>
             </div>
