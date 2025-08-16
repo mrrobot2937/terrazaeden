@@ -1,5 +1,5 @@
 export async function graphqlRequest<T>(query: string, variables?: Record<string, unknown>): Promise<T> {
-    const endpoint = process.env.NEXT_PUBLIC_GRAPHQL_URL || 'http://localhost:8000/graphql'
+    const endpoint = process.env.NEXT_PUBLIC_GRAPHQL_URL || 'https://choripam-backend-real.vercel.app/graphql'
 
     const res = await fetch(endpoint, {
         method: 'POST',
