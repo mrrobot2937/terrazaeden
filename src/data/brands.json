@@ -1800,7 +1800,7 @@
                                 "description": "Sandwich con ingredientes italianos",
                                 "price": 19000,
                                 "imageIcon": "🥪",
-                                "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/togoima/sandwich_ita.jpeg"
+                                "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/togoima/sandwich_italiano.png"
                             },
                             {
                                 "id": "pernil-cerdo-ahumada",
