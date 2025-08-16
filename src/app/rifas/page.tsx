@@ -129,6 +129,30 @@ export default function RifasPage() {
           </Card>
         </motion.section>
 
+        {/* Botón central para seguir a Terraza Eden */}
+        <motion.section
+          className="mt-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          <Card className="border border-green-600/40 bg-green-900/20 backdrop-blur">
+            <div className="p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="text-center sm:text-left">
+                <p className="text-white font-bold text-lg">Sigue primero a @terrazaeleden</p>
+                <p className="text-gray-300 text-sm">Es el paso inicial para participar en cualquiera de los bonos.</p>
+              </div>
+              <a
+                href="https://www.instagram.com/terrazaeleden/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-green-500 hover:bg-green-400 text-black font-extrabold border border-green-300 transition-colors"
+              >
+                <Instagram className="w-5 h-5" /> Seguir @terrazaeleden
+              </a>
+            </div>
+          </Card>
+        </motion.section>
+
         {/* Marcas participantes */}
         <motion.section 
           className="mt-10"

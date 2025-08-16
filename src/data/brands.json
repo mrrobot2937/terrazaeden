@@ -1276,7 +1276,8 @@
                                 "name": "Combo 1",
                                 "description": "Amasijo + bebida caliente (Tamaño M)",
                                 "price": 14000,
-                                "imageIcon": "🍱"
+                                "imageIcon": "🍱",
+                                "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/togoima/combo1.jpeg"
                             },
                             {
                                 "id": "combo2",
@@ -1594,7 +1595,8 @@
                                 "name": "Italiano",
                                 "description": "Sandwich con ingredientes italianos",
                                 "price": 19000,
-                                "imageIcon": "🥪"
+                                "imageIcon": "🥪",
+                                "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/togoima/sandwich_ita.jpeg"
                             },
                             {
                                 "id": "pernil-cerdo-ahumada",
