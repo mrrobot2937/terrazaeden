@@ -44,6 +44,210 @@
                         ]
                     },
                     {
+                        "id": "artesados",
+                        "name": "Artesados",
+                        "items": [
+                            {
+                                "id": "jamon-york-artesado",
+                                "name": "Jamón York",
+                                "description": "Artesado de jamón york",
+                                "price": 13000,
+                                "imageIcon": "🥪"
+                            },
+                            {
+                                "id": "hawaiano",
+                                "name": "Hawaiano",
+                                "description": "Artesado hawaiano con piña",
+                                "price": 14000,
+                                "imageIcon": "🍍"
+                            },
+                            {
+                                "id": "pollo-artesado",
+                                "name": "Pollo",
+                                "description": "Artesado de pollo",
+                                "price": 16000,
+                                "imageIcon": "🍗"
+                            },
+                            {
+                                "id": "pollo-chorizo",
+                                "name": "Pollo, Chorizo",
+                                "description": "Artesado de pollo y chorizo",
+                                "price": 15000,
+                                "imageIcon": "🌭"
+                            },
+                            {
+                                "id": "pollo-pina-tocineta",
+                                "name": "Pollo, Piña, Tocineta",
+                                "description": "Artesado de pollo, piña y tocineta",
+                                "price": 18000,
+                                "imageIcon": "🥓"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "burritos",
+                        "name": "Burritos",
+                        "items": [
+                            {
+                                "id": "burrito-especial",
+                                "name": "Especial",
+                                "description": "Burrito especial de la casa",
+                                "price": 22000,
+                                "imageIcon": "🌯"
+                            },
+                            {
+                                "id": "burrito-mexicano",
+                                "name": "Mexicano",
+                                "description": "Burrito estilo mexicano",
+                                "price": 24000,
+                                "imageIcon": "🌶️"
+                            },
+                            {
+                                "id": "burrito-extremo",
+                                "name": "Extremo",
+                                "description": "Burrito extremo con todos los ingredientes",
+                                "price": 26000,
+                                "imageIcon": "🔥"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "ensalada",
+                        "name": "Ensalada",
+                        "items": [
+                            {
+                                "id": "ensalada-mixta",
+                                "name": "Lechuga, Pollo, Jamón, Queso, Salsa Piña y Tocineta",
+                                "description": "Ensalada completa con proteínas y salsa especial",
+                                "price": 28000,
+                                "imageIcon": "🥗"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "hamburguesas",
+                        "name": "Hamburguesas",
+                        "items": [
+                            {
+                                "id": "la-legendaria",
+                                "name": "La Legendaria",
+                                "description": "Hamburguesa legendaria de la casa",
+                                "price": 35000,
+                                "imageIcon": "🍔"
+                            },
+                            {
+                                "id": "la-picosa",
+                                "name": "La Picosa",
+                                "description": "Hamburguesa picante",
+                                "price": 35000,
+                                "imageIcon": "🌶️"
+                            },
+                            {
+                                "id": "pulled-pork-burger",
+                                "name": "Pulled Pork",
+                                "description": "Hamburguesa con cerdo desmechado",
+                                "price": 32000,
+                                "imageIcon": "🐷"
+                            },
+                            {
+                                "id": "blue-cheese",
+                                "name": "Blue Cheese",
+                                "description": "Hamburguesa con queso azul",
+                                "price": 30000,
+                                "imageIcon": "🧀"
+                            },
+                            {
+                                "id": "la-irresistible",
+                                "name": "La Irresistible",
+                                "description": "Hamburguesa irresistible",
+                                "price": 30000,
+                                "imageIcon": "🍔"
+                            },
+                            {
+                                "id": "la-explosiva",
+                                "name": "La Explosiva",
+                                "description": "Hamburguesa explosiva",
+                                "price": 29000,
+                                "imageIcon": "💥"
+                            },
+                            {
+                                "id": "de-la-casa-burger",
+                                "name": "De la Casa",
+                                "description": "Hamburguesa de la casa",
+                                "price": 26000,
+                                "imageIcon": "🏠"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "perros",
+                        "name": "Perros",
+                        "items": [
+                            {
+                                "id": "chilipepper",
+                                "name": "Chilipepper",
+                                "description": "Perro con chile y especias",
+                                "price": 30000,
+                                "imageIcon": "🌶️"
+                            },
+                            {
+                                "id": "ranchero",
+                                "name": "Ranchero",
+                                "description": "Perro ranchero",
+                                "price": 30000,
+                                "imageIcon": "🤠"
+                            },
+                            {
+                                "id": "ropa-vieja",
+                                "name": "Ropa Vieja",
+                                "description": "Perro con ropa vieja",
+                                "price": 30000,
+                                "imageIcon": "🥩"
+                            },
+                            {
+                                "id": "jack-daniels-perro",
+                                "name": "Jack Daniel's",
+                                "description": "Perro con salsa Jack Daniel's",
+                                "price": 30000,
+                                "imageIcon": "🥃"
+                            },
+                            {
+                                "id": "pulled-pork-perro",
+                                "name": "Pulled Pork",
+                                "description": "Perro con cerdo desmechado",
+                                "price": 28000,
+                                "imageIcon": "🐷"
+                            },
+                            {
+                                "id": "de-la-casa-perro",
+                                "name": "De la Casa",
+                                "description": "Perro de la casa",
+                                "price": 22000,
+                                "imageIcon": "🏠"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "combos",
+                        "name": "Aprenda tu Combo",
+                        "items": [
+                            {
+                                "id": "papas-gaseosa",
+                                "name": "Papas + Gaseosa",
+                                "description": "Papas fritas con gaseosa personal",
+                                "price": 11000,
+                                "imageIcon": "🍟"
+                            },
+                            {
+                                "id": "papas-limonada",
+                                "name": "Papas + Limonada",
+                                "description": "Papas fritas con limonada",
+                                "price": 11000,
+                                "imageIcon": "🍋"
+                            }
+                        ]
+                    },
+                    {
                         "id": "sandwich",
                         "name": "Sandwich",
                         "items": [
