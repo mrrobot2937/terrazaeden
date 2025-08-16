@@ -143,7 +143,7 @@ export default function RifasPage() {
               </label>
 
               <div className="text-sm text-gray-400 space-y-1">
-                <p className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" /> Sigue a <a href="https://instagram.com/terrazaeden" target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:text-yellow-300 underline">@terrazaeden</a></p>
+                <p className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" /> Sigue a <a href="https://instagram.com/terrazaelden" target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:text-yellow-300 underline">@terrazaelden</a></p>
                 <p className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" /> Sigue al restaurante que otorga el bono (ver rifas activas abajo)</p>
               </div>
 
