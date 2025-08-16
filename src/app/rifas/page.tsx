@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Card } from '@/components/ui/card'
+import { graphqlRequest } from '@/lib/graphql'
 import { CheckCircle2, AlertCircle, ExternalLink, Instagram, Ticket, Calendar, Trophy } from 'lucide-react'
 import brandsData from '@/data/brands.json'
 import { Brand } from '@/types/brand'
@@ -13,6 +14,15 @@ export default function RifasPage() {
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState<string | null>(null)
+
+  // Marcas adicionales externas (no vienen de brands.json)
+  const externalBrands = [
+    { name: 'Josué', handle: '@josuee1.6', url: 'https://www.instagram.com/josuee1.6' },
+    { name: 'PC Mobile Colombia', handle: '@pcmobilecolombia', url: 'https://www.instagram.com/pcmobilecolombia' },
+    { name: 'Marden Colombia', handle: '@marden_colombia', url: 'https://www.instagram.com/marden_colombia' },
+    { name: 'Salsamentaria La Mejor', handle: '@salsamentaria_lamejor', url: 'https://www.instagram.com/salsamentaria_lamejor' },
+    { name: 'Car Wash Obrero', handle: '@carwashobrero_', url: 'https://www.instagram.com/carwashobrero_' }
+  ]
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -30,8 +40,42 @@ export default function RifasPage() {
 
     setSubmitting(true)
     try {
-      // Placeholder: aquí podrías enviar a una API o Google Sheet
-      await new Promise((res) => setTimeout(res, 900))
+      // Construir lista de marcas a registrar (handles sin @)
+      const enabledBrandHandles = (brandsData.brands as Brand[])
+        .filter(b => b.raffle?.enabled && (b.contact?.instagramHandle || b.contact?.instagramUrl))
+        .map(b => {
+          const handle = b.contact?.instagramHandle || `@${(b.contact?.instagramUrl as string).replace(/\/$/, '').split('/').pop()}`
+          return handle.replace(/^@/, '')
+        })
+
+      const extraHandles = externalBrands.map(b => b.handle.replace(/^@/, ''))
+
+      const variables = {
+        input: {
+          instagram: trimmed,
+          brands: [...enabledBrandHandles, ...extraHandles],
+          referrer: 'rifas-page'
+        },
+        tenantId: 'terraza-eden'
+      }
+
+      const mutation = `
+        mutation CreateRaffleSignup($input: CreateRaffleSignupInput!, $tenantId: String) {
+          create_raffle_signup(input: $input, tenantId: $tenantId) {
+            success
+            message
+            id
+          }
+        }
+      `
+
+      type MutationResponse = { create_raffle_signup: { success: boolean; message: string; id?: string } }
+      const res = await graphqlRequest<MutationResponse>(mutation, variables)
+
+      if (!res.create_raffle_signup?.success) {
+        throw new Error(res.create_raffle_signup?.message || 'Error desconocido')
+      }
+
       setSubmitted(true)
     } catch (e) {
       setError('No pudimos registrar tu participación. Intenta nuevamente.')
@@ -184,13 +228,7 @@ export default function RifasPage() {
               })}
             
             {/* Marcas adicionales */}
-            {[
-              { name: "Josué", handle: "@josuee1.6", url: "https://www.instagram.com/josuee1.6" },
-              { name: "PC Mobile Colombia", handle: "@pcmobilecolombia", url: "https://www.instagram.com/pcmobilecolombia" },
-              { name: "Marden Colombia", handle: "@marden_colombia", url: "https://www.instagram.com/marden_colombia" },
-              { name: "Salsamentaria La Mejor", handle: "@salsamentaria_lamejor", url: "https://www.instagram.com/salsamentaria_lamejor" },
-              { name: "Car Wash Obrero", handle: "@carwashobrero_", url: "https://www.instagram.com/carwashobrero_" }
-            ].map((brand) => (
+            {externalBrands.map((brand) => (
               <Card key={brand.handle} className="border border-gray-800 bg-gray-900/50">
                 <div className="p-3 flex items-center justify-between gap-3">
                   <div className="flex-1 min-w-0">

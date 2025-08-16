@@ -363,7 +363,7 @@ export default function HomePage() {
           transition={{ duration: 1, delay: 2 }}
         >
           <p className="text-gray-500 text-lg">
-            © 2024 <span className="text-yellow-500 font-bold">TERRAZA EDEN</span> - Donde cada sabor cuenta una historia
+            © 2025 <span className="text-yellow-500 font-bold">TERRAZA EL EDEN</span> - Donde cada sabor cuenta una historia
           </p>
         </motion.footer>
       </div>
