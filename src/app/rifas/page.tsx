@@ -28,25 +28,22 @@ export default function RifasPage() {
   ]
 
   const handleAutoScroll = () => {
-    if (brandsGridRef.current) {
-      const container = brandsGridRef.current
-      const cardHeight = 80 // Aproximadamente la altura de una tarjeta + gap
-      const currentScroll = container.scrollTop
-      const maxScroll = container.scrollHeight - container.clientHeight
-      
-      // Si estamos al final, volver al inicio
-      if (currentScroll >= maxScroll - 10) {
-        container.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        })
-      } else {
-        // Scroll hacia abajo por 3 tarjetas
-        container.scrollTo({
-          top: currentScroll + (cardHeight * 3),
-          behavior: 'smooth'
-        })
-      }
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop
+    const windowHeight = window.innerHeight
+    const documentHeight = document.documentElement.scrollHeight
+    
+    // Si estamos cerca del final, volver al inicio
+    if (currentScroll + windowHeight >= documentHeight - 100) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
+    } else {
+      // Scroll hacia abajo por el equivalente a una pantalla
+      window.scrollTo({
+        top: currentScroll + windowHeight * 0.8,
+        behavior: 'smooth'
+      })
     }
   }
 
@@ -232,8 +229,7 @@ export default function RifasPage() {
           <h3 className="text-white font-bold text-lg mb-2">Marcas participantes</h3>
           <p className="text-gray-400 text-sm mb-4">Sigue a <a className="text-yellow-400 hover:text-yellow-300 underline" href="https://www.instagram.com/terrazaeleden/" target="_blank" rel="noopener noreferrer">@terrazaeleden</a> y a cada una de las siguientes marcas para poder participar por alguno de los bonos.</p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 max-h-96 md:max-h-none overflow-y-auto md:overflow-visible" 
-               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"
                ref={brandsGridRef}>
             {/* Marcas de brands.json con rifas activas */}
             {(brandsData.brands as Brand[])
@@ -293,12 +289,7 @@ export default function RifasPage() {
         <span className="text-sm font-extrabold">Desliza</span>
       </motion.button>
 
-      {/* Añadir estilos para ocultar scrollbar */}
-      <style jsx>{`
-        .overflow-y-auto::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
+
     </div>
   )
 }
