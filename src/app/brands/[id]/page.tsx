@@ -63,6 +63,33 @@ const ayWeyCategoryIcons: { [key: string]: React.ReactNode } = {
   'adicionales': <span className="text-2xl">🌶️</span>
 }
 
+// Iconos personalizados para las categorías de Sabor Extremo
+const saborExtremoCategoryIcons: { [key: string]: React.ReactNode } = {
+  'entradas': <span className="text-2xl">🍟</span>,
+  'artesados': <span className="text-2xl">🥪</span>,
+  'burritos': <span className="text-2xl">🌯</span>,
+  'ensalada': <span className="text-2xl">🥗</span>,
+  'hamburguesas': <span className="text-2xl">🍔</span>,
+  'perros': <span className="text-2xl">🌭</span>,
+  'combos': <span className="text-2xl">🍟</span>,
+  'sandwich': <Sandwich className="w-6 h-6" />,
+  'salchipapas': <span className="text-2xl">🌭</span>,
+  'asados': <span className="text-2xl">🥩</span>,
+  'picadas': <span className="text-2xl">🍖</span>,
+  'bebidas': <span className="text-2xl">🥤</span>,
+  'jugos': <span className="text-2xl">🧃</span>
+}
+
+// Iconos personalizados para las categorías de Cocos Pacífico Fresh
+const cocosCategoryIcons: { [key: string]: React.ReactNode } = {
+  'cocos': <span className="text-2xl">🥥</span>,
+  'dulces': <span className="text-2xl">🍬</span>,
+  'bebidas': <span className="text-2xl">🥤</span>,
+  'helados': <span className="text-2xl">🍦</span>,
+  'combinados': <span className="text-2xl">🍹</span>,
+  'snacks': <span className="text-2xl">🍿</span>
+}
+
 // Paleta por categoría para Ay Wey (rojo/amarillo)
 const getAyWeyColors = (categoryId: string) => {
   const redCategories = new Set(['volcanes', 'entrantes'])
@@ -387,7 +414,9 @@ export default function BrandPage({ params }: Props) {
   const isAyWey = brand.id === 'ay-wey'
   const isPerfetto = brand.id === 'perfetto'
   const isMazorca = brand.id === 'mazorca'
-  const hasSpecialDesign = isTogoima || isAyWey || isPerfetto || isMazorca
+  const isSaborExtremo = brand.id === 'sabor-extremo'
+  const isCocos = brand.id === 'cocos-pacifico-fresh'
+  const hasSpecialDesign = isTogoima || isAyWey || isPerfetto || isMazorca || isSaborExtremo || isCocos
 
   return (
     <motion.div 
@@ -466,6 +495,38 @@ export default function BrandPage({ params }: Props) {
               <div className="absolute top-1/3 right-20 text-5xl opacity-15 animate-pulse" style={{ animationDelay: '1s' }}>🌾</div>
               <div className="absolute bottom-20 left-1/4 text-7xl opacity-10 animate-pulse" style={{ animationDelay: '2s' }}>🌽</div>
               <div className="absolute bottom-1/3 right-1/3 text-4xl opacity-20 animate-pulse" style={{ animationDelay: '1.5s' }}>🧀</div>
+            </>
+          ) : isSaborExtremo ? (
+            // Fondo especial para Sabor Extremo con patrón de comida extrema
+            <>
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-900 via-red-900 to-yellow-900 opacity-20" />
+              <div 
+                className="absolute inset-0 opacity-10"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23FFA500' fill-opacity='0.2'%3E%3Cpath d='M20 0c11 0 20 9 20 20s-9 20-20 20S0 31 0 20 9 0 20 0zm0 5c8.3 0 15 6.7 15 15s-6.7 15-15 15S5 28.3 5 20 11.7 5 20 5z'/%3E%3C/g%3E%3C/svg%3E")`
+                }}
+              />
+              {/* Comida extrema flotante animada */}
+              <div className="absolute top-10 left-10 text-6xl opacity-20 animate-pulse">🍔</div>
+              <div className="absolute top-1/3 right-20 text-5xl opacity-15 animate-pulse" style={{ animationDelay: '1s' }}>🌭</div>
+              <div className="absolute bottom-20 left-1/4 text-7xl opacity-10 animate-pulse" style={{ animationDelay: '2s' }}>🍟</div>
+              <div className="absolute bottom-1/3 right-1/3 text-4xl opacity-20 animate-pulse" style={{ animationDelay: '1.5s' }}>🔥</div>
+            </>
+          ) : isCocos ? (
+            // Fondo especial para Cocos Pacífico Fresh con patrón tropical
+            <>
+              <div className="absolute inset-0 bg-gradient-to-br from-green-900 via-teal-900 to-blue-900 opacity-20" />
+              <div 
+                className="absolute inset-0 opacity-10"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%232E7D32' fill-opacity='0.2'%3E%3Cpath d='M0 0h20v20H0V0zm20 20h20v20H20V20z'/%3E%3C/g%3E%3C/svg%3E")`
+                }}
+              />
+              {/* Elementos tropicales flotantes animados */}
+              <div className="absolute top-10 left-10 text-6xl opacity-20 animate-pulse">🥥</div>
+              <div className="absolute top-1/3 right-20 text-5xl opacity-15 animate-pulse" style={{ animationDelay: '1s' }}>🍦</div>
+              <div className="absolute bottom-20 left-1/4 text-7xl opacity-10 animate-pulse" style={{ animationDelay: '2s' }}>🍹</div>
+              <div className="absolute bottom-1/3 right-1/3 text-4xl opacity-20 animate-pulse" style={{ animationDelay: '1.5s' }}>🌴</div>
             </>
           ) : (
             <>
@@ -769,10 +830,14 @@ export default function BrandPage({ params }: Props) {
                       ? isPerfetto ? '#228B2220'
                       : isMazorca ? '#FFD70020'
                       : isTogoima ? '#8B451320'
+                      : isSaborExtremo ? '#FFA50020'
+                      : isCocos ? '#2E7D3220'
                       : '#D2691E20'
                       : isPerfetto ? '#228B2210'
                       : isMazorca ? '#FFD70010'
                       : isTogoima ? '#3E272310'
+                      : isSaborExtremo ? '#FFA50010'
+                      : isCocos ? '#2E7D3210'
                       : '#8B451310',
                   borderColor: isAyWey
                     ? getAyWeyColors(category.id).border
@@ -780,16 +845,22 @@ export default function BrandPage({ params }: Props) {
                       ? isPerfetto ? '#228B22'
                       : isMazorca ? '#FFD700'
                       : isTogoima ? '#8B4513'
+                      : isSaborExtremo ? '#FFA500'
+                      : isCocos ? '#2E7D32'
                       : '#D2691E'
                       : isPerfetto ? '#228B2230'
                       : isMazorca ? '#FFD70030'
                       : isTogoima ? '#8B451330'
+                      : isSaborExtremo ? '#FFA50030'
+                      : isCocos ? '#2E7D3230'
                       : '#8B451330',
                   boxShadow: selectedCategory === category.id
                     ? isAyWey ? `0 20px 40px ${getAyWeyColors(category.id).primary}30`
                     : isPerfetto ? `0 20px 40px #228B2230`
                     : isMazorca ? `0 20px 40px #FFD70030`
                     : isTogoima ? `0 20px 40px #8B451340`
+                    : isSaborExtremo ? `0 20px 40px #FFA50030`
+                    : isCocos ? `0 20px 40px #2E7D3230`
                     : `0 20px 40px #D2691E30`
                     : 'none'
                 }}
@@ -799,6 +870,8 @@ export default function BrandPage({ params }: Props) {
                     : isPerfetto ? '#228B2215'
                     : isMazorca ? '#FFD70015'
                     : isTogoima ? '#3E272315'
+                    : isSaborExtremo ? '#FFA50015'
+                    : isCocos ? '#2E7D3215'
                     : '#D2691E15'
                 }}
                 whileTap={{ scale: 0.95 }}
@@ -816,16 +889,22 @@ export default function BrandPage({ params }: Props) {
                           ? isPerfetto ? '#228B22'
                           : isMazorca ? '#FFD700'
                           : isTogoima ? '#8B4513'
+                          : isSaborExtremo ? '#FFA500'
+                          : isCocos ? '#2E7D32'
                           : '#D2691E'
                           : isPerfetto ? '#228B2250'
                           : isMazorca ? '#FFD70050'
                           : isTogoima ? '#8B451350'
+                          : isSaborExtremo ? '#FFA50050'
+                          : isCocos ? '#2E7D3250'
                           : '#8B451350',
                       color: selectedCategory === category.id ? 'white'
                         : isAyWey ? getAyWeyColors(category.id).primary
                         : isPerfetto ? '#228B22'
                         : isMazorca ? '#8B4513'
                         : isTogoima ? '#DEB887'
+                        : isSaborExtremo ? '#FF4136'
+                        : isCocos ? '#81C784'
                         : '#D2691E'
                     }}
                   >
@@ -835,7 +914,11 @@ export default function BrandPage({ params }: Props) {
                         ? (perfettoCategoryIcons[category.id] || <span className="text-2xl">🍨</span>)
                         : isMazorca
                           ? (mazorcaCategoryIcons[category.id] || <span className="text-2xl">🌽</span>)
-                          : (togoimaCategoryIcons[category.id] || <Coffee className="w-6 h-6" />)
+                          : isSaborExtremo
+                            ? (saborExtremoCategoryIcons[category.id] || <span className="text-2xl">🍔</span>)
+                            : isCocos
+                              ? (cocosCategoryIcons[category.id] || <span className="text-2xl">🥥</span>)
+                              : (togoimaCategoryIcons[category.id] || <Coffee className="w-6 h-6" />)
                     }
                   </div>
                   <span 
@@ -844,10 +927,14 @@ export default function BrandPage({ params }: Props) {
                         ? isAyWey ? 'text-black'
                         : isPerfetto ? 'text-green-400'
                         : isMazorca ? 'text-yellow-400'
+                        : isSaborExtremo ? 'text-orange-400'
+                        : isCocos ? 'text-green-400'
                         : 'text-orange-400'
                         : isAyWey ? 'text-gray-800'
                         : isPerfetto ? 'text-green-200'
                         : isMazorca ? 'text-yellow-200'
+                        : isSaborExtremo ? 'text-orange-200'
+                        : isCocos ? 'text-green-200'
                         : 'text-amber-200'
                     }`}
                   >
@@ -862,6 +949,8 @@ export default function BrandPage({ params }: Props) {
                     backgroundColor: isAyWey ? getAyWeyColors(category.id).primary
                     : isPerfetto ? '#DC143C'
                     : isMazorca ? '#FF8C00'
+                    : isSaborExtremo ? '#FF4136'
+                    : isCocos ? '#2E7D32'
                     : '#8B4513'
                   }}
                 >

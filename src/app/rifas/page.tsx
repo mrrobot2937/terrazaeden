@@ -18,6 +18,7 @@ export default function RifasPage() {
   // Marcas adicionales externas (no vienen de brands.json)
   const externalBrands = [
     { name: 'Sabor Extremo Gourmet', handle: '@saborextremogourmet', url: 'https://www.instagram.com/saborextremogourmet/' },
+    { name: 'Fundación FEDI', handle: '@fundacionfedi', url: 'https://www.instagram.com/fundacionfedi' },
     { name: 'Josué', handle: '@josuee1.6', url: 'https://www.instagram.com/josuee1.6' },
     { name: 'PC Mobile Colombia', handle: '@pcmobilecolombia', url: 'https://www.instagram.com/pcmobilecolombia' },
     { name: 'Marden Colombia', handle: '@marden_colombia', url: 'https://www.instagram.com/marden_colombia' },
