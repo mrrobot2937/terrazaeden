@@ -1495,7 +1495,8 @@
                                 "name": "Combo 3",
                                 "description": "Croissant con relleno + bebida caliente (Tamaño L)",
                                 "price": 18000,
-                                "imageIcon": "🍱"
+                                "imageIcon": "🍱",
+                                "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/togoima/combo3.jpeg"
                             }
                         ]
                     },
