@@ -1253,7 +1253,9 @@
             "contact": {
                 "whatsapp": "+573001234572",
                 "whatsappMessage": "¡Hola! Me gustaría ordenar del menú de Togoima ☕",
-                "callWaiter": true
+                "callWaiter": true,
+                "instagramUrl": "https://www.instagram.com/togoimacafe_palmira/",
+                "instagramHandle": "@togoimacafe_palmira"
             },
             "menu": {
                 "categories": [
@@ -2153,6 +2155,15 @@
                         ]
                     }
                 ]
+            },
+            "raffle": {
+                "enabled": true,
+                "prizeAmount": 30000,
+                "prizeTitle": "Bono",
+                "closingDate": "2025-12-31",
+                "winner": {
+                    "decided": false
+                }
             }
         },
         {
