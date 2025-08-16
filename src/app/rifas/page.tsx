@@ -161,7 +161,8 @@ export default function RifasPage() {
         >
           <h3 className="text-white font-bold text-lg mb-2">Marcas participantes</h3>
           <p className="text-gray-400 text-sm mb-4">Sigue a <a className="text-yellow-400 hover:text-yellow-300 underline" href="https://www.instagram.com/terrazaeleden/" target="_blank" rel="noopener noreferrer">@terrazaeleden</a> y a cada una de las siguientes marcas para poder participar por alguno de los bonos.</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+            {/* Marcas de brands.json con rifas activas */}
             {(brandsData.brands as Brand[])
               .filter(b => b.raffle?.enabled && b.contact?.instagramUrl)
               .map((brand) => {
@@ -169,18 +170,39 @@ export default function RifasPage() {
                 const brandHandle = brand.contact.instagramHandle || `@${brandIgUrl.replace(/\/$/, '').split('/').pop()}`
                 return (
                   <Card key={brand.id} className="border border-gray-800 bg-gray-900/50">
-                    <div className="p-5 flex items-center justify-between gap-4">
-                      <div>
-                        <p className="text-white font-semibold">{brand.name}</p>
-                        <a className="inline-flex items-center gap-2 text-pink-400 hover:text-pink-300 text-sm" href={brandIgUrl} target="_blank" rel="noopener noreferrer">
-                          <Instagram className="w-4 h-4" /> {brandHandle}
+                    <div className="p-3 flex items-center justify-between gap-3">
+                      <div className="flex-1 min-w-0">
+                        <p className="text-white font-medium text-sm truncate">{brand.name}</p>
+                        <a className="inline-flex items-center gap-1 text-pink-400 hover:text-pink-300 text-xs" href={brandIgUrl} target="_blank" rel="noopener noreferrer">
+                          <Instagram className="w-3 h-3" /> {brandHandle}
                         </a>
                       </div>
-                      <a className="px-3 py-2 rounded-lg bg-yellow-500 text-black font-semibold text-sm border border-yellow-300 hover:bg-yellow-400" href={brandIgUrl} target="_blank" rel="noopener noreferrer">Seguir</a>
+                      <a className="px-2 py-1 rounded bg-yellow-500 text-black font-medium text-xs border border-yellow-300 hover:bg-yellow-400 whitespace-nowrap" href={brandIgUrl} target="_blank" rel="noopener noreferrer">Seguir</a>
                     </div>
                   </Card>
                 )
               })}
+            
+            {/* Marcas adicionales */}
+            {[
+              { name: "Josué", handle: "@josuee1.6", url: "https://www.instagram.com/josuee1.6" },
+              { name: "PC Mobile Colombia", handle: "@pcmobilecolombia", url: "https://www.instagram.com/pcmobilecolombia" },
+              { name: "Marden Colombia", handle: "@marden_colombia", url: "https://www.instagram.com/marden_colombia" },
+              { name: "Salsamentaria La Mejor", handle: "@salsamentaria_lamejor", url: "https://www.instagram.com/salsamentaria_lamejor" },
+              { name: "Car Wash Obrero", handle: "@carwashobrero_", url: "https://www.instagram.com/carwashobrero_" }
+            ].map((brand) => (
+              <Card key={brand.handle} className="border border-gray-800 bg-gray-900/50">
+                <div className="p-3 flex items-center justify-between gap-3">
+                  <div className="flex-1 min-w-0">
+                    <p className="text-white font-medium text-sm truncate">{brand.name}</p>
+                    <a className="inline-flex items-center gap-1 text-pink-400 hover:text-pink-300 text-xs" href={brand.url} target="_blank" rel="noopener noreferrer">
+                      <Instagram className="w-3 h-3" /> {brand.handle}
+                    </a>
+                  </div>
+                  <a className="px-2 py-1 rounded bg-yellow-500 text-black font-medium text-xs border border-yellow-300 hover:bg-yellow-400 whitespace-nowrap" href={brand.url} target="_blank" rel="noopener noreferrer">Seguir</a>
+                </div>
+              </Card>
+            ))}
           </div>
         </motion.section>
       </main>
