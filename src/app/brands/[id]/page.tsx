@@ -615,7 +615,7 @@ export default function BrandPage({ params }: Props) {
               />
             </div>
             <div className="mt-4 flex justify-center">
-              <div className="px-6 py-3 bg-[#C62828] text-white rounded-lg border border-red-800 shadow-md font-semibold text-sm md:text-base text-center leading-relaxed">
+              <div className="px-6 py-3 bg-[#C62828] text-black rounded-lg border border-red-800 shadow-md font-semibold text-sm md:text-base text-center leading-relaxed">
                 {brand.description}
               </div>
             </div>
@@ -805,7 +805,7 @@ export default function BrandPage({ params }: Props) {
                   <span 
                     className={`font-bold text-sm md:text-base ${
                       selectedCategory === category.id
-                        ? isAyWey ? 'text-white'
+                        ? isAyWey ? 'text-black'
                         : isPerfetto ? 'text-green-400'
                         : isMazorca ? 'text-yellow-400'
                         : 'text-orange-400'
@@ -1028,11 +1028,11 @@ export default function BrandPage({ params }: Props) {
                     <CardContent className={`${hasSpecialDesign ? 'p-4' : 'p-6'}`}>
                       <div className="space-y-4">
                         <div>
-                          <h3 className={`${hasSpecialDesign ? 'text-base' : 'text-lg'} font-bold text-white mb-2 line-clamp-2 group-hover:text-gray-200 transition-colors`}>
+                          <h3 className={`${hasSpecialDesign ? 'text-base' : 'text-lg'} font-bold ${isAyWey ? 'text-black' : 'text-white'} mb-2 line-clamp-2 ${isAyWey ? 'group-hover:text-gray-800' : 'group-hover:text-gray-200'} transition-colors`}>
                             {item.name}
                           </h3>
                           
-                          <p className={`text-gray-400 ${hasSpecialDesign ? 'text-xs' : 'text-sm'} leading-relaxed line-clamp-3 mb-4`}>
+                          <p className={`${isAyWey ? 'text-gray-700' : 'text-gray-400'} ${hasSpecialDesign ? 'text-xs' : 'text-sm'} leading-relaxed line-clamp-3 mb-4`}>
                             {item.description}
                           </p>
                         </div>
