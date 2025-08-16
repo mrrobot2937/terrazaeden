@@ -977,7 +977,7 @@ export default function BrandPage({ params }: Props) {
                   >
                     {/* Item Image or Icon */}
                     <div 
-                      className={`${hasSpecialDesign ? (isPerfetto ? 'h-56 md:h-64' : 'h-32') : 'h-40'} relative overflow-hidden`}
+                      className={`${hasSpecialDesign ? (isPerfetto ? 'h-56 md:h-64' : isTogoima ? 'h-48 md:h-56' : 'h-32') : 'h-40'} relative overflow-hidden`}
                       style={{
                         background: isAyWey 
                           ? `linear-gradient(135deg, ${getAyWeyColors(selectedCategory).bgSelected}, ${getAyWeyColors(selectedCategory).bgHover})`
@@ -992,7 +992,7 @@ export default function BrandPage({ params }: Props) {
                     >
                       <div className="absolute inset-0 flex items-center justify-center">
                         {item.image ? (
-                          <img src={item.image} alt={item.name} className="w-full h-full object-contain p-3 md:p-4" />
+                          <img src={item.image} alt={item.name} className={`w-full h-full object-contain ${isTogoima ? 'p-2 md:p-3' : 'p-3 md:p-4'}`} />
                         ) : (
                           <div 
                               className={`${hasSpecialDesign ? 'w-16 h-16' : 'w-20 h-20'} rounded-full flex items-center justify-center text-white font-bold shadow-lg`}
