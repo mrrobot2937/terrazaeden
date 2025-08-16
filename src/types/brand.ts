@@ -22,6 +22,20 @@ export interface ContactInfo {
     whatsappMessage?: string;
     officialWebsite?: string;
     callWaiter?: boolean;
+    instagramUrl?: string;
+    instagramHandle?: string;
+}
+
+export interface RaffleConfig {
+    enabled?: boolean;
+    prizeAmount?: number;
+    prizeTitle?: string;
+    closingDate?: string; // ISO date string
+    winner?: {
+        decided: boolean;
+        name?: string;
+        instagram?: string;
+    };
 }
 
 export interface Brand {
@@ -35,6 +49,7 @@ export interface Brand {
     category: string;
     menu: Menu;
     contact: ContactInfo;
+    raffle?: RaffleConfig;
 }
 
 export interface BrandsData {

@@ -4,7 +4,9 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Card } from '@/components/ui/card'
-import { CheckCircle2, AlertCircle, ExternalLink, Instagram, Ticket } from 'lucide-react'
+import { CheckCircle2, AlertCircle, ExternalLink, Instagram, Ticket, Calendar, Trophy } from 'lucide-react'
+import brandsData from '@/data/brands.json'
+import { Brand } from '@/types/brand'
 
 export default function RifasPage() {
   const [instagramUser, setInstagramUser] = useState('')
@@ -64,8 +66,8 @@ export default function RifasPage() {
                 <Ticket className="w-6 h-6" />
               </div>
               <div className="flex-1">
-                <h2 className="text-xl font-bold text-white">Participa por bonos y premios</h2>
-                <p className="text-gray-300 mt-1">Déjanos tu usuario de Instagram para entrar a las rifas activas. Debes seguir a <strong>@terrazaeden</strong> y al restaurante que otorga el bono.</p>
+                <h2 className="text-xl font-bold text-white">Participa por bonos</h2>
+                <p className="text-gray-300 mt-1">Para participar, primero sigue a <a href="https://www.instagram.com/terrazaeleden/" target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:text-yellow-300 underline">@terrazaeleden</a> y a todas las marcas listadas abajo. Luego deja tu usuario de Instagram en el formulario.</p>
               </div>
             </div>
           </Card>
@@ -127,26 +129,34 @@ export default function RifasPage() {
           </Card>
         </motion.section>
 
-        {/* Rifas activas (placeholder) */}
+        {/* Marcas participantes */}
         <motion.section 
           className="mt-10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <h3 className="text-white font-bold text-lg mb-3">Rifas activas</h3>
+          <h3 className="text-white font-bold text-lg mb-2">Marcas participantes</h3>
+          <p className="text-gray-400 text-sm mb-4">Sigue a <a className="text-yellow-400 hover:text-yellow-300 underline" href="https://www.instagram.com/terrazaeleden/" target="_blank" rel="noopener noreferrer">@terrazaeleden</a> y a cada una de las siguientes marcas para poder participar por alguno de los bonos.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Card className="border border-gray-800 bg-gray-900/50">
-              <div className="p-5 space-y-2">
-                <p className="text-white font-semibold">Bono $50.000 - ¡Ay Wey!</p>
-                <p className="text-gray-400 text-sm">Sigue a @terrazaeden y @ayweymex para participar.</p>
-              </div>
-            </Card>
-            <Card className="border border-gray-800 bg-gray-900/50">
-              <div className="p-5 space-y-2">
-                <p className="text-white font-semibold">Bono $30.000 - Perfetto</p>
-                <p className="text-gray-400 text-sm">Sigue a @terrazaeden y @perfettogelato para participar.</p>
-              </div>
-            </Card>
+            {(brandsData.brands as Brand[])
+              .filter(b => b.raffle?.enabled && b.contact?.instagramUrl)
+              .map((brand) => {
+                const brandIgUrl = brand.contact.instagramUrl as string
+                const brandHandle = brand.contact.instagramHandle || `@${brandIgUrl.replace(/\/$/, '').split('/').pop()}`
+                return (
+                  <Card key={brand.id} className="border border-gray-800 bg-gray-900/50">
+                    <div className="p-5 flex items-center justify-between gap-4">
+                      <div>
+                        <p className="text-white font-semibold">{brand.name}</p>
+                        <a className="inline-flex items-center gap-2 text-pink-400 hover:text-pink-300 text-sm" href={brandIgUrl} target="_blank" rel="noopener noreferrer">
+                          <Instagram className="w-4 h-4" /> {brandHandle}
+                        </a>
+                      </div>
+                      <a className="px-3 py-2 rounded-lg bg-yellow-500 text-black font-semibold text-sm border border-yellow-300 hover:bg-yellow-400" href={brandIgUrl} target="_blank" rel="noopener noreferrer">Seguir</a>
+                    </div>
+                  </Card>
+                )
+              })}
           </div>
         </motion.section>
       </main>

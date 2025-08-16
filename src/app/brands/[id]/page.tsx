@@ -3,7 +3,7 @@
 import { useState, useEffect, use, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Card, CardContent } from '@/components/ui/card'
-import { ArrowLeft, ExternalLink, Star, Clock, Flame, Coffee, Wine, Sandwich, Cherry, Droplets, ChefHat, Pizza, Package, ArrowDown } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Star, Clock, Flame, Coffee, Wine, Sandwich, Cherry, Droplets, ChefHat, Pizza, Package, ArrowDown, Instagram } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
@@ -344,12 +344,15 @@ export default function BrandPage({ params }: Props) {
   useEffect(() => {
     if (!mounted) return
 
+    let raf = 0
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
+      if (raf) cancelAnimationFrame(raf)
+      const { clientX, clientY } = e
+      raf = requestAnimationFrame(() => setMousePosition({ x: clientX, y: clientY }))
     }
 
     window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
+    return () => { if (raf) cancelAnimationFrame(raf); window.removeEventListener('mousemove', handleMouseMove) }
   }, [mounted])
 
   if (!brand) {
@@ -681,6 +684,37 @@ export default function BrandPage({ params }: Props) {
             <Flame className={`w-5 h-5 ${isAyWey ? 'text-red-700' : 'text-red-400'}`} />
             <span className={`${isAyWey ? 'text-gray-800' : 'text-white'} font-medium`}>Popular</span>
           </div>
+
+          {/* Autoservicio (Perfetto) */}
+          {isPerfetto && (
+            <div 
+              className={`flex items-center space-x-2 px-4 py-2 rounded-full border ${isAyWey ? 'bg-white' : 'backdrop-blur-md'}`}
+              style={{
+                backgroundColor: isAyWey ? '#FFFFFF' : brand.accentColor + '15',
+                borderColor: isAyWey ? '#DDD' : brand.accentColor + '30'
+              }}
+            >
+              <ChefHat className={`w-5 h-5 ${isAyWey ? 'text-green-700' : 'text-yellow-400'}`} />
+              <span className={`${isAyWey ? 'text-gray-800' : 'text-white'} font-medium`}>Autoservicio</span>
+            </div>
+          )}
+
+          {/* Instagram de la marca */}
+          {brand.contact.instagramUrl && (
+            <a 
+              href={brand.contact.instagramUrl}
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={`flex items-center space-x-2 px-4 py-2 rounded-full border ${isAyWey ? 'bg-white' : 'backdrop-blur-md'}`}
+              style={{
+                backgroundColor: isAyWey ? '#FFFFFF' : brand.primaryColor + '15',
+                borderColor: isAyWey ? '#DDD' : brand.primaryColor + '30'
+              }}
+            >
+              <Instagram className={`w-5 h-5 ${isAyWey ? 'text-pink-700' : 'text-pink-400'}`} />
+              <span className={`${isAyWey ? 'text-gray-800' : 'text-white'} font-medium`}>{brand.contact.instagramHandle || 'Instagram'}</span>
+            </a>
+          )}
         </motion.div>
 
         {/* Official Website Button - Solo para Choripam */}

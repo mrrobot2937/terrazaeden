@@ -416,7 +416,18 @@
             "contact": {
                 "whatsapp": "+573225440966",
                 "whatsappMessage": "¡Hola! Me gustaría hacer un pedido de ¡Ay Wey! 🌮🌶️",
-                "callWaiter": true
+                "callWaiter": true,
+                "instagramUrl": "https://www.instagram.com/ay_weypalmira/",
+                "instagramHandle": "@ay_weypalmira"
+            },
+            "raffle": {
+                "enabled": true,
+                "prizeAmount": 50000,
+                "prizeTitle": "Bono",
+                "closingDate": "2025-12-31",
+                "winner": {
+                    "decided": false
+                }
             },
             "menu": {
                 "categories": [
@@ -781,10 +792,21 @@
             "secondaryColor": "#FFA500",
             "accentColor": "#FF8C00",
             "category": "Comida en base a maíz",
+            "raffle": {
+                "enabled": true,
+                "prizeAmount": 30000,
+                "prizeTitle": "Bono",
+                "closingDate": "2025-12-31",
+                "winner": {
+                    "decided": false
+                }
+            },
             "contact": {
                 "whatsapp": "+573001234568",
                 "whatsappMessage": "¡Hola! Quiero ordenar unas deliciosas mazorcadas 🌽",
-                "callWaiter": true
+                "callWaiter": true,
+                "instagramUrl": "https://www.instagram.com/mazorca_food/",
+                "instagramHandle": "@mazorca_food"
             },
             "menu": {
                 "categories": [
@@ -997,8 +1019,19 @@
             "secondaryColor": "#CD853F",
             "accentColor": "#A0522D",
             "category": "Parrilla",
+            "raffle": {
+                "enabled": true,
+                "prizeAmount": 30000,
+                "prizeTitle": "Bono",
+                "closingDate": "2025-12-31",
+                "winner": {
+                    "decided": false
+                }
+            },
             "contact": {
-                "officialWebsite": "https://www.choripam.com"
+                "officialWebsite": "https://www.choripam.com",
+                "instagramUrl": "https://www.instagram.com/choripamve/",
+                "instagramHandle": "@choripamve"
             },
             "menu": {
                 "categories": []
@@ -1471,7 +1504,7 @@
                     },
                     {
                         "id": "platos",
-                        "name": "PLATOS (NUEVOS)",
+                        "name": "Desayunos",
                         "items": [
                             {
                                 "id": "aguacate-waffle-veg",
@@ -1924,7 +1957,19 @@
             "secondaryColor": "#FFD700",
             "accentColor": "#DC143C",
             "category": "Gelato",
-            "contact": {},
+            "raffle": {
+                "enabled": true,
+                "prizeAmount": 30000,
+                "prizeTitle": "Bono",
+                "closingDate": "2025-12-31",
+                "winner": {
+                    "decided": false
+                }
+            },
+            "contact": {
+                "instagramUrl": "https://www.instagram.com/perfetto_gelato_sano/",
+                "instagramHandle": "@perfetto_gelato_sano"
+            },
             "menu": {
                 "categories": [
                     {
@@ -2116,7 +2161,19 @@
             "secondaryColor": "#81C784",
             "accentColor": "#FFC107",
             "category": "Cocina del Pacífico",
-            "contact": {},
+            "raffle": {
+                "enabled": true,
+                "prizeAmount": 30000,
+                "prizeTitle": "Bono",
+                "closingDate": "2025-12-31",
+                "winner": {
+                    "decided": false
+                }
+            },
+            "contact": {
+                "instagramUrl": "https://www.instagram.com/cocospacificofresh/",
+                "instagramHandle": "@cocospacificofresh"
+            },
             "menu": {
                 "categories": [
                     {
@@ -2444,7 +2501,19 @@
             "secondaryColor": "#B45309",
             "accentColor": "#1F2937",
             "category": "Hamburguesas",
-            "contact": {},
+            "raffle": {
+                "enabled": true,
+                "prizeAmount": 30000,
+                "prizeTitle": "Bono",
+                "closingDate": "2025-12-31",
+                "winner": {
+                    "decided": false
+                }
+            },
+            "contact": {
+                "instagramUrl": "https://www.instagram.com/dreamburgercol/",
+                "instagramHandle": "@dreamburgercol"
+            },
             "menu": {
                 "categories": []
             }

@@ -53,7 +53,7 @@ export default function HomePage() {
   const [isDesktop, setIsDesktop] = useState(false)
   const [particles] = useState(generateParticles)
   const brands: Brand[] = brandsData.brands
-  const terrazaWhatsappNumber: string = (process.env.NEXT_PUBLIC_WHATSAPP_TERRAZA as string) || '+573225440966'
+  const terrazaWhatsappNumber: string = (process.env.NEXT_PUBLIC_WHATSAPP_TERRAZA as string) || '+573113592535'
 
   useEffect(() => {
     setMounted(true)
@@ -61,8 +61,11 @@ export default function HomePage() {
     updateIsDesktop()
     window.addEventListener('resize', updateIsDesktop)
     
+    let raf = 0
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
+      if (raf) cancelAnimationFrame(raf)
+      const { clientX, clientY } = e
+      raf = requestAnimationFrame(() => setMousePosition({ x: clientX, y: clientY }))
     }
 
     if (window.innerWidth >= 768) {
@@ -70,6 +73,7 @@ export default function HomePage() {
     }
 
     return () => {
+      if (raf) cancelAnimationFrame(raf)
       window.removeEventListener('mousemove', handleMouseMove)
       window.removeEventListener('resize', updateIsDesktop)
     }
