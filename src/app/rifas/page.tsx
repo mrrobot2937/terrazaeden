@@ -1,0 +1,157 @@
+'use client'
+
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import { Card } from '@/components/ui/card'
+import { CheckCircle2, AlertCircle, ExternalLink, Instagram, Ticket } from 'lucide-react'
+
+export default function RifasPage() {
+  const [instagramUser, setInstagramUser] = useState('')
+  const [submitting, setSubmitting] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setError(null)
+
+    const trimmed = instagramUser.trim()
+    if (!trimmed) {
+      setError('Por favor ingresa tu usuario de Instagram')
+      return
+    }
+    if (!/^@?[a-zA-Z0-9._]{1,30}$/.test(trimmed)) {
+      setError('Usuario inválido. Solo letras, números, punto y guion bajo')
+      return
+    }
+
+    setSubmitting(true)
+    try {
+      // Placeholder: aquí podrías enviar a una API o Google Sheet
+      await new Promise((res) => setTimeout(res, 900))
+      setSubmitted(true)
+    } catch (e) {
+      setError('No pudimos registrar tu participación. Intenta nuevamente.')
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
+  return (
+    <div className="min-h-screen bg-black">
+      <motion.header 
+        className="max-w-4xl mx-auto px-6 py-8"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+      >
+        <div className="flex items-center justify-between">
+          <Link href="/" className="text-gray-300 hover:text-yellow-400 transition-colors">← Volver</Link>
+          <h1 className="text-2xl md:text-3xl font-extrabold text-white">Rifas y Bonos</h1>
+          <div />
+        </div>
+      </motion.header>
+
+      <main className="max-w-4xl mx-auto px-6 pb-20">
+        <motion.section 
+          className="mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          <Card className="border border-yellow-500/30 bg-gray-900/60 backdrop-blur">
+            <div className="p-6 flex items-start gap-4">
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-yellow-500 text-black shadow-lg">
+                <Ticket className="w-6 h-6" />
+              </div>
+              <div className="flex-1">
+                <h2 className="text-xl font-bold text-white">Participa por bonos y premios</h2>
+                <p className="text-gray-300 mt-1">Déjanos tu usuario de Instagram para entrar a las rifas activas. Debes seguir a <strong>@terrazaeden</strong> y al restaurante que otorga el bono.</p>
+              </div>
+            </div>
+          </Card>
+        </motion.section>
+
+        {/* Formulario de inscripción */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          <Card className="border border-gray-800 bg-gray-900/60 backdrop-blur">
+            <form onSubmit={handleSubmit} className="p-6 space-y-4">
+              <label className="block">
+                <span className="block text-sm font-medium text-gray-300 mb-2">Usuario de Instagram</span>
+                <div className="flex items-center gap-2">
+                  <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-pink-500/20 border border-pink-500/40 text-pink-400">
+                    <Instagram className="w-5 h-5" />
+                  </div>
+                  <input
+                    type="text"
+                    inputMode="text"
+                    placeholder="@tu_usuario"
+                    className="flex-1 px-4 py-3 rounded-lg bg-black/40 border border-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-500/40 focus:border-yellow-500/60"
+                    value={instagramUser}
+                    onChange={(e) => setInstagramUser(e.target.value)}
+                    aria-label="Usuario de Instagram"
+                  />
+                </div>
+              </label>
+
+              <div className="text-sm text-gray-400 space-y-1">
+                <p className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" /> Sigue a <a href="https://instagram.com/terrazaeden" target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:text-yellow-300 underline">@terrazaeden</a></p>
+                <p className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" /> Sigue al restaurante que otorga el bono (ver rifas activas abajo)</p>
+              </div>
+
+              {error && (
+                <div className="flex items-center gap-2 text-red-400 text-sm">
+                  <AlertCircle className="w-4 h-4" /> {error}
+                </div>
+              )}
+
+              {!submitted ? (
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="w-full px-4 py-3 rounded-lg bg-yellow-500 hover:bg-yellow-400 text-black font-bold border border-yellow-300 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {submitting ? 'Enviando...' : 'Inscribirme en las rifas'}
+                </button>
+              ) : (
+                <div className="flex items-center justify-between p-3 rounded-lg bg-green-500/10 border border-green-500/30">
+                  <p className="text-green-400 font-medium flex items-center gap-2"><CheckCircle2 className="w-5 h-5" /> ¡Listo! Te inscribiste correctamente.</p>
+                  <a href="https://instagram.com/terrazaeden" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300">
+                    Ir a Instagram <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
+              )}
+            </form>
+          </Card>
+        </motion.section>
+
+        {/* Rifas activas (placeholder) */}
+        <motion.section 
+          className="mt-10"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          <h3 className="text-white font-bold text-lg mb-3">Rifas activas</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Card className="border border-gray-800 bg-gray-900/50">
+              <div className="p-5 space-y-2">
+                <p className="text-white font-semibold">Bono $50.000 - ¡Ay Wey!</p>
+                <p className="text-gray-400 text-sm">Sigue a @terrazaeden y @ayweymex para participar.</p>
+              </div>
+            </Card>
+            <Card className="border border-gray-800 bg-gray-900/50">
+              <div className="p-5 space-y-2">
+                <p className="text-white font-semibold">Bono $30.000 - Perfetto</p>
+                <p className="text-gray-400 text-sm">Sigue a @terrazaeden y @perfettogelato para participar.</p>
+              </div>
+            </Card>
+          </div>
+        </motion.section>
+      </main>
+    </div>
+  )
+}
+
+
