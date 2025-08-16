@@ -207,7 +207,32 @@ export default function RifasPage() {
         >
           <h3 className="text-white font-bold text-lg mb-2">Marcas participantes</h3>
           <p className="text-gray-400 text-sm mb-4">Sigue a <a className="text-yellow-400 hover:text-yellow-300 underline" href="https://www.instagram.com/terrazaeleden/" target="_blank" rel="noopener noreferrer">@terrazaeleden</a> y a cada una de las siguientes marcas para poder participar por alguno de los bonos.</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          
+          {/* Indicador de deslizar en móvil */}
+          <motion.div 
+            className="md:hidden mb-4 flex items-center justify-center gap-2 p-3 rounded-lg bg-gray-800/50 border border-gray-700/50"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+          >
+            <motion.span
+              animate={{ x: [-3, 3, -3] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="text-sm"
+            >
+              👈
+            </motion.span>
+            <span className="text-gray-300 text-sm font-medium">Desliza para ver todas las marcas</span>
+            <motion.span
+              animate={{ x: [3, -3, 3] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="text-sm"
+            >
+              👉
+            </motion.span>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
             {/* Marcas de brands.json con rifas activas */}
             {(brandsData.brands as Brand[])
               .filter(b => b.raffle?.enabled && b.contact?.instagramUrl)
