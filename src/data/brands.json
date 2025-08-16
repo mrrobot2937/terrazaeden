@@ -229,7 +229,7 @@
                     },
                     {
                         "id": "combos",
-                        "name": "Aprenda tu Combo",
+                        "name": "Agranda tu Combo",
                         "items": [
                             {
                                 "id": "papas-gaseosa",
@@ -1222,7 +1222,7 @@
             "primaryColor": "#D2691E",
             "secondaryColor": "#CD853F",
             "accentColor": "#A0522D",
-            "category": "Parrilla",
+            "category": "Comida rapida",
             "raffle": {
                 "enabled": true,
                 "prizeAmount": 30000,
