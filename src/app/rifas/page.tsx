@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Card } from '@/components/ui/card'
 import { graphqlRequest } from '@/lib/graphql'
-import { CheckCircle2, AlertCircle, ExternalLink, Instagram, Ticket, Calendar, Trophy, ChevronRight } from 'lucide-react'
+import { CheckCircle2, AlertCircle, ExternalLink, Instagram, Ticket, Calendar, Trophy, ChevronDown } from 'lucide-react'
 import brandsData from '@/data/brands.json'
 import { Brand } from '@/types/brand'
 
@@ -30,20 +30,20 @@ export default function RifasPage() {
   const handleAutoScroll = () => {
     if (brandsGridRef.current) {
       const container = brandsGridRef.current
-      const cardWidth = 280 // Aproximadamente el ancho de una tarjeta + gap
-      const currentScroll = container.scrollLeft
-      const maxScroll = container.scrollWidth - container.clientWidth
+      const cardHeight = 80 // Aproximadamente la altura de una tarjeta + gap
+      const currentScroll = container.scrollTop
+      const maxScroll = container.scrollHeight - container.clientHeight
       
       // Si estamos al final, volver al inicio
       if (currentScroll >= maxScroll - 10) {
         container.scrollTo({
-          left: 0,
+          top: 0,
           behavior: 'smooth'
         })
       } else {
-        // Scroll hacia la derecha por 2 tarjetas
+        // Scroll hacia abajo por 3 tarjetas
         container.scrollTo({
-          left: currentScroll + (cardWidth * 2),
+          top: currentScroll + (cardHeight * 3),
           behavior: 'smooth'
         })
       }
@@ -232,7 +232,7 @@ export default function RifasPage() {
           <h3 className="text-white font-bold text-lg mb-2">Marcas participantes</h3>
           <p className="text-gray-400 text-sm mb-4">Sigue a <a className="text-yellow-400 hover:text-yellow-300 underline" href="https://www.instagram.com/terrazaeleden/" target="_blank" rel="noopener noreferrer">@terrazaeleden</a> y a cada una de las siguientes marcas para poder participar por alguno de los bonos.</p>
           
-          <div className="md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-4 flex md:flex-none overflow-x-auto md:overflow-visible gap-3 pb-4 md:pb-0" 
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 max-h-96 md:max-h-none overflow-y-auto md:overflow-visible" 
                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                ref={brandsGridRef}>
             {/* Marcas de brands.json con rifas activas */}
@@ -242,7 +242,7 @@ export default function RifasPage() {
                 const brandIgUrl = brand.contact.instagramUrl as string
                 const brandHandle = brand.contact.instagramHandle || `@${brandIgUrl.replace(/\/$/, '').split('/').pop()}`
                 return (
-                  <Card key={brand.id} className="border border-gray-800 bg-gray-900/50 flex-shrink-0 w-64 md:w-auto">
+                  <Card key={brand.id} className="border border-gray-800 bg-gray-900/50">
                     <div className="p-3 flex items-center justify-between gap-3">
                       <div className="flex-1 min-w-0">
                         <p className="text-white font-medium text-sm truncate">{brand.name}</p>
@@ -258,7 +258,7 @@ export default function RifasPage() {
             
             {/* Marcas adicionales */}
             {externalBrands.map((brand) => (
-              <Card key={brand.handle} className="border border-gray-800 bg-gray-900/50 flex-shrink-0 w-64 md:w-auto">
+              <Card key={brand.handle} className="border border-gray-800 bg-gray-900/50">
                 <div className="p-3 flex items-center justify-between gap-3">
                   <div className="flex-1 min-w-0">
                     <p className="text-white font-medium text-sm truncate">{brand.name}</p>
@@ -274,7 +274,7 @@ export default function RifasPage() {
         </motion.section>
       </main>
 
-      {/* Botón fijo para deslizar (solo móvil) */}
+      {/* Botón fijo para deslizar hacia abajo (solo móvil) */}
       <motion.button
         onClick={handleAutoScroll}
         className="md:hidden fixed bottom-6 right-4 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-black font-bold px-4 py-3 rounded-full shadow-2xl border-2 border-yellow-300 z-50 flex items-center gap-2"
@@ -285,17 +285,17 @@ export default function RifasPage() {
         whileTap={{ scale: 0.95 }}
       >
         <motion.div
-          animate={{ x: [0, 3, 0] }}
+          animate={{ y: [0, 3, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <ChevronRight className="w-4 h-4" />
+          <ChevronDown className="w-4 h-4" />
         </motion.div>
-        <span className="text-sm font-extrabold">Deslizar</span>
+        <span className="text-sm font-extrabold">Desliza</span>
       </motion.button>
 
       {/* Añadir estilos para ocultar scrollbar */}
       <style jsx>{`
-        .overflow-x-auto::-webkit-scrollbar {
+        .overflow-y-auto::-webkit-scrollbar {
           display: none;
         }
       `}</style>
