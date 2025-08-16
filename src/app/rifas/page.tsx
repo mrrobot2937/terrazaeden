@@ -61,7 +61,7 @@ export default function RifasPage() {
 
       const mutation = `
         mutation CreateRaffleSignup($input: CreateRaffleSignupInput!, $tenantId: String) {
-          create_raffle_signup(input: $input, tenantId: $tenantId) {
+          createRaffleSignup(input: $input, tenantId: $tenantId) {
             success
             message
             id
@@ -69,11 +69,11 @@ export default function RifasPage() {
         }
       `
 
-      type MutationResponse = { create_raffle_signup: { success: boolean; message: string; id?: string } }
+      type MutationResponse = { createRaffleSignup: { success: boolean; message: string; id?: string } }
       const res = await graphqlRequest<MutationResponse>(mutation, variables)
 
-      if (!res.create_raffle_signup?.success) {
-        throw new Error(res.create_raffle_signup?.message || 'Error desconocido')
+      if (!res.createRaffleSignup?.success) {
+        throw new Error(res.createRaffleSignup?.message || 'Error desconocido')
       }
 
       setSubmitted(true)
