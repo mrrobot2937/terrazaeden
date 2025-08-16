@@ -315,6 +315,7 @@ export default function BrandPage({ params }: Props) {
   const [mounted, setMounted] = useState(false)
   const [tableNumber, setTableNumber] = useState<number>(1)
   const productsRef = useRef<HTMLDivElement | null>(null)
+  const productsGridRef = useRef<HTMLDivElement | null>(null)
   const [showHint, setShowHint] = useState(false)
 
   const brand: Brand | undefined = brandsData.brands.find(b => b.id === resolvedParams.id)
@@ -368,9 +369,10 @@ export default function BrandPage({ params }: Props) {
   const selectedCategoryData = brand.menu.categories.find(cat => cat.id === selectedCategory)
 
   const scrollToProducts = () => {
-    const el = productsRef.current || document.getElementById('products-section')
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    const target = productsGridRef.current || productsRef.current || document.getElementById('products-section')
+    if (target) {
+      const top = target.getBoundingClientRect().top + window.scrollY - 120
+      window.scrollTo({ top, behavior: 'smooth' })
     }
     try {
       if (brand?.id) {
@@ -791,7 +793,7 @@ export default function BrandPage({ params }: Props) {
                     : `0 20px 40px #D2691E30`
                     : 'none'
                 }}
-                onClick={() => setSelectedCategory(category.id)}
+                onClick={() => { setSelectedCategory(category.id); scrollToProducts() }}
                 whileHover={{ 
                   backgroundColor: isAyWey ? getAyWeyColors(category.id).bgHover
                     : isPerfetto ? '#228B2215'
@@ -804,7 +806,7 @@ export default function BrandPage({ params }: Props) {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
               >
-                <div className="flex flex-col items-center space-y-3" onClick={scrollToProducts}>
+                <div className="flex flex-col items-center space-y-3">
                   <div 
                     className="w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300"
                     style={{
@@ -925,6 +927,7 @@ export default function BrandPage({ params }: Props) {
           {selectedCategoryData && (
             <motion.div
               key={selectedCategory}
+              ref={productsGridRef}
               className={`grid ${
                 hasSpecialDesign 
                   ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' 
@@ -988,36 +991,36 @@ export default function BrandPage({ params }: Props) {
                       }}
                     >
                       <div className="absolute inset-0 flex items-center justify-center">
-                        {isPerfetto && item.image ? (
+                        {item.image ? (
                           <img src={item.image} alt={item.name} className="w-full h-full object-contain p-3 md:p-4" />
                         ) : (
-                        <div 
-                            className={`${hasSpecialDesign ? 'w-16 h-16' : 'w-20 h-20'} rounded-full flex items-center justify-center text-white font-bold shadow-lg`}
-                          style={{ 
-                              backgroundColor: isAyWey 
-                                ? getAyWeyColors(selectedCategory).primary
-                                : isPerfetto
-                                  ? '#228B22'
-                                  : isMazorca
-                                    ? '#FFD700'
-                                    : isTogoima 
-                                      ? '#8B4513'
-                                      : brand.primaryColor,
-                              boxShadow: isAyWey 
-                                ? `0 8px 25px ${getAyWeyColors(selectedCategory).primary}40`
-                                : isPerfetto
-                                  ? `0 8px 25px #228B2240`
-                                  : isMazorca
-                                    ? `0 8px 25px #FFD70040`
-                                    : isTogoima 
-                                      ? `0 8px 25px #D2691E40`
-                                      : `0 8px 25px ${brand.primaryColor}40`,
-                              fontSize: hasSpecialDesign ? '2rem' : '1.75rem',
-                              color: isMazorca ? '#8B4513' : 'white'
-                            }}
-                          >
-                            {item.imageIcon || getProductIcon(item.name, selectedCategory)}
-                        </div>
+                          <div 
+                              className={`${hasSpecialDesign ? 'w-16 h-16' : 'w-20 h-20'} rounded-full flex items-center justify-center text-white font-bold shadow-lg`}
+                            style={{ 
+                                backgroundColor: isAyWey 
+                                  ? getAyWeyColors(selectedCategory).primary
+                                  : isPerfetto
+                                    ? '#228B22'
+                                    : isMazorca
+                                      ? '#FFD700'
+                                      : isTogoima 
+                                        ? '#8B4513'
+                                        : brand.primaryColor,
+                                boxShadow: isAyWey 
+                                  ? `0 8px 25px ${getAyWeyColors(selectedCategory).primary}40`
+                                  : isPerfetto
+                                    ? `0 8px 25px #228B2240`
+                                    : isMazorca
+                                      ? `0 8px 25px #FFD70040`
+                                      : isTogoima 
+                                        ? `0 8px 25px #D2691E40`
+                                        : `0 8px 25px ${brand.primaryColor}40`,
+                                fontSize: hasSpecialDesign ? '2rem' : '1.75rem',
+                                color: isMazorca ? '#8B4513' : 'white'
+                              }}
+                            >
+                              {item.imageIcon || getProductIcon(item.name, selectedCategory)}
+                          </div>
                         )}
                       </div>
                       
