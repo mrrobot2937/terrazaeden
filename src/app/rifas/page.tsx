@@ -166,7 +166,7 @@ export default function RifasPage() {
               </label>
 
               <div className="text-sm text-gray-400 space-y-1">
-                <p className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" /> Sigue a <a href="https://instagram.com/terrazaelden" target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:text-yellow-300 underline">@terrazaelden</a></p>
+                <p className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" /> Sigue a <a href="https://instagram.com/terrazaeleden" target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:text-yellow-300 underline">@terrazaeleden</a></p>
                 <p className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" /> Sigue al restaurante que otorga el bono (ver rifas activas abajo)</p>
               </div>
 
@@ -270,24 +270,105 @@ export default function RifasPage() {
         </motion.section>
       </main>
 
-      {/* Botón fijo para deslizar hacia abajo (solo móvil) */}
-      <motion.button
-        onClick={handleAutoScroll}
-        className="md:hidden fixed bottom-6 right-4 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-black font-bold px-4 py-3 rounded-full shadow-2xl border-2 border-yellow-300 z-50 flex items-center gap-2"
+      {/* Botón fijo súper llamativo para deslizar (solo móvil) */}
+      <motion.div
+        className="md:hidden fixed bottom-6 right-4 z-50"
         initial={{ opacity: 0, scale: 0.8, y: 100 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ delay: 1, type: "spring", bounce: 0.5 }}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
       >
+        {/* Círculos pulsantes de fondo */}
         <motion.div
-          animate={{ y: [0, 3, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute inset-0 bg-yellow-400 rounded-full"
+          animate={{
+            scale: [1, 1.4, 1],
+            opacity: [0.3, 0.1, 0.3]
+          }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute inset-0 bg-orange-400 rounded-full"
+          animate={{
+            scale: [1, 1.6, 1],
+            opacity: [0.2, 0.05, 0.2]
+          }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        />
+        
+        {/* Botón principal con movimiento */}
+        <motion.button
+          onClick={handleAutoScroll}
+          className="relative bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 hover:from-yellow-400 hover:via-orange-400 hover:to-red-400 text-black font-bold px-5 py-4 rounded-full shadow-2xl border-3 border-yellow-300 flex items-center gap-2"
+          animate={{
+            y: [0, -8, 0],
+            rotate: [0, 5, 0, -5, 0],
+            boxShadow: [
+              "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+              "0 25px 50px -12px rgba(251, 191, 36, 0.5), 0 25px 50px -12px rgba(249, 115, 22, 0.3)",
+              "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+            ]
+          }}
+          transition={{ 
+            duration: 3, 
+            repeat: Infinity, 
+            ease: "easeInOut",
+            times: [0, 0.5, 1]
+          }}
+          whileHover={{ 
+            scale: 1.1,
+            rotate: [0, 10, -10, 0],
+            transition: { duration: 0.3 }
+          }}
+          whileTap={{ scale: 0.9 }}
         >
-          <ChevronDown className="w-4 h-4" />
-        </motion.div>
-        <span className="text-sm font-extrabold">Desliza</span>
-      </motion.button>
+          {/* Icono con animación más dramática */}
+          <motion.div
+            animate={{ 
+              y: [0, 8, 0],
+              rotate: [0, 180, 360]
+            }}
+            transition={{ 
+              duration: 2, 
+              repeat: Infinity, 
+              ease: "easeInOut",
+              rotate: { duration: 4, repeat: Infinity, ease: "linear" }
+            }}
+          >
+            <ChevronDown className="w-5 h-5 drop-shadow-lg" />
+          </motion.div>
+          
+          {/* Texto con brillo */}
+          <motion.span 
+            className="text-sm font-extrabold drop-shadow-lg bg-gradient-to-r from-black via-gray-800 to-black bg-clip-text"
+            animate={{
+              scale: [1, 1.05, 1]
+            }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            DESLIZA
+          </motion.span>
+          
+          {/* Partículas brillantes */}
+          <motion.div
+            className="absolute -top-1 -right-1 w-2 h-2 bg-white rounded-full"
+            animate={{
+              scale: [0, 1, 0],
+              opacity: [0, 1, 0],
+              rotate: [0, 360]
+            }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute -bottom-1 -left-1 w-1.5 h-1.5 bg-yellow-200 rounded-full"
+            animate={{
+              scale: [0, 1, 0],
+              opacity: [0, 1, 0],
+              rotate: [360, 0]
+            }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+          />
+        </motion.button>
+      </motion.div>
 
 
     </div>
