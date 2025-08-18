@@ -624,15 +624,7 @@
                 "instagramUrl": "https://www.instagram.com/ay_weypalmira/",
                 "instagramHandle": "@ay_weypalmira"
             },
-            "raffle": {
-                "enabled": true,
-                "prizeAmount": 50000,
-                "prizeTitle": "Bono",
-                "closingDate": "2025-12-31",
-                "winner": {
-                    "decided": false
-                }
-            },
+
             "menu": {
                 "categories": [
                     {
@@ -996,15 +988,7 @@
             "secondaryColor": "#FFA500",
             "accentColor": "#FF8C00",
             "category": "Comida en base a maíz",
-            "raffle": {
-                "enabled": true,
-                "prizeAmount": 30000,
-                "prizeTitle": "Bono",
-                "closingDate": "2025-12-31",
-                "winner": {
-                    "decided": false
-                }
-            },
+
             "contact": {
                 "whatsapp": "+573001234568",
                 "whatsappMessage": "¡Hola! Quiero ordenar unas deliciosas mazorcadas 🌽",
@@ -1223,15 +1207,7 @@
             "secondaryColor": "#CD853F",
             "accentColor": "#A0522D",
             "category": "Comida rapida",
-            "raffle": {
-                "enabled": true,
-                "prizeAmount": 30000,
-                "prizeTitle": "Bono",
-                "closingDate": "2025-12-31",
-                "winner": {
-                    "decided": false
-                }
-            },
+
             "contact": {
                 "officialWebsite": "https://www.choripam.com",
                 "instagramUrl": "https://www.instagram.com/choripamve/",
@@ -2155,15 +2131,6 @@
                         ]
                     }
                 ]
-            },
-            "raffle": {
-                "enabled": true,
-                "prizeAmount": 30000,
-                "prizeTitle": "Bono",
-                "closingDate": "2025-12-31",
-                "winner": {
-                    "decided": false
-                }
             }
         },
         {
@@ -2175,15 +2142,7 @@
             "secondaryColor": "#FFD700",
             "accentColor": "#DC143C",
             "category": "Gelato",
-            "raffle": {
-                "enabled": true,
-                "prizeAmount": 30000,
-                "prizeTitle": "Bono",
-                "closingDate": "2025-12-31",
-                "winner": {
-                    "decided": false
-                }
-            },
+
             "contact": {
                 "instagramUrl": "https://www.instagram.com/perfetto_gelato_sano/",
                 "instagramHandle": "@perfetto_gelato_sano"
@@ -2379,15 +2338,7 @@
             "secondaryColor": "#81C784",
             "accentColor": "#FFC107",
             "category": "Cocina del Pacífico",
-            "raffle": {
-                "enabled": true,
-                "prizeAmount": 30000,
-                "prizeTitle": "Bono",
-                "closingDate": "2025-12-31",
-                "winner": {
-                    "decided": false
-                }
-            },
+
             "contact": {
                 "instagramUrl": "https://www.instagram.com/cocospacificofresh/",
                 "instagramHandle": "@cocospacificofresh"
@@ -2719,15 +2670,7 @@
             "secondaryColor": "#B45309",
             "accentColor": "#1F2937",
             "category": "Hamburguesas",
-            "raffle": {
-                "enabled": true,
-                "prizeAmount": 30000,
-                "prizeTitle": "Bono",
-                "closingDate": "2025-12-31",
-                "winner": {
-                    "decided": false
-                }
-            },
+
             "contact": {
                 "instagramUrl": "https://www.instagram.com/dreamburgercol/",
                 "instagramHandle": "@dreamburgercol"

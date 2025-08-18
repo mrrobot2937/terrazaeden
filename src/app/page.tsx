@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Card } from '@/components/ui/card'
-import { ArrowRight, MessageCircle, Ticket } from 'lucide-react'
+import { ArrowRight, MessageCircle } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import brandsData from '@/data/brands.json'
@@ -168,24 +168,7 @@ export default function HomePage() {
             </div>
           </motion.div>
 
-          {/* CTA: Rifas y Bonos */}
-          <Link href="/rifas" className="w-full px-4">
-            <Card className="group relative mx-auto max-w-2xl overflow-hidden cursor-pointer border border-yellow-500/30 bg-gray-900/60 backdrop-blur hover:bg-gray-800/70 hover:border-yellow-500/60 transition-all duration-500">
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-2xl" style={{ backgroundColor: '#F59E0B' }} />
-              <div className="relative z-10 p-6 flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-yellow-500 text-black shadow-lg">
-                  <Ticket className="w-6 h-6" />
-                </div>
-                <div className="flex-1">
-                  <h2 className="text-xl sm:text-2xl font-extrabold text-white leading-tight">Participa por Bonos</h2>
-                  <p className="text-gray-300 text-sm sm:text-base">Inscríbete en nuestras rifas activas con tu usuario de Instagram.</p>
-                </div>
-                <div className="w-9 h-9 rounded-full bg-yellow-500 flex items-center justify-center group-hover:bg-yellow-400 transition-colors">
-                  <ArrowRight className="w-4 h-4 text-black" />
-                </div>
-              </div>
-            </Card>
-          </Link>
+
 
           {/* Scroll Down Indicator */}
           <motion.div
