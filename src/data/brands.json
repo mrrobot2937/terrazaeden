@@ -624,7 +624,6 @@
                 "instagramUrl": "https://www.instagram.com/ay_weypalmira/",
                 "instagramHandle": "@ay_weypalmira"
             },
-
             "menu": {
                 "categories": [
                     {
@@ -988,7 +987,6 @@
             "secondaryColor": "#FFA500",
             "accentColor": "#FF8C00",
             "category": "Comida en base a maíz",
-
             "contact": {
                 "whatsapp": "+573001234568",
                 "whatsappMessage": "¡Hola! Quiero ordenar unas deliciosas mazorcadas 🌽",
@@ -1207,7 +1205,6 @@
             "secondaryColor": "#CD853F",
             "accentColor": "#A0522D",
             "category": "Comida rapida",
-
             "contact": {
                 "officialWebsite": "https://www.choripam.com",
                 "instagramUrl": "https://www.instagram.com/choripamve/",
@@ -2142,7 +2139,6 @@
             "secondaryColor": "#FFD700",
             "accentColor": "#DC143C",
             "category": "Gelato",
-
             "contact": {
                 "instagramUrl": "https://www.instagram.com/perfetto_gelato_sano/",
                 "instagramHandle": "@perfetto_gelato_sano"
@@ -2338,7 +2334,6 @@
             "secondaryColor": "#81C784",
             "accentColor": "#FFC107",
             "category": "Cocina del Pacífico",
-
             "contact": {
                 "instagramUrl": "https://www.instagram.com/cocospacificofresh/",
                 "instagramHandle": "@cocospacificofresh"
@@ -2670,13 +2665,169 @@
             "secondaryColor": "#B45309",
             "accentColor": "#1F2937",
             "category": "Hamburguesas",
-
             "contact": {
                 "instagramUrl": "https://www.instagram.com/dreamburgercol/",
                 "instagramHandle": "@dreamburgercol"
             },
             "menu": {
-                "categories": []
+                "categories": [
+                    {
+                        "id": "hamburguesas-especiales",
+                        "name": "Hamburguesas Especiales",
+                        "items": [
+                            {
+                                "id": "lalau-burger",
+                                "name": "Lalau Burger",
+                                "description": "Carne Angus Certificada, pan artesanal tradicional, queso cheddar, tocineta premium, trozos de aguacate, jalapeños, lechuga y tomate; con un toque de nuestra salsa Dream.",
+                                "price": 27900,
+                                "imageIcon": "🍔🥑🌶️"
+                            },
+                            {
+                                "id": "dream-love-burgermaster-2025",
+                                "name": "Dream Love (Participante Burgermaster 2025)",
+                                "description": "Carne Angus Certificada ¼ libra, pan artesanal tipo brioche, queso cheddar, costilla ahumada en salsa tipo BBQ con pepinillos, lechuga y tomate.",
+                                "price": 23900,
+                                "imageIcon": "🍔🏆"
+                            },
+                            {
+                                "id": "burger-fit",
+                                "name": "Burger Fit",
+                                "description": "Hamburguesa Keto con Carne Angus Certificada, tortillas de queso parmesano (remplazamos el pan por tortillas crujientes de queso parmesano), queso mozzarella, lechuga y tomate.",
+                                "price": 27900,
+                                "imageIcon": "🥗🍔"
+                            },
+                            {
+                                "id": "chicken-burger",
+                                "name": "Chicken Burger",
+                                "description": "Filete de pollo apanado en Panko, pan artesanal tipo brioche, queso mozzarella y maduritos; con lechuga y tomate.",
+                                "price": 22900,
+                                "imageIcon": "🍗🍔"
+                            },
+                            {
+                                "id": "la-dream-burger",
+                                "name": "La Dream Burger (la de la casa)",
+                                "description": "Carne Angus Certificada, pan artesanal tipo brioche, queso Philadelphia, tocineta premium y maduritos procesados en casa, con un toque de Salsa Dream. Viene con lechuga y tomate.",
+                                "price": 26900,
+                                "imageIcon": "🍔⭐"
+                            },
+                            {
+                                "id": "sweet-dreams-burgermaster-2023",
+                                "name": "Sweet Dreams (Participante Burgermaster 2023)",
+                                "description": "Carne Angus Certificada ¼ de libra, pan artesanal tipo brioche, queso Philadelphia, chorizo artesanal confitado, maduritos procesados en casa, tomate y lechuga, con un toque de salsa Dream.",
+                                "price": 24900,
+                                "imageIcon": "🍔🍬"
+                            },
+                            {
+                                "id": "cheeseburger",
+                                "name": "Cheeseburger",
+                                "description": "Carne Angus Certificada ¼ de libra, pan artesanal tipo brioche, queso americano y salsa de la casa. Viene con lechuga y tomate.",
+                                "price": 25900,
+                                "imageIcon": "🧀🍔"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "perros-calientes",
+                        "name": "Perros Calientes",
+                        "items": [
+                            {
+                                "id": "sweet-dog",
+                                "name": "Sweet Dog",
+                                "description": "Salchicha americana, pan de orégano artesanal, queso mozzarella, tocineta picada y piña calada.",
+                                "price": 16900,
+                                "imageIcon": "🌭"
+                            },
+                            {
+                                "id": "cheese-dog",
+                                "name": "Cheese Dog",
+                                "description": "Salchicha americana, pan de orégano artesanal, queso cheddar, tocineta picada y maicitos dulces.",
+                                "price": 16900,
+                                "imageIcon": "🧀🌭"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "papas-especiales",
+                        "name": "Papas Especiales",
+                        "items": [
+                            {
+                                "id": "papas-dream",
+                                "name": "Papas Dream",
+                                "description": "Porción de papas personal, queso cheddar, tocineta picada, maicitos dulces y salsas (de tomate, mostaza o de la casa).",
+                                "price": 16900,
+                                "imageIcon": "🍟"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "menu-infantil",
+                        "name": "Menú Infantil",
+                        "items": [
+                            {
+                                "id": "nuggets",
+                                "name": "Nuggets",
+                                "description": "Porción de Nuggets apanados en Panko con papitas a la francesa y salsa de tomate.",
+                                "price": 12900,
+                                "imageIcon": "🍗"
+                            },
+                            {
+                                "id": "perro-caliente-con-papitas",
+                                "name": "Perro caliente con papitas",
+                                "description": "Salchicha americana, pan artesanal, queso mozzarella y maicitos, con papitas y salsa de tomate.",
+                                "price": 16900,
+                                "imageIcon": "🌭🍟"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "acompanamientos",
+                        "name": "Acompañamientos",
+                        "items": [
+                            {
+                                "id": "combo-papas-gaseosa",
+                                "name": "Combo papas + gaseosa personal",
+                                "description": "Papas a la francesa con gaseosa personal.",
+                                "price": 10900,
+                                "imageIcon": "🍟🥤"
+                            },
+                            {
+                                "id": "combo-aros-gaseosa",
+                                "name": "Combo aros de cebolla + gaseosa personal",
+                                "description": "Aros de cebolla con gaseosa personal.",
+                                "price": 11900,
+                                "imageIcon": "🧅🥤"
+                            },
+                            {
+                                "id": "porcion-papas",
+                                "name": "Porción papas a la francesa",
+                                "description": "Papas a la francesa.",
+                                "price": 6000,
+                                "imageIcon": "🍟"
+                            },
+                            {
+                                "id": "porcion-aros-cebolla",
+                                "name": "Porción aros de cebolla",
+                                "description": "Aros de cebolla.",
+                                "price": 7000,
+                                "imageIcon": "🧅"
+                            },
+                            {
+                                "id": "gaseosa-personal",
+                                "name": "Gaseosa personal",
+                                "description": "Bebida gaseosa personal.",
+                                "price": 5500,
+                                "imageIcon": "🥤"
+                            },
+                            {
+                                "id": "cerveza-nacional",
+                                "name": "Cerveza nacional",
+                                "description": "Cerveza nacional.",
+                                "price": 8500,
+                                "imageIcon": "🍺"
+                            }
+                        ]
+                    }
+                ]
             }
         }
     ]
