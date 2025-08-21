@@ -10,12 +10,44 @@ import { notFound } from 'next/navigation'
 import brandsData from '@/data/brands.json'
 import { Brand } from '@/types/brand'
 import { formatPrice } from '@/lib/utils'
+import { block } from 'million/react'
 
 interface Props {
   params: Promise<{
     id: string
   }>
 }
+
+// Imagen del logo de la marca (sin hooks) optimizada y acelerada
+const BrandLogoImage = block(function BrandLogoImage({ src, alt }: { src: string; alt: string }) {
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      className="object-contain"
+      sizes="(max-width: 768px) 50vw, 256px"
+      priority
+      fetchPriority="high"
+    />
+  )
+})
+
+// Imagen de producto (sin hooks) optimizada y diferida
+const ItemImage = block(function ItemImage({ src, alt, isTogoima }: { src: string; alt: string; isTogoima: boolean }) {
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      className={`object-contain ${isTogoima ? 'p-2 md:p-3' : 'p-3 md:p-4'}`}
+      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1536px) 33vw, 25vw"
+      loading="lazy"
+      fetchPriority="low"
+      placeholder="empty"
+    />
+  )
+})
 
 const pageVariants = {
   initial: { opacity: 0, scale: 0.9 },
@@ -453,7 +485,7 @@ export default function BrandPage({ params }: Props) {
                 className="absolute inset-0"
                 style={{
                   backgroundColor: '#F5F1E6',
-                  backgroundImage: "url('/logos/fondo.png')",
+                  backgroundImage: "url('https://terrazaedenfiles.s3.us-east-2.amazonaws.com/fondo.png')",
                   backgroundRepeat: 'repeat',
                   backgroundSize: '360px 360px'
                 }}
@@ -629,14 +661,7 @@ export default function BrandPage({ params }: Props) {
                 <span className="text-7xl md:text-8xl">🍨</span>
               ) : (
                 <div className="relative w-full h-full">
-                <Image
-                  src={brand.logo}
-                  alt={`Logo de ${brand.name}`}
-                  fill
-                    className="object-contain"
-                    sizes="256px"
-                  priority
-                />
+                <BrandLogoImage src={brand.logo} alt={`Logo de ${brand.name}`} />
               </div>
             )}
           </div>
@@ -653,7 +678,7 @@ export default function BrandPage({ params }: Props) {
           >
             <div className="relative w-full max-w-3xl mx-auto h-40 md:h-56">
               <Image
-                src="/logos/togoima_letra.png"
+                src="https://terrazaedenfiles.s3.us-east-2.amazonaws.com/togoima_letra.png"
                 alt="Togoima Logo"
                 fill
                 className="object-contain"
@@ -1081,7 +1106,7 @@ export default function BrandPage({ params }: Props) {
                     >
                       <div className="absolute inset-0 flex items-center justify-center">
                         {item.image ? (
-                          <img src={item.image} alt={item.name} className={`w-full h-full object-contain ${isTogoima ? 'p-2 md:p-3' : 'p-3 md:p-4'}`} />
+                          <ItemImage src={item.image} alt={item.name} isTogoima={isTogoima} />
                         ) : (
                           <div 
                               className={`${hasSpecialDesign ? 'w-16 h-16' : 'w-20 h-20'} rounded-full flex items-center justify-center text-white font-bold shadow-lg`}
