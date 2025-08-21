@@ -189,9 +189,9 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 2 }}
             onClick={() => {
-              document.getElementById('brands-section')?.scrollIntoView({ 
-                behavior: 'smooth' 
-              })
+              const m = document.getElementById('brands-mobile')
+              const d = document.getElementById('brands-desktop')
+              ;(m || d)?.scrollIntoView({ behavior: 'smooth' })
             }}
           >
             <div className="text-white text-center">
@@ -206,10 +206,46 @@ export default function HomePage() {
           </motion.div>
         </motion.header>
 
-        {/* Brands Grid - unified responsive cards */}
+        {/* Brands Grid - Mobile: compact logo-only tiles */}
+        <motion.section
+          id="brands-mobile"
+          className="container mx-auto px-3 pb-14 pt-10 md:hidden"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-3 gap-3">
+              {brands.map((brand) => (
+                <Link key={brand.id} href={`/brands/${brand.id}`} className="group">
+                  <div
+                    className="relative rounded-xl border border-gray-800 bg-gray-900/60 p-2 overflow-hidden"
+                    style={{ aspectRatio: '1 / 1' }}
+                  >
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-15 transition-opacity duration-300"
+                         style={{ backgroundColor: brand.primaryColor }}
+                    />
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={brand.logo}
+                        alt={`Logo de ${brand.name}`}
+                        fill
+                        className="object-contain"
+                        sizes="(max-width: 640px) 28vw, 160px"
+                      />
+                    </div>
+                  </div>
+                  <span className="sr-only">{brand.name}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </motion.section>
+
+        {/* Brands Grid - Desktop: rich cards */}
         <motion.main 
-          id="brands-section"
-          className="container mx-auto px-4 sm:px-6 pb-20 pt-12"
+          id="brands-desktop"
+          className="container mx-auto px-4 sm:px-6 pb-20 pt-12 hidden md:block"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -264,7 +300,7 @@ export default function HomePage() {
                             {brand.name}
                           </h3>
                           
-                          <p className="text-gray-400 text-sm sm:text-base leading-relaxed line-clamp-3">
+                          <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
                             {brand.description}
                           </p>
                         </div>

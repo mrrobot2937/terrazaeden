@@ -44,41 +44,41 @@
                         ]
                     },
                     {
-                        "id": "artesados",
-                        "name": "Artesados",
+                        "id": "aplastados",
+                        "name": "Aplastados",
                         "items": [
                             {
                                 "id": "jamon-york-artesado",
-                                "name": "Jamón York",
-                                "description": "Artesado de jamón york",
+                                "name": "Aplastado Jamón York",
+                                "description": "Aplastado de jamón york",
                                 "price": 13000,
                                 "imageIcon": "🥪"
                             },
                             {
                                 "id": "hawaiano",
-                                "name": "Hawaiano",
-                                "description": "Artesado hawaiano con piña",
+                                "name": "Aplastado Hawaiano",
+                                "description": "Aplastado hawaiano con piña",
                                 "price": 14000,
                                 "imageIcon": "🍍"
                             },
                             {
                                 "id": "pollo-artesado",
-                                "name": "Pollo",
-                                "description": "Artesado de pollo",
+                                "name": "Aplastado de Pollo",
+                                "description": "Aplastado de pollo",
                                 "price": 16000,
                                 "imageIcon": "🍗"
                             },
                             {
                                 "id": "pollo-chorizo",
-                                "name": "Pollo, Chorizo",
-                                "description": "Artesado de pollo y chorizo",
+                                "name": "Aplastado de Pollo y Chorizo",
+                                "description": "Aplastado de pollo y chorizo",
                                 "price": 15000,
                                 "imageIcon": "🌭"
                             },
                             {
                                 "id": "pollo-pina-tocineta",
-                                "name": "Pollo, Piña, Tocineta",
-                                "description": "Artesado de pollo, piña y tocineta",
+                                "name": "Aplastado de Pollo, Piña y Tocineta",
+                                "description": "Aplastado de pollo, piña y tocineta",
                                 "price": 18000,
                                 "imageIcon": "🥓"
                             }
@@ -90,21 +90,21 @@
                         "items": [
                             {
                                 "id": "burrito-especial",
-                                "name": "Especial",
+                                "name": "Burrito Especial",
                                 "description": "Burrito especial de la casa",
                                 "price": 22000,
                                 "imageIcon": "🌯"
                             },
                             {
                                 "id": "burrito-mexicano",
-                                "name": "Mexicano",
+                                "name": "Burrito Mexicano",
                                 "description": "Burrito estilo mexicano",
                                 "price": 24000,
                                 "imageIcon": "🌶️"
                             },
                             {
                                 "id": "burrito-extremo",
-                                "name": "Extremo",
+                                "name": "Burrito Extremo",
                                 "description": "Burrito extremo con todos los ingredientes",
                                 "price": 26000,
                                 "imageIcon": "🔥"
@@ -845,7 +845,7 @@
                         "items": [
                             {
                                 "id": "volcan-carne-asada",
-                                "name": "De Carne Res Asada",
+                                "name": "Volcán de Carne Res Asada",
                                 "description": "3 tortillas de maíz, tostadas en nuestro comal con napa de proteína que más te guste",
                                 "price": 13900,
                                 "imageIcon": "🌋"
@@ -913,28 +913,28 @@
                         "items": [
                             {
                                 "id": "torta-carne-asada",
-                                "name": "De Carne Res Asada",
+                                "name": "Torta de Carne Res Asada",
                                 "description": "En delicioso pan telera relleno con frijoles con el proteína que más te guste",
                                 "price": 29500,
                                 "imageIcon": "🥪"
                             },
                             {
                                 "id": "torta-pastor",
-                                "name": "De Pastor",
+                                "name": "Torta de Pastor",
                                 "description": "Carne de cerdo marinada al pastor característico de la Ciudad de México con piña, cebolla y cilantro acompañado de consomé de res",
                                 "price": 24500,
                                 "imageIcon": "🥪"
                             },
                             {
                                 "id": "torta-cochinita",
-                                "name": "De Cochinita Pibil",
+                                "name": "Torta de Cochinita Pibil",
                                 "description": "Carne de cerdo marinada al mas puro estilo yucateco con aguacate y cebolla morada encurtida",
                                 "price": 26300,
                                 "imageIcon": "🥪"
                             },
                             {
                                 "id": "torta-birria",
-                                "name": "De Birria",
+                                "name": "Torta de Birria",
                                 "description": "Carne de res marinada al estilo jalisco con cebolla y cilantro",
                                 "price": 31500,
                                 "imageIcon": "🥪"
@@ -1036,28 +1036,28 @@
                         "items": [
                             {
                                 "id": "patacon-carne",
-                                "name": "Carne",
+                                "name": "Patacón de Carne",
                                 "description": "Patacón con carne desmechada",
                                 "price": 18900,
                                 "imageIcon": "🥩"
                             },
                             {
                                 "id": "patacon-pollo",
-                                "name": "Pollo",
+                                "name": "Patacón de Pollo",
                                 "description": "Patacón con pollo desmechado",
                                 "price": 18900,
                                 "imageIcon": "🍗"
                             },
                             {
                                 "id": "patacon-mixto",
-                                "name": "Mixto",
+                                "name": "Patacón Mixto",
                                 "description": "Patacón con carne y pollo",
                                 "price": 21900,
                                 "imageIcon": "🍽️"
                             },
                             {
                                 "id": "patacon-grande",
-                                "name": "Mixto Grande",
+                                "name": "Patacón Mixto Grande",
                                 "description": "Patacón grande con carne y pollo",
                                 "price": 30000,
                                 "imageIcon": "🍽️"
@@ -1070,14 +1070,14 @@
                         "items": [
                             {
                                 "id": "mazorcada-carne",
-                                "name": "De Carne",
+                                "name": "Mazorcada de Carne",
                                 "description": "Mazorca con carne desmechada",
                                 "price": 25900,
                                 "imageIcon": "🌽"
                             },
                             {
                                 "id": "mazorcada-pollo",
-                                "name": "De Pollo",
+                                "name": "Mazorcada de Pollo",
                                 "description": "Mazorca con pollo desmechado",
                                 "price": 25900,
                                 "imageIcon": "🌽"

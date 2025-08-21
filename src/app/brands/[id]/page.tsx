@@ -64,7 +64,7 @@ const ayWeyCategoryIcons: { [key: string]: React.ReactNode } = {
 // Iconos personalizados para las categorías de Sabor Extremo
 const saborExtremoCategoryIcons: { [key: string]: React.ReactNode } = {
   'entradas': <span className="text-2xl">🍟</span>,
-  'artesados': <span className="text-2xl">🥪</span>,
+  'aplastados': <span className="text-2xl">🥪</span>,
   'burritos': <span className="text-2xl">🌯</span>,
   'ensalada': <span className="text-2xl">🥗</span>,
   'hamburguesas': <span className="text-2xl">🍔</span>,
@@ -86,6 +86,15 @@ const cocosCategoryIcons: { [key: string]: React.ReactNode } = {
   'helados': <span className="text-2xl">🍦</span>,
   'combinados': <span className="text-2xl">🍹</span>,
   'snacks': <span className="text-2xl">🍿</span>
+}
+
+// Iconos personalizados para Dream Burguer
+const dreamCategoryIcons: { [key: string]: React.ReactNode } = {
+  'hamburguesas-especiales': <span className="text-2xl">🍔</span>,
+  'perros-calientes': <span className="text-2xl">🌭</span>,
+  'papas-especiales': <span className="text-2xl">🍟</span>,
+  'menu-infantil': <span className="text-2xl">🧒</span>,
+  'acompanamientos': <span className="text-2xl">➕</span>
 }
 
 // Paleta por categoría para Ay Wey (rojo/amarillo)
@@ -409,6 +418,47 @@ export default function BrandPage() {
 
   const selectedCategoryData = brand.menu.categories.find(cat => cat.id === selectedCategory)
 
+  const getDisplayName = (baseName: string, categoryId: string): string => {
+    const name = baseName.trim()
+    const ensurePrefix = (prefix: string) => (name.toLowerCase().startsWith(prefix.toLowerCase()) ? name : `${prefix}${name}`)
+    switch (categoryId) {
+      case 'patacones':
+        return ensurePrefix('Patacón ')
+      case 'burritos':
+        return ensurePrefix('Burrito ')
+      case 'tacos':
+        return ensurePrefix('Taco ')
+      case 'volcanes':
+        return ensurePrefix('Volcán ')
+      case 'gringas':
+        return ensurePrefix('Gringa ')
+      case 'tortas':
+        return ensurePrefix('Torta ')
+      case 'sandwich':
+        return ensurePrefix('Sándwich ')
+      case 'perros':
+      case 'perros-calientes':
+        return ensurePrefix('Perro ')
+      case 'mazorcadas':
+        return ensurePrefix('Mazorcada ')
+      case 'aplastados':
+        return ensurePrefix('Aplastado ')
+      case 'hamburguesas':
+      case 'hamburguesas-especiales':
+        if (/burger|hamburguesa/i.test(name)) return name
+        return ensurePrefix('Hamburguesa ')
+      case 'menu-infantil':
+        return ensurePrefix('Menú Infantil ')
+      case 'papas-especiales':
+        if (/papas/i.test(name)) return name
+        return ensurePrefix('Papas ')
+      case 'acompanamientos':
+        return ensurePrefix('Acompañamiento ')
+      default:
+        return name
+    }
+  }
+
   const scrollToProducts = () => {
     const target = productsGridRef.current || productsRef.current || document.getElementById('products-section')
     if (target) {
@@ -427,10 +477,11 @@ export default function BrandPage() {
   const isTogoima = brand.id === 'togoima'
   const isAyWey = brand.id === 'ay-wey'
   const isPerfetto = brand.id === 'perfetto'
+  const isDream = brand.id === 'dream-burguer'
   const isMazorca = brand.id === 'mazorca'
   const isSaborExtremo = brand.id === 'sabor-extremo'
   const isCocos = brand.id === 'cocos-pacifico-fresh'
-  const hasSpecialDesign = isTogoima || isAyWey || isPerfetto || isMazorca || isSaborExtremo || isCocos
+  const hasSpecialDesign = isTogoima || isAyWey || isPerfetto || isMazorca || isSaborExtremo || isCocos || isDream
 
   return (
     <motion.div 
@@ -493,6 +544,21 @@ export default function BrandPage() {
               <div className="absolute top-1/3 right-20 text-5xl opacity-15 animate-pulse" style={{ animationDelay: '1s' }}>🍦</div>
               <div className="absolute bottom-20 left-1/4 text-7xl opacity-10 animate-pulse" style={{ animationDelay: '2s' }}>🍧</div>
               <div className="absolute bottom-1/3 right-1/3 text-4xl opacity-20 animate-pulse" style={{ animationDelay: '1.5s' }}>🍪</div>
+            </>
+          ) : isDream ? (
+            // Fondo especial para Dream Burguer
+            <>
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-900 via-orange-900 to-red-900 opacity-20" />
+              <div 
+                className="absolute inset-0 opacity-10"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23F59E0B' fill-opacity='0.2'%3E%3Ccircle cx='10' cy='10' r='6'/%3E%3Ccircle cx='30' cy='30' r='6'/%3E%3C/g%3E%3C/svg%3E")`
+                }}
+              />
+              <div className="absolute top-10 left-10 text-6xl opacity-20 animate-pulse">🍔</div>
+              <div className="absolute top-1/3 right-20 text-5xl opacity-15 animate-pulse" style={{ animationDelay: '1s' }}>🍟</div>
+              <div className="absolute bottom-20 left-1/4 text-7xl opacity-10 animate-pulse" style={{ animationDelay: '2s' }}>🥤</div>
+              <div className="absolute bottom-1/3 right-1/3 text-4xl opacity-20 animate-pulse" style={{ animationDelay: '1.5s' }}>🧀</div>
             </>
           ) : isMazorca ? (
             // Fondo especial para Mazorca con patrón de maíz
@@ -639,10 +705,7 @@ export default function BrandPage() {
                 boxShadow: `0 20px 60px ${brand.primaryColor}20`
               }}
             >
-              {brand.id === 'perfetto' ? (
-                <span className="text-7xl md:text-8xl">🍨</span>
-              ) : (
-                <div className="relative w-full h-full">
+              <div className="relative w-full h-full">
                 <Image
                   src={brand.logo}
                   alt={`Logo de ${brand.name}`}
@@ -653,7 +716,6 @@ export default function BrandPage() {
                   fetchPriority="high"
                 />
               </div>
-            )}
           </div>
         </motion.div>
         )}
@@ -703,7 +765,7 @@ export default function BrandPage() {
           </motion.div>
         ) : (
         <motion.h1 
-          className="text-5xl md:text-7xl font-black text-white mb-4"
+          className="text-4xl md:text-6xl font-black text-white mb-3"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -717,7 +779,7 @@ export default function BrandPage() {
 
         {brand.id !== 'ay-wey' && (
         <motion.p 
-            className={`text-xl ${isAyWey ? 'text-gray-800' : 'text-gray-300'} max-w-2xl mx-auto mb-8`}
+            className={`text-base md:text-lg ${isAyWey ? 'text-gray-800' : 'text-gray-300'} max-w-2xl mx-auto mb-7`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
@@ -727,53 +789,53 @@ export default function BrandPage() {
         )}
 
         <motion.div
-          className="flex justify-center space-x-4 flex-wrap gap-2 mb-8"
+          className="flex flex-wrap justify-center items-center gap-2 md:gap-3 mb-6 px-2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
         >
           <div 
-            className={`flex items-center space-x-2 px-4 py-2 rounded-full border ${isAyWey ? 'bg-white' : 'backdrop-blur-md'}`}
+            className={`flex items-center space-x-1.5 px-2.5 py-1 rounded-full border ${isAyWey ? 'bg-white' : 'backdrop-blur-md'}`}
             style={{
               backgroundColor: isAyWey ? '#FFFFFF' : brand.primaryColor + '15',
               borderColor: isAyWey ? '#DDD' : brand.primaryColor + '30'
             }}
           >
-            <Star className={`w-5 h-5 ${isAyWey ? 'text-yellow-600' : 'text-yellow-400'}`} />
-            <span className={`${isAyWey ? 'text-gray-800' : 'text-white'} font-medium`}>4.8</span>
+            <Star className={`w-3.5 h-3.5 ${isAyWey ? 'text-yellow-600' : 'text-yellow-400'}`} />
+            <span className={`${isAyWey ? 'text-gray-800' : 'text-white'} text-xs font-medium`}>4.8</span>
           </div>
           <div 
-            className={`flex items-center space-x-2 px-4 py-2 rounded-full border ${isAyWey ? 'bg-white' : 'backdrop-blur-md'}`}
+            className={`flex items-center space-x-1.5 px-2.5 py-1 rounded-full border ${isAyWey ? 'bg-white' : 'backdrop-blur-md'}`}
             style={{
               backgroundColor: isAyWey ? '#FFFFFF' : brand.secondaryColor + '15',
               borderColor: isAyWey ? '#DDD' : brand.secondaryColor + '30'
             }}
           >
-            <Clock className={`w-5 h-5 ${isAyWey ? 'text-green-700' : 'text-green-400'}`} />
-            <span className={`${isAyWey ? 'text-gray-800' : 'text-white'} font-medium`}>15-25 min</span>
+            <Clock className={`w-3.5 h-3.5 ${isAyWey ? 'text-green-700' : 'text-green-400'}`} />
+            <span className={`${isAyWey ? 'text-gray-800' : 'text-white'} text-xs font-medium`}>15-25 min</span>
           </div>
           <div 
-            className={`flex items-center space-x-2 px-4 py-2 rounded-full border ${isAyWey ? 'bg-white' : 'backdrop-blur-md'}`}
+            className={`flex items-center space-x-1.5 px-2.5 py-1 rounded-full border ${isAyWey ? 'bg-white' : 'backdrop-blur-md'}`}
             style={{
               backgroundColor: isAyWey ? '#FFFFFF' : brand.accentColor + '15',
               borderColor: isAyWey ? '#DDD' : brand.accentColor + '30'
             }}
           >
-            <Flame className={`w-5 h-5 ${isAyWey ? 'text-red-700' : 'text-red-400'}`} />
-            <span className={`${isAyWey ? 'text-gray-800' : 'text-white'} font-medium`}>Popular</span>
+            <Flame className={`w-3.5 h-3.5 ${isAyWey ? 'text-red-700' : 'text-red-400'}`} />
+            <span className={`${isAyWey ? 'text-gray-800' : 'text-white'} text-xs font-medium`}>Popular</span>
           </div>
 
           {/* Autoservicio (Perfetto) */}
           {isPerfetto && (
             <div 
-              className={`flex items-center space-x-2 px-4 py-2 rounded-full border ${isAyWey ? 'bg-white' : 'backdrop-blur-md'}`}
+              className={`flex items-center space-x-1.5 px-2.5 py-1 rounded-full border ${isAyWey ? 'bg-white' : 'backdrop-blur-md'}`}
               style={{
                 backgroundColor: isAyWey ? '#FFFFFF' : brand.accentColor + '15',
                 borderColor: isAyWey ? '#DDD' : brand.accentColor + '30'
               }}
             >
-              <ChefHat className={`w-5 h-5 ${isAyWey ? 'text-green-700' : 'text-yellow-400'}`} />
-              <span className={`${isAyWey ? 'text-gray-800' : 'text-white'} font-medium`}>Autoservicio</span>
+              <ChefHat className={`w-3.5 h-3.5 ${isAyWey ? 'text-green-700' : 'text-yellow-400'}`} />
+              <span className={`${isAyWey ? 'text-gray-800' : 'text-white'} text-xs font-medium`}>Autoservicio</span>
             </div>
           )}
 
@@ -783,14 +845,14 @@ export default function BrandPage() {
               href={brand.contact.instagramUrl}
               target="_blank" 
               rel="noopener noreferrer"
-              className={`flex items-center space-x-2 px-4 py-2 rounded-full border ${isAyWey ? 'bg-white' : 'backdrop-blur-md'}`}
+              className={`flex items-center space-x-1.5 px-2.5 py-1 rounded-full border ${isAyWey ? 'bg-white' : 'backdrop-blur-md'}`}
               style={{
                 backgroundColor: isAyWey ? '#FFFFFF' : brand.primaryColor + '15',
                 borderColor: isAyWey ? '#DDD' : brand.primaryColor + '30'
               }}
             >
-              <Instagram className={`w-5 h-5 ${isAyWey ? 'text-pink-700' : 'text-pink-400'}`} />
-              <span className={`${isAyWey ? 'text-gray-800' : 'text-white'} font-medium`}>{brand.contact.instagramHandle || 'Instagram'}</span>
+              <Instagram className={`w-3.5 h-3.5 ${isAyWey ? 'text-pink-700' : 'text-pink-400'}`} />
+              <span className={`${isAyWey ? 'text-gray-800' : 'text-white'} text-xs font-medium`}>{brand.contact.instagramHandle || 'Instagram'}</span>
             </a>
           )}
         </motion.div>
@@ -933,7 +995,9 @@ export default function BrandPage() {
                             ? (saborExtremoCategoryIcons[category.id] || <span className="text-2xl">🍔</span>)
                             : isCocos
                               ? (cocosCategoryIcons[category.id] || <span className="text-2xl">🥥</span>)
-                              : (togoimaCategoryIcons[category.id] || <Coffee className="w-6 h-6" />)
+                              : isDream
+                                ? (dreamCategoryIcons[category.id] || <span className="text-2xl">🍔</span>)
+                                : (togoimaCategoryIcons[category.id] || <Coffee className="w-6 h-6" />)
                     }
                   </div>
                   <span 
@@ -1081,7 +1145,7 @@ export default function BrandPage() {
                   >
                     {/* Item Image or Icon */}
                     <div 
-                      className={`${hasSpecialDesign ? (isPerfetto ? 'h-56 md:h-64' : isTogoima ? 'h-48 md:h-56' : 'h-32') : 'h-40'} relative overflow-hidden`}
+                      className={`${hasSpecialDesign ? (isPerfetto ? 'h-56 md:h-64' : isTogoima ? 'h-48 md:h-56' : isDream ? 'h-48 md:h-56' : 'h-32') : 'h-40'} relative overflow-hidden`}
                       style={{
                         background: isAyWey 
                           ? `linear-gradient(135deg, ${getAyWeyColors(selectedCategory).bgSelected}, ${getAyWeyColors(selectedCategory).bgHover})`
@@ -1179,7 +1243,7 @@ export default function BrandPage() {
                       <div className="space-y-4">
                         <div>
                           <h3 className={`${hasSpecialDesign ? 'text-base' : 'text-lg'} font-bold ${isAyWey ? 'text-black' : 'text-white'} mb-2 line-clamp-2 ${isAyWey ? 'group-hover:text-gray-800' : 'group-hover:text-gray-200'} transition-colors`}>
-                            {item.name}
+                            {getDisplayName(item.name, selectedCategory)}
                           </h3>
                           
                           <p className={`${isAyWey ? 'text-gray-700' : 'text-gray-400'} ${hasSpecialDesign ? 'text-xs' : 'text-sm'} leading-relaxed line-clamp-3 mb-4`}>
