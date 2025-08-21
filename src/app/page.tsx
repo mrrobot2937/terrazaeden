@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Card } from '@/components/ui/card'
-import { ArrowRight, MessageCircle } from 'lucide-react'
+import { ArrowRight, MessageCircle, Instagram, ChevronsDown } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import brandsData from '@/data/brands.json'
@@ -138,17 +138,29 @@ export default function HomePage() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5 }}
         >
-          {/* WhatsApp shortcut */}
-          <a
-            href={`https://wa.me/${terrazaWhatsappNumber.replace(/\D/g, '')}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="WhatsApp Terraza Eden"
-            className="absolute top-4 left-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500 hover:bg-green-400 text-black font-semibold shadow-lg border border-green-300 transition-colors"
-          >
-            <MessageCircle className="w-5 h-5" />
-            <span className="hidden sm:inline">WhatsApp</span>
-          </a>
+          {/* Shortcuts: WhatsApp + Instagram */}
+          <div className="absolute top-4 left-4 flex items-center gap-2">
+            <a
+              href={`https://wa.me/${terrazaWhatsappNumber.replace(/\D/g, '')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp Terraza Eden"
+              className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-green-500 hover:bg-green-400 text-black font-semibold shadow-lg border border-green-300 transition-colors"
+            >
+              <MessageCircle className="w-5 h-5" />
+              <span className="hidden sm:inline">WhatsApp</span>
+            </a>
+            <a
+              href="https://www.instagram.com/terrazaeleden/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram Terraza Eden"
+              className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-pink-500 hover:bg-pink-400 text-black font-semibold shadow-lg border border-pink-300 transition-colors"
+            >
+              <Instagram className="w-5 h-5" />
+              <span className="hidden sm:inline">Instagram</span>
+            </a>
+          </div>
           {/* Logo Principal */}
           <motion.div
             className="flex justify-center mb-8 sm:mb-12 md:mb-16 w-full px-4"
@@ -170,9 +182,9 @@ export default function HomePage() {
 
 
 
-          {/* Scroll Down Indicator */}
+          {/* Scroll Down Indicator - improved */}
           <motion.div
-            className="flex flex-col items-center space-y-3 sm:space-y-4 cursor-pointer px-4"
+            className="flex flex-col items-center space-y-2 sm:space-y-3 cursor-pointer px-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 2 }}
@@ -182,78 +194,27 @@ export default function HomePage() {
               })
             }}
           >
-            <div className="text-white text-center hover:text-yellow-400 transition-colors duration-300">
-              <p className="text-base sm:text-lg font-medium mb-3 sm:mb-4">Desliza para explorar nuestras marcas</p>
-              <div className="flex justify-center">
-                <motion.div
-                  animate={{ y: [0, 8, 0] }}
-                  transition={{ 
-                    duration: 2, 
-                    repeat: Infinity, 
-                    ease: "easeInOut" 
-                  }}
-                  className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-yellow-400 rounded-full flex justify-center hover:border-yellow-300 transition-colors duration-300"
-                >
-                  <motion.div
-                    animate={{ y: [0, 10, 0] }}
-                    transition={{ 
-                      duration: 2, 
-                      repeat: Infinity, 
-                      ease: "easeInOut",
-                      delay: 0.3
-                    }}
-                    className="w-1 h-2.5 sm:h-3 bg-yellow-400 rounded-full mt-1.5 sm:mt-2"
-                  />
-                </motion.div>
+            <div className="text-white text-center">
+              <p className="text-base sm:text-lg font-semibold mb-2 sm:mb-3">Desliza o toca para explorar</p>
+              <div className="flex flex-col items-center gap-2">
+                <ChevronsDown className="w-6 h-6 text-yellow-400 animate-bounce" />
+                <span className="px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-sm text-white/90">
+                  Ver marcas
+                </span>
               </div>
             </div>
           </motion.div>
         </motion.header>
 
-        {/* Brands Grid - Mobile: compact logo-only tiles */}
-        <motion.section
-          id="brands-section"
-          className="container mx-auto px-3 pb-16 pt-10 md:hidden"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-4 gap-3">
-              {brands.map((brand) => (
-                <Link key={brand.id} href={`/brands/${brand.id}`} className="group">
-                  <div
-                    className="relative rounded-xl border border-gray-800 bg-gray-900/60 p-2 overflow-hidden"
-                    style={{ aspectRatio: '1 / 1' }}
-                  >
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-15 transition-opacity duration-300"
-                         style={{ backgroundColor: brand.primaryColor }}
-                    />
-                    <div className="relative w-full h-full">
-                      <Image
-                        src={brand.logo}
-                        alt={`Logo de ${brand.name}`}
-                        fill
-                        className="object-contain"
-                        sizes="(max-width: 640px) 22vw, 160px"
-                      />
-                    </div>
-                  </div>
-                  <span className="sr-only">{brand.name}</span>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Brands Grid - Desktop: rich cards */}
+        {/* Brands Grid - unified responsive cards */}
         <motion.main 
-          className="container mx-auto px-6 pb-20 pt-16 hidden md:block"
+          id="brands-section"
+          className="container mx-auto px-4 sm:px-6 pb-20 pt-12"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6 max-w-7xl mx-auto">
             {brands.map((brand, index) => (
               <motion.div
                 key={brand.id}
@@ -265,7 +226,7 @@ export default function HomePage() {
                 whileTap={{ scale: 0.97 }}
               >
                 <Link href={`/brands/${brand.id}`}>
-                  <Card className="group relative overflow-hidden h-96 cursor-pointer border border-gray-800 bg-gray-900/50 backdrop-blur-sm hover:bg-gray-800/70 hover:border-yellow-500/50 transition-all duration-500">
+                  <Card className="group relative overflow-hidden h-[26rem] sm:h-[26rem] cursor-pointer border border-gray-800 bg-gray-900/50 backdrop-blur-sm hover:bg-gray-800/70 hover:border-yellow-500/50 transition-all duration-500">
                     <div 
                       className="absolute top-0 left-0 right-0 h-1"
                       style={{ backgroundColor: brand.primaryColor }}
@@ -276,7 +237,7 @@ export default function HomePage() {
                     />
 
                     <div className="relative z-10 p-6 h-full flex flex-col">
-                      <div className="flex-shrink-0 flex items-center justify-center mb-6 h-28">
+                      <div className="flex-shrink-0 flex items-center justify-center mb-5 sm:mb-6 h-28">
                         <div
                           className="w-24 h-24 rounded-xl flex items-center justify-center overflow-hidden"
                           style={{
@@ -299,11 +260,11 @@ export default function HomePage() {
 
                       <div className="flex-grow flex flex-col justify-between text-center">
                         <div className="space-y-3">
-                          <h3 className="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors duration-300 leading-tight">
+                          <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-yellow-400 transition-colors duration-300 leading-tight">
                             {brand.name}
                           </h3>
                           
-                          <p className="text-gray-400 text-sm leading-relaxed line-clamp-3">
+                          <p className="text-gray-400 text-sm sm:text-base leading-relaxed line-clamp-3">
                             {brand.description}
                           </p>
                         </div>

@@ -1,53 +1,19 @@
 'use client'
 
-import { useState, useEffect, use, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Card, CardContent } from '@/components/ui/card'
 import { ArrowLeft, ExternalLink, Star, Clock, Flame, Coffee, Wine, Sandwich, Cherry, Droplets, ChefHat, Pizza, Package, ArrowDown, Instagram } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { notFound } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import brandsData from '@/data/brands.json'
 import { Brand } from '@/types/brand'
 import { formatPrice } from '@/lib/utils'
-import { block } from 'million/react'
 
-interface Props {
-  params: Promise<{
-    id: string
-  }>
-}
+interface RouteParams { id?: string }
 
-// Imagen del logo de la marca (sin hooks) optimizada y acelerada
-const BrandLogoImage = block(function BrandLogoImage({ src, alt }: { src: string; alt: string }) {
-  return (
-    <Image
-      src={src}
-      alt={alt}
-      fill
-      className="object-contain"
-      sizes="(max-width: 768px) 50vw, 256px"
-      priority
-      fetchPriority="high"
-    />
-  )
-})
-
-// Imagen de producto (sin hooks) optimizada y diferida
-const ItemImage = block(function ItemImage({ src, alt, isTogoima }: { src: string; alt: string; isTogoima: boolean }) {
-  return (
-    <Image
-      src={src}
-      alt={alt}
-      fill
-      className={`object-contain ${isTogoima ? 'p-2 md:p-3' : 'p-3 md:p-4'}`}
-      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1536px) 33vw, 25vw"
-      loading="lazy"
-      fetchPriority="low"
-      placeholder="empty"
-    />
-  )
-})
+// (Removed Million block wrappers to ensure client-side stability on Vercel)
 
 const pageVariants = {
   initial: { opacity: 0, scale: 0.9 },
@@ -367,8 +333,10 @@ const getProductIcon = (productName: string, categoryId: string): string => {
   return categoryIcons[categoryId] || '🍽️'
 }
 
-export default function BrandPage({ params }: Props) {
-  const resolvedParams = use(params)
+export default function BrandPage() {
+  const router = useRouter()
+  const routeParams = useParams() as RouteParams
+  const brandId = typeof routeParams?.id === 'string' ? routeParams.id : Array.isArray(routeParams?.id) ? routeParams.id[0] : ''
   const [selectedCategory, setSelectedCategory] = useState<string>('')
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [mounted, setMounted] = useState(false)
@@ -377,7 +345,7 @@ export default function BrandPage({ params }: Props) {
   const productsGridRef = useRef<HTMLDivElement | null>(null)
   const [showHint, setShowHint] = useState(false)
 
-  const brand: Brand | undefined = brandsData.brands.find(b => b.id === resolvedParams.id)
+  const brand: Brand | undefined = brandsData.brands.find(b => b.id === brandId)
 
   useEffect(() => {
     setMounted(true)
@@ -415,8 +383,22 @@ export default function BrandPage({ params }: Props) {
     return () => { if (raf) cancelAnimationFrame(raf); window.removeEventListener('mousemove', handleMouseMove) }
   }, [mounted])
 
+  // Evita lanzar 404 en cliente; renderiza fallback y regresa al home
   if (!brand) {
-    notFound()
+    return (
+      <div className="min-h-screen flex items-center justify-center text-white">
+        <div className="text-center space-y-4">
+          <div className="text-6xl">🤔</div>
+          <p className="text-lg">Marca no encontrada.</p>
+          <button
+            onClick={() => router.replace('/')}
+            className="px-4 py-2 bg-white/10 border border-white/20 rounded-lg hover:bg-white/20"
+          >
+            Volver al inicio
+          </button>
+        </div>
+      </div>
+    )
   }
 
   const handleOfficialWebsite = () => {
@@ -661,7 +643,15 @@ export default function BrandPage({ params }: Props) {
                 <span className="text-7xl md:text-8xl">🍨</span>
               ) : (
                 <div className="relative w-full h-full">
-                <BrandLogoImage src={brand.logo} alt={`Logo de ${brand.name}`} />
+                <Image
+                  src={brand.logo}
+                  alt={`Logo de ${brand.name}`}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 768px) 50vw, 256px"
+                  priority
+                  fetchPriority="high"
+                />
               </div>
             )}
           </div>
@@ -839,11 +829,11 @@ export default function BrandPage({ params }: Props) {
         <div id="products-section" ref={productsRef} className="-mt-6" />
         {/* Category Tabs - Diseño especial */}
         {hasSpecialDesign ? (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
+          <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 mb-10 sm:mb-12">
             {brand.menu.categories.map((category, index) => (
               <motion.button
                 key={category.id}
-                className={`relative p-6 rounded-2xl transition-all duration-300 group border ${
+                className={`relative p-3 sm:p-5 rounded-xl sm:rounded-2xl transition-all duration-300 group border ${
                   selectedCategory === category.id
                     ? 'shadow-2xl scale-105'
                     : 'hover:scale-105'
@@ -904,9 +894,9 @@ export default function BrandPage({ params }: Props) {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
               >
-                <div className="flex flex-col items-center space-y-3">
+                <div className="flex flex-col items-center space-y-2 sm:space-y-3">
                   <div 
-                    className="w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300"
+                    className="w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center transition-all duration-300"
                     style={{
                       backgroundColor: isAyWey 
                         ? getAyWeyColors(category.id).primary
@@ -947,7 +937,7 @@ export default function BrandPage({ params }: Props) {
                     }
                   </div>
                   <span 
-                    className={`font-bold text-sm md:text-base ${
+                    className={`font-bold text-xs sm:text-sm md:text-base ${
                       selectedCategory === category.id
                         ? isAyWey ? 'text-black'
                         : isPerfetto ? 'text-green-400'
@@ -969,7 +959,7 @@ export default function BrandPage({ params }: Props) {
                 
                 {/* Indicador de items */}
                 <div 
-                  className="absolute top-2 right-2 w-6 h-6 rounded-full flex items-center justify-center text-xs text-white font-bold"
+                  className="absolute top-1.5 right-1.5 w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center text-[10px] sm:text-xs text-white font-bold"
                   style={{
                     backgroundColor: isAyWey ? getAyWeyColors(category.id).primary
                     : isPerfetto ? '#DC143C'
@@ -1106,7 +1096,16 @@ export default function BrandPage({ params }: Props) {
                     >
                       <div className="absolute inset-0 flex items-center justify-center">
                         {item.image ? (
-                          <ItemImage src={item.image} alt={item.name} isTogoima={isTogoima} />
+                          <Image
+                            src={item.image}
+                            alt={item.name}
+                            fill
+                            className={`object-contain ${isTogoima ? 'p-2 md:p-3' : 'p-3 md:p-4'}`}
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1536px) 33vw, 25vw"
+                            loading="lazy"
+                            fetchPriority="low"
+                            placeholder="empty"
+                          />
                         ) : (
                           <div 
                               className={`${hasSpecialDesign ? 'w-16 h-16' : 'w-20 h-20'} rounded-full flex items-center justify-center text-white font-bold shadow-lg`}
