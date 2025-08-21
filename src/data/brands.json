@@ -2181,8 +2181,8 @@
                             },
                             {
                                 "id": "parfait-roma",
-                                "name": "Parfait Roma",
-                                "description": "Gelato con 4 guarniciones de su preferencia en barra + 1 salsa",
+                                "name": "Gelato Roma",
+                                "description": "Gelato con 3 guarniciones de su preferencia en barra + 1 salsa",
                                 "price": 11500,
                                 "imageIcon": "🍨",
                                 "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/perfetto/roma.png"
@@ -2190,15 +2190,15 @@
                             {
                                 "id": "gelato-milan",
                                 "name": "Gelato Milán",
-                                "description": "Gelato con 3 guarniciones de su preferencia en barra + 1 salsa",
-                                "price": 11500,
+                                "description": "Gelato con 2 guarniciones de su preferencia en barra + 1 salsa",
+                                "price": 9900,
                                 "imageIcon": "🍨",
                                 "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/perfetto/milan.png"
                             },
                             {
                                 "id": "bowl-gelato",
                                 "name": "Bowl Gelato",
-                                "description": "Bowl de gelato con 2 guarniciones de su preferencia + 1 salsa",
+                                "description": "Bowl de gelato con guarniciones frutales, granola y queso",
                                 "price": 15000,
                                 "imageIcon": "🍨",
                                 "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/perfetto/bowl.png"
