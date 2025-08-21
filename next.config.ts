@@ -1,6 +1,4 @@
 import type { NextConfig } from "next";
-// @ts-ignore - million/next does not ship TS types for Next 15 yet
-import million from 'million/next';
 
 const nextConfig: NextConfig = {
   images: {
@@ -18,7 +16,4 @@ const nextConfig: NextConfig = {
   }
 };
 
-// @ts-ignore - million/next wrapper
-const withMillion = (million as unknown as (opts?: Record<string, unknown>) => (config: NextConfig) => NextConfig)();
-
-export default withMillion(nextConfig);
+export default nextConfig;
