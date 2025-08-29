@@ -1145,7 +1145,7 @@ export default function BrandPage() {
                   >
                     {/* Item Image or Icon */}
                     <div 
-                      className={`${hasSpecialDesign ? (isPerfetto ? 'h-56 md:h-64' : isTogoima ? 'h-48 md:h-56' : isDream ? 'h-48 md:h-56' : 'h-32') : 'h-40'} relative overflow-hidden`}
+                      className={`${hasSpecialDesign ? (isPerfetto ? 'h-56 md:h-64' : isTogoima ? 'h-48 md:h-56' : isDream ? 'h-48 md:h-56' : isSaborExtremo ? 'h-48 md:h-56' : 'h-32') : 'h-40'} relative overflow-hidden`}
                       style={{
                         background: isAyWey 
                           ? `linear-gradient(135deg, ${getAyWeyColors(selectedCategory).bgSelected}, ${getAyWeyColors(selectedCategory).bgHover})`
@@ -1164,7 +1164,7 @@ export default function BrandPage() {
                             src={item.image}
                             alt={item.name}
                             fill
-                            className={`object-contain ${isTogoima ? 'p-2 md:p-3' : 'p-3 md:p-4'}`}
+                            className={`${isSaborExtremo ? 'object-cover p-0' : 'object-contain'} ${!isSaborExtremo ? (isTogoima ? 'p-2 md:p-3' : 'p-3 md:p-4') : ''}`}
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1536px) 33vw, 25vw"
                             loading="lazy"
                             fetchPriority="low"
@@ -1266,11 +1266,23 @@ export default function BrandPage() {
                                       : brand.primaryColor
                             }}
                           >
-                            {formatPrice(item.price)}
+                            {item.variants && item.variants.length > 0
+                              ? `${formatPrice(item.variants[0].price)} - ${formatPrice(item.variants[item.variants.length - 1].price)}`
+                              : formatPrice(item.price)}
                           </span>
 
                           {/* Order buttons removed */}
                         </div>
+                        {item.variants && item.variants.length > 0 && (
+                          <div className="mt-2 grid grid-cols-2 gap-2">
+                            {item.variants.map((v) => (
+                              <div key={v.id} className="px-2 py-1 rounded-md border border-white/10 bg-black/20 text-xs text-white flex items-center justify-between">
+                                <span>{v.name}</span>
+                                <span className="font-semibold">{formatPrice(v.price)}</span>
+                              </div>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     </CardContent>
                   </Card>

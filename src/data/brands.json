@@ -65,7 +65,7 @@
                                 "id": "pollo-artesado",
                                 "name": "Aplastado de Pollo",
                                 "description": "Aplastado de pollo",
-                                "price": 16000,
+                                "price": 14000,
                                 "imageIcon": "🍗"
                             },
                             {
@@ -133,27 +133,75 @@
                                 "name": "La Legendaria",
                                 "description": "Hamburguesa legendaria de la casa",
                                 "price": 35000,
-                                "imageIcon": "🍔"
+                                "variants": [
+                                    {
+                                        "id": "normal",
+                                        "name": "Normal",
+                                        "price": 35000
+                                    },
+                                    {
+                                        "id": "doble",
+                                        "name": "Doble",
+                                        "price": 45000
+                                    }
+                                ],
+                                "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/saborextremo/legendaria.jpeg"
                             },
                             {
                                 "id": "la-picosa",
                                 "name": "La Picosa",
                                 "description": "Hamburguesa picante",
                                 "price": 35000,
-                                "imageIcon": "🌶️"
+                                "variants": [
+                                    {
+                                        "id": "normal",
+                                        "name": "Normal",
+                                        "price": 35000
+                                    },
+                                    {
+                                        "id": "doble",
+                                        "name": "Doble",
+                                        "price": 45000
+                                    }
+                                ],
+                                "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/saborextremo/picosa.jpeg"
                             },
                             {
                                 "id": "pulled-pork-burger",
                                 "name": "Pulled Pork",
                                 "description": "Hamburguesa con cerdo desmechado",
                                 "price": 32000,
-                                "imageIcon": "🐷"
+                                "variants": [
+                                    {
+                                        "id": "normal",
+                                        "name": "Normal",
+                                        "price": 32000
+                                    },
+                                    {
+                                        "id": "doble",
+                                        "name": "Doble",
+                                        "price": 42000
+                                    }
+                                ],
+                                "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/saborextremo/pulledpork.jpeg"
                             },
                             {
                                 "id": "blue-cheese",
                                 "name": "Blue Cheese",
                                 "description": "Hamburguesa con queso azul",
                                 "price": 30000,
+                                "variants": [
+                                    {
+                                        "id": "normal",
+                                        "name": "Normal",
+                                        "price": 30000
+                                    },
+                                    {
+                                        "id": "doble",
+                                        "name": "Doble",
+                                        "price": 40000
+                                    }
+                                ],
                                 "imageIcon": "🧀"
                             },
                             {
@@ -161,13 +209,37 @@
                                 "name": "La Irresistible",
                                 "description": "Hamburguesa irresistible",
                                 "price": 30000,
-                                "imageIcon": "🍔"
+                                "variants": [
+                                    {
+                                        "id": "normal",
+                                        "name": "Normal",
+                                        "price": 30000
+                                    },
+                                    {
+                                        "id": "doble",
+                                        "name": "Doble",
+                                        "price": 39000
+                                    }
+                                ],
+                                "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/saborextremo/irresistible.jpeg"
                             },
                             {
                                 "id": "la-explosiva",
                                 "name": "La Explosiva",
                                 "description": "Hamburguesa explosiva",
                                 "price": 29000,
+                                "variants": [
+                                    {
+                                        "id": "normal",
+                                        "name": "Normal",
+                                        "price": 29000
+                                    },
+                                    {
+                                        "id": "doble",
+                                        "name": "Doble",
+                                        "price": 38000
+                                    }
+                                ],
                                 "imageIcon": "💥"
                             },
                             {
@@ -175,7 +247,19 @@
                                 "name": "De la Casa",
                                 "description": "Hamburguesa de la casa",
                                 "price": 26000,
-                                "imageIcon": "🏠"
+                                "variants": [
+                                    {
+                                        "id": "normal",
+                                        "name": "Normal",
+                                        "price": 26000
+                                    },
+                                    {
+                                        "id": "doble",
+                                        "name": "Doble",
+                                        "price": 36000
+                                    }
+                                ],
+                                "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/saborextremo/delacasa.jpeg"
                             }
                         ]
                     },
@@ -216,7 +300,7 @@
                                 "name": "Pulled Pork",
                                 "description": "Perro con cerdo desmechado",
                                 "price": 28000,
-                                "imageIcon": "🐷"
+                                "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/saborextremo/pulledporkperro.jpeg"
                             },
                             {
                                 "id": "de-la-casa-perro",
@@ -415,7 +499,7 @@
                                 "name": "Milanesa Argentina Personal",
                                 "description": "Milanesa estilo argentino personal",
                                 "price": 28000,
-                                "imageIcon": "🥩"
+                                "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/saborextremo/milanesa.jpeg"
                             },
                             {
                                 "id": "milanesa-argentina-familiar",
@@ -469,7 +553,7 @@
                                 "name": "Soda Lychee",
                                 "description": "Soda sabor lychee",
                                 "price": 15000,
-                                "imageIcon": "🥤"
+                                "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/saborextremo/sodaliche.jpeg"
                             },
                             {
                                 "id": "soda-maracuya",
@@ -1268,14 +1352,14 @@
                                 "id": "latte",
                                 "name": "Latte",
                                 "description": "Espresso con leche vaporizada",
-                                "price": 7500,
+                                "price": 7000,
                                 "imageIcon": "☕"
                             },
                             {
                                 "id": "macchiato",
                                 "name": "Macchiato",
                                 "description": "Espresso manchado con espuma de leche",
-                                "price": 7500,
+                                "price": 7000,
                                 "imageIcon": "☕"
                             },
                             {
@@ -1289,7 +1373,7 @@
                                 "id": "campesino",
                                 "name": "Campesino",
                                 "description": "Café tradicional colombiano",
-                                "price": 6000,
+                                "price": 9000,
                                 "imageIcon": "☕"
                             },
                             {
@@ -1317,6 +1401,18 @@
                                 "name": "Syphon",
                                 "description": "Método de extracción al vacío",
                                 "price": 15000,
+                                "variants": [
+                                    {
+                                        "id": "2tazas",
+                                        "name": "2 tazas",
+                                        "price": 15000
+                                    },
+                                    {
+                                        "id": "4tazas",
+                                        "name": "4 tazas",
+                                        "price": 30000
+                                    }
+                                ],
                                 "imageIcon": "☕"
                             },
                             {
@@ -1324,13 +1420,27 @@
                                 "name": "Aeropress",
                                 "description": "Presión y filtrado para un café suave",
                                 "price": 12000,
+                                "variants": [
+                                    {
+                                        "id": "1taza",
+                                        "name": "1 taza",
+                                        "price": 12000
+                                    }
+                                ],
                                 "imageIcon": "☕"
                             },
                             {
                                 "id": "dripper",
                                 "name": "Dripper",
                                 "description": "Filtrado por goteo manual",
-                                "price": 12000,
+                                "price": 9000,
+                                "variants": [
+                                    {
+                                        "id": "1taza",
+                                        "name": "1 taza",
+                                        "price": 9000
+                                    }
+                                ],
                                 "imageIcon": "☕"
                             },
                             {
@@ -1338,6 +1448,18 @@
                                 "name": "Chemex",
                                 "description": "Filtrado elegante y limpio",
                                 "price": 15000,
+                                "variants": [
+                                    {
+                                        "id": "2tazas",
+                                        "name": "2 tazas",
+                                        "price": 30000
+                                    },
+                                    {
+                                        "id": "4tazas",
+                                        "name": "4 tazas",
+                                        "price": 15000
+                                    }
+                                ],
                                 "imageIcon": "☕"
                             },
                             {
@@ -1345,13 +1467,27 @@
                                 "name": "Prensa",
                                 "description": "Prensa francesa tradicional",
                                 "price": 14000,
+                                "variants": [
+                                    {
+                                        "id": "2tazas",
+                                        "name": "2 tazas",
+                                        "price": 14000
+                                    }
+                                ],
                                 "imageIcon": "☕"
                             },
                             {
                                 "id": "fretta",
                                 "name": "Fretta",
                                 "description": "Método especial de la casa",
-                                "price": 18000,
+                                "price": 15000,
+                                "variants": [
+                                    {
+                                        "id": "2tazas",
+                                        "name": "2 tazas",
+                                        "price": 15000
+                                    }
+                                ],
                                 "imageIcon": "☕"
                             }
                         ]
@@ -1361,86 +1497,86 @@
                         "name": "CACAOS Y CHOCOLATES",
                         "items": [
                             {
-                                "id": "tradicional-cacao",
-                                "name": "Tradicional",
-                                "description": "Cacao puro de origen",
+                                "id": "tradicional-agua",
+                                "name": "Tradicional (Agua)",
+                                "description": "Cacao tradicional con agua",
                                 "price": 8000,
                                 "imageIcon": "🍫"
                             },
                             {
-                                "id": "menta",
-                                "name": "Menta",
-                                "description": "Cacao con hojas de menta fresca",
+                                "id": "tradicional-leche",
+                                "name": "Tradicional (Leche)",
+                                "description": "Cacao tradicional con leche",
+                                "price": 9000,
+                                "imageIcon": "🥛"
+                            },
+                            {
+                                "id": "choco-menta",
+                                "name": "Choco Menta",
+                                "description": "Chocolate menta",
                                 "price": 10000,
                                 "imageIcon": "🍃"
                             },
                             {
-                                "id": "choco",
-                                "name": "Choco",
-                                "description": "Chocolate cremoso especial",
-                                "price": 9000,
-                                "imageIcon": "🍫"
-                            },
-                            {
-                                "id": "pimienta",
-                                "name": "Pimienta",
-                                "description": "Cacao con toque de pimienta",
+                                "id": "choco-pimienta",
+                                "name": "Choco Pimienta",
+                                "description": "Chocolate pimienta",
                                 "price": 10000,
                                 "imageIcon": "🌶️"
                             },
                             {
                                 "id": "choco-coco",
                                 "name": "Choco Coco",
-                                "description": "Chocolate con coco rallado",
+                                "description": "Chocolate coco",
                                 "price": 11000,
                                 "imageIcon": "🥥"
                             },
                             {
-                                "id": "vainilla-choco",
+                                "id": "vainilla",
                                 "name": "Vainilla",
-                                "description": "Chocolate con esencia de vainilla",
+                                "description": "Vainilla",
                                 "price": 11000,
                                 "imageIcon": "🍦"
                             },
                             {
                                 "id": "chocolate",
                                 "name": "Chocolate",
-                                "description": "Chocolate puro premium",
+                                "description": "Chocolate",
                                 "price": 10000,
                                 "imageIcon": "🍫"
                             },
                             {
                                 "id": "limoncillo",
                                 "name": "Limoncillo",
-                                "description": "Cacao con toques cítricos",
+                                "description": "Limoncillo",
                                 "price": 10000,
                                 "imageIcon": "🌿"
                             },
                             {
                                 "id": "miel",
                                 "name": "Miel",
-                                "description": "Cacao endulzado con miel natural",
+                                "description": "Miel",
                                 "price": 11000,
                                 "imageIcon": "🍯"
                             },
                             {
                                 "id": "ancestral",
-                                "name": "Ancestral",
-                                "description": "Receta tradicional indígena",
-                                "price": 13000,
+                                "name": "Chucula Ancestral",
+                                "description": "Chucula Ancestral",
+                                "price": 11000,
                                 "imageIcon": "🏺"
                             },
                             {
                                 "id": "cacao-100",
-                                "name": "100%",
-                                "description": "Cacao puro sin azúcar",
+                                "name": "Cacao 100%",
+                                "description": "Cacao 100%",
                                 "price": 12000,
                                 "imageIcon": "🫘"
                             },
                             {
-                                "id": "te-chai",
+                                "id": "te-chai-caliente",
                                 "name": "Té Chai Caliente",
-                                "description": "Té especiado con leche",
+                                "description": "Té Chai Caliente",
                                 "price": 12000,
                                 "imageIcon": "🍵"
                             }
@@ -1480,123 +1616,116 @@
                         "name": "HIPOTÉRMICAS",
                         "items": [
                             {
-                                "id": "frappuccino-clasico",
-                                "name": "Frappuccino Clásico",
-                                "description": "Café helado con crema batida",
+                                "id": "granizado-cafe",
+                                "name": "Granizado de café",
+                                "description": "Granizado de café",
                                 "price": 15000,
                                 "imageIcon": "🥤"
                             },
                             {
                                 "id": "granizado-frutos-rojos",
-                                "name": "Granizado de Frutos Rojos",
-                                "description": "Granizado natural de frutos del bosque",
-                                "price": 15000,
+                                "name": "Granizado de frutos rojos",
+                                "description": "Granizado de frutos rojos",
+                                "price": 16000,
                                 "imageIcon": "🍓"
                             },
                             {
-                                "id": "americano-frio",
-                                "name": "Americano Frío",
-                                "description": "Café americano con hielo",
-                                "price": 9000,
-                                "imageIcon": "🧊"
+                                "id": "granizado-chocolate",
+                                "name": "Granizado de chocolate",
+                                "description": "Granizado de chocolate",
+                                "price": 15000,
+                                "imageIcon": "🍫"
                             },
                             {
-                                "id": "frappuccino-tequilero",
-                                "name": "Frappuccino Tequilero",
-                                "description": "Frappé con toque de tequila",
+                                "id": "granizada-togoima",
+                                "name": "Granizada Togoima",
+                                "description": "Granizada Togoima",
+                                "price": 16000,
+                                "imageIcon": "🥤"
+                            },
+                            {
+                                "id": "granizada-baileys",
+                                "name": "Granizada Baileys",
+                                "description": "Granizada Baileys",
                                 "price": 18000,
                                 "imageIcon": "🥤"
                             },
                             {
-                                "id": "frappuccino-amaretto",
-                                "name": "Frappuccino Amaretto",
-                                "description": "Frappé con licor de almendras",
-                                "price": 18000,
-                                "imageIcon": "🥤"
-                            },
-                            {
-                                "id": "limonada-cerezada",
-                                "name": "Limonada Cerezada",
-                                "description": "Limonada con cerezas naturales",
-                                "price": 10000,
-                                "imageIcon": "🍒"
+                                "id": "cholado-oromo",
+                                "name": "Cholado oromo",
+                                "description": "Cholado oromo",
+                                "price": 17500,
+                                "imageIcon": "🍧"
                             },
                             {
                                 "id": "limonada-natural",
-                                "name": "Limonada Natural",
-                                "description": "Limonada fresca del día",
-                                "price": 9000,
+                                "name": "Limonada natural",
+                                "description": "Limonada natural",
+                                "price": 8000,
                                 "imageIcon": "🍋"
                             },
                             {
-                                "id": "limonada-de-coco",
-                                "name": "Limonada de Coco",
-                                "description": "Limonada con leche de coco",
-                                "price": 10000,
-                                "imageIcon": "🥥"
+                                "id": "limonada-vino",
+                                "name": "Limonada de vino",
+                                "description": "Limonada de vino",
+                                "price": 16000,
+                                "imageIcon": "🍷"
                             },
                             {
                                 "id": "te-frio",
-                                "name": "Té Frío",
-                                "description": "Té helado de la casa",
-                                "price": 8000,
+                                "name": "Té frío",
+                                "description": "Té frío",
+                                "price": 13000,
                                 "imageIcon": "🍵"
                             },
                             {
-                                "id": "barista-de-coco",
-                                "name": "Barista de Coco",
-                                "description": "Bebida fría de café con coco",
+                                "id": "batido-coco",
+                                "name": "Batido de coco",
+                                "description": "Batido de coco",
                                 "price": 17000,
                                 "imageIcon": "🥥"
                             },
                             {
-                                "id": "te-chai-matcha",
-                                "name": "Té Chai Matcha",
-                                "description": "Té chai con matcha helado",
-                                "price": 15000,
+                                "id": "te-chai-cremoso",
+                                "name": "Té chai cremoso",
+                                "description": "Té chai cremoso",
+                                "price": 18000,
                                 "imageIcon": "🍵"
                             },
                             {
-                                "id": "frappuccino-caramelo",
-                                "name": "Frappuccino de Caramelo",
-                                "description": "Frappé con salsa de caramelo",
-                                "price": 16000,
-                                "imageIcon": "🍮"
+                                "id": "malteada-cafe",
+                                "name": "Malteada de café",
+                                "description": "Malteada de café",
+                                "price": 18000,
+                                "imageIcon": "🥤"
                             },
                             {
-                                "id": "frappuccino-macadamia",
-                                "name": "Frappuccino de Macadamia",
-                                "description": "Frappé con nueces de macadamia",
-                                "price": 17000,
-                                "imageIcon": "🥜"
+                                "id": "malteada-chocolate",
+                                "name": "Malteada de chocolate",
+                                "description": "Malteada de chocolate",
+                                "price": 18000,
+                                "imageIcon": "🍫"
                             },
                             {
-                                "id": "frappuccino-de-vainilla",
-                                "name": "Frappuccino de Vainilla",
-                                "description": "Frappé cremoso de vainilla",
-                                "price": 15000,
+                                "id": "malteada-vainilla",
+                                "name": "Malteada de vainilla",
+                                "description": "Malteada de vainilla",
+                                "price": 18000,
                                 "imageIcon": "🍦"
                             },
                             {
-                                "id": "matcha-latte",
-                                "name": "Matcha Latte",
-                                "description": "Té matcha con leche helada",
-                                "price": 15000,
-                                "imageIcon": "🍵"
-                            },
-                            {
                                 "id": "malteada-oreo",
-                                "name": "Malteada Oreo",
-                                "description": "Malteada con galletas Oreo",
-                                "price": 14000,
+                                "name": "Malteada oreo",
+                                "description": "Malteada oreo",
+                                "price": 18000,
                                 "imageIcon": "🍪"
                             },
                             {
-                                "id": "malteada-de-chocolate",
-                                "name": "Malteada de Chocolate",
-                                "description": "Malteada cremosa de chocolate",
-                                "price": 13000,
-                                "imageIcon": "🍫"
+                                "id": "malteada-arequipe",
+                                "name": "Malteada de arequipe",
+                                "description": "Malteada de arequipe",
+                                "price": 18000,
+                                "imageIcon": "🍮"
                             }
                         ]
                     },
@@ -1606,80 +1735,87 @@
                         "items": [
                             {
                                 "id": "milo-frio",
-                                "name": "Milo Frío",
-                                "description": "Bebida fría de Milo",
-                                "price": 9000,
+                                "name": "Milo frío",
+                                "description": "Milo frío",
+                                "price": 9500,
                                 "imageIcon": "🥤"
                             },
                             {
                                 "id": "milo-caliente",
-                                "name": "Milo Caliente",
-                                "description": "Bebida caliente de Milo",
-                                "price": 9000,
+                                "name": "Milo caliente",
+                                "description": "Milo caliente",
+                                "price": 8500,
                                 "imageIcon": "☕"
                             },
                             {
                                 "id": "aromatica-frutas",
-                                "name": "Aromática de Frutas",
-                                "description": "Infusión natural de frutas",
+                                "name": "Aromática de frutas",
+                                "description": "Aromática de frutas",
                                 "price": 6000,
                                 "imageIcon": "🍵"
                             },
                             {
-                                "id": "aromatica-yerbabuena",
-                                "name": "Aromática Yerbabuena",
-                                "description": "Infusión de hierbabuena fresca",
-                                "price": 5000,
-                                "imageIcon": "🌿"
-                            },
-                            {
-                                "id": "infusion-aromatica",
-                                "name": "Infusión de Aromática",
-                                "description": "Mezcla especial de hierbas",
-                                "price": 5000,
+                                "id": "aromatica-togoima",
+                                "name": "Aromática Togoima",
+                                "description": "Aromática Togoima",
+                                "price": 7500,
                                 "imageIcon": "🍵"
                             },
                             {
-                                "id": "jugo-natural-agua",
-                                "name": "Jugo Natural en Agua",
-                                "description": "Jugo de fruta fresca en agua",
+                                "id": "infusion-aromatica",
+                                "name": "Infusión de aromática",
+                                "description": "Infusión de aromática",
+                                "price": 6000,
+                                "imageIcon": "🍵"
+                            },
+                            {
+                                "id": "soda-italiana",
+                                "name": "Soda italiana",
+                                "description": "Soda italiana",
+                                "price": 15000,
+                                "imageIcon": "🥤"
+                            },
+                            {
+                                "id": "jugo-agua",
+                                "name": "Jugo natural en agua",
+                                "description": "Jugo natural en agua",
                                 "price": 8000,
                                 "imageIcon": "🧃"
                             },
                             {
-                                "id": "jugo-natural-leche",
-                                "name": "Jugo Natural en Leche",
-                                "description": "Jugo de fruta fresca en leche",
+                                "id": "jugo-leche",
+                                "name": "Jugo natural en leche",
+                                "description": "Jugo natural en leche",
                                 "price": 9000,
                                 "imageIcon": "🥛"
                             },
                             {
                                 "id": "coca-cola",
                                 "name": "Coca Cola",
-                                "description": "Gaseosa Coca Cola",
-                                "price": 5000,
+                                "description": "Coca Cola",
+                                "price": 4500,
                                 "imageIcon": "🥤"
                             },
                             {
                                 "id": "agua",
                                 "name": "Agua",
-                                "description": "Agua embotellada",
+                                "description": "Agua",
                                 "price": 4000,
                                 "imageIcon": "💧"
                             },
                             {
-                                "id": "agua-con-gas",
-                                "name": "Agua con Gas",
-                                "description": "Agua gasificada",
+                                "id": "agua-gas",
+                                "name": "Agua con gas",
+                                "description": "Agua con gas",
                                 "price": 5000,
                                 "imageIcon": "💧"
                             },
                             {
-                                "id": "red-bull",
-                                "name": "Red Bull",
-                                "description": "Bebida energizante",
-                                "price": 10000,
-                                "imageIcon": "⚡"
+                                "id": "soda",
+                                "name": "Soda",
+                                "description": "Soda",
+                                "price": 5000,
+                                "imageIcon": "🥤"
                             }
                         ]
                     },
@@ -1691,70 +1827,77 @@
                                 "id": "aguacate-waffle-veg",
                                 "name": "Aguacate Waffle (VEG)",
                                 "description": "Waffle integral con aguacate, queso fresco, tomate cherry, rúcula y reducción balsámica",
-                                "price": 23000,
+                                "price": 22000,
                                 "imageIcon": "🥑"
                             },
                             {
                                 "id": "tomate-waffle",
                                 "name": "Tomate Waffle",
                                 "description": "Waffle con tomate asado, mozzarella, albahaca y aceite de oliva",
-                                "price": 23000,
+                                "price": 22000,
                                 "imageIcon": "🍅"
                             },
                             {
                                 "id": "revoltillo-envuelto-veg",
                                 "name": "Revoltillo de Envuelto (VEG)",
                                 "description": "Envuelto de maíz relleno de verduras salteadas",
-                                "price": 19000,
+                                "price": 20000,
                                 "imageIcon": "🌽"
                             },
                             {
                                 "id": "waffle-sandwich",
                                 "name": "Waffle Sandwich",
                                 "description": "Waffle con jamón, queso, lechuga, tomate y salsas especiales",
-                                "price": 23000,
+                                "price": 22000,
                                 "imageIcon": "🥪"
                             },
                             {
                                 "id": "dulce-waffle",
                                 "name": "Dulce Waffle",
                                 "description": "Waffle con fresas, crema batida, chocolate y miel",
-                                "price": 19000,
+                                "price": 20000,
                                 "imageIcon": "🧇"
                             },
                             {
-                                "id": "arepa-tu-omelet",
-                                "name": "Arepa Tu Omelet",
-                                "description": "Arepa rellena con omelet al gusto",
-                                "price": 18000,
-                                "imageIcon": "🫓"
+                                "id": "arma-tu-omelet",
+                                "name": "Arma tu Omelet",
+                                "description": "Omelet al gusto con toppings",
+                                "price": 16000,
+                                "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/togoima/omelet.png"
                             },
                             {
                                 "id": "omelet-caprese-veg",
                                 "name": "Omelet Caprese (VEG)",
                                 "description": "Omelet con tomate, mozzarella y albahaca",
-                                "price": 23000,
+                                "price": 25000,
                                 "imageIcon": "🍳"
                             },
                             {
                                 "id": "bowl-de-avena-veg",
                                 "name": "Bowl de Avena (VEG)",
                                 "description": "Avena con frutas frescas, granola y miel",
-                                "price": 15000,
+                                "price": 16000,
                                 "imageIcon": "🥣"
                             },
                             {
-                                "id": "bowl-de-cisa-veg",
-                                "name": "Bowl de Cisa (VEG)",
-                                "description": "Bowl saludable con quinoa y vegetales",
+                                "id": "bowl-de-chia-veg",
+                                "name": "Bowl de Chía (VEG)",
+                                "description": "Combinación de chía hidratada con fruta fresca",
+                                "price": 16000,
+                                "imageIcon": "🥣"
+                            },
+                            {
+                                "id": "bowl-de-yogurt",
+                                "name": "Bowl de Yogurt",
+                                "description": "Combinación de yogurt, fruta y granola",
                                 "price": 18000,
-                                "imageIcon": "🥗"
+                                "imageIcon": "🥛"
                             },
                             {
                                 "id": "tostadas-francesas",
                                 "name": "Tostadas Francesas",
                                 "description": "Pan francés con mantequilla y miel de maple",
-                                "price": 18000,
+                                "price": 16000,
                                 "imageIcon": "🍞"
                             }
                         ]
@@ -1774,9 +1917,9 @@
                                 "id": "italiano",
                                 "name": "Italiano",
                                 "description": "Sandwich con ingredientes italianos",
-                                "price": 19000,
+                                "price": 20000,
                                 "imageIcon": "🥪",
-                                "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/togoima/sandwich_italiano.png"
+                                "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/togoima/italiano.png"
                             },
                             {
                                 "id": "pernil-cerdo-ahumada",
@@ -1789,14 +1932,14 @@
                                 "id": "ancestral-sandwich",
                                 "name": "Ancestral",
                                 "description": "Sandwich con receta tradicional",
-                                "price": 19000,
+                                "price": 11000,
                                 "imageIcon": "🥪"
                             },
                             {
                                 "id": "chocolatada",
                                 "name": "Chocolatada",
                                 "description": "Sandwich dulce con chocolate",
-                                "price": 13000,
+                                "price": 12000,
                                 "imageIcon": "🍫"
                             },
                             {
@@ -1821,129 +1964,136 @@
                         "items": [
                             {
                                 "id": "pastelito-pollo",
-                                "name": "Pastelito Pollo",
-                                "description": "Pastelito relleno de pollo",
-                                "price": 8000,
+                                "name": "Pastel de pollo",
+                                "description": "Pastel de pollo",
+                                "price": 6000,
                                 "imageIcon": "🍗"
                             },
                             {
                                 "id": "croissant-queso",
-                                "name": "Croissant de Queso",
-                                "description": "Croissant relleno de queso",
-                                "price": 9000,
+                                "name": "Croissant de queso",
+                                "description": "Croissant de queso",
+                                "price": 5000,
                                 "imageIcon": "🥐"
                             },
                             {
                                 "id": "croissant-chocolate",
-                                "name": "Croissant de Chocolate",
-                                "description": "Croissant con chocolate",
-                                "price": 10000,
+                                "name": "Croissant de chocolate",
+                                "description": "Croissant de chocolate",
+                                "price": 6500,
                                 "imageIcon": "🥐"
                             },
                             {
                                 "id": "porcion-queso",
-                                "name": "Porción de Queso",
-                                "description": "Porción de queso del día",
-                                "price": 6000,
+                                "name": "Porción de queso",
+                                "description": "Porción de queso",
+                                "price": 2500,
                                 "imageIcon": "🧀"
                             },
                             {
-                                "id": "brownie",
-                                "name": "Brownie",
-                                "description": "Brownie de chocolate casero",
-                                "price": 8000,
-                                "imageIcon": "🍫"
+                                "id": "alfajores",
+                                "name": "Alfajores",
+                                "description": "Alfajores",
+                                "price": 4500,
+                                "imageIcon": "🍪"
                             },
                             {
-                                "id": "brownie-helado",
-                                "name": "Brownie Helado",
-                                "description": "Brownie con helado de vainilla",
-                                "price": 12000,
-                                "imageIcon": "🍨"
-                            },
-                            {
-                                "id": "torta-naranja",
-                                "name": "Torta de Naranja",
-                                "description": "Torta casera de naranja",
-                                "price": 10000,
-                                "imageIcon": "🍊"
-                            },
-                            {
-                                "id": "torta-milo-way",
-                                "name": "Torta de Milo y Way",
-                                "description": "Torta especial de Milo",
-                                "price": 11000,
-                                "imageIcon": "🍰"
-                            },
-                            {
-                                "id": "waffle",
-                                "name": "Waffle",
-                                "description": "Waffle tradicional",
-                                "price": 9000,
-                                "imageIcon": "🧇"
-                            },
-                            {
-                                "id": "dona",
-                                "name": "Dona",
-                                "description": "Dona glaseada",
-                                "price": 5000,
-                                "imageIcon": "🍩"
-                            },
-                            {
-                                "id": "galletas",
-                                "name": "Galletas",
-                                "description": "Galletas caseras surtidas",
+                                "id": "colaciones",
+                                "name": "Colaciones",
+                                "description": "Colaciones",
                                 "price": 4000,
                                 "imageIcon": "🍪"
                             },
                             {
-                                "id": "torta-de-cafe",
-                                "name": "Torta de Café",
-                                "description": "Torta de café húmeda",
-                                "price": 12000,
-                                "imageIcon": "☕"
-                            },
-                            {
-                                "id": "muffin-vainilla",
-                                "name": "Muffin de Vainilla",
-                                "description": "Muffin esponjoso de vainilla",
+                                "id": "galleta-chips",
+                                "name": "Galleta de chips",
+                                "description": "Galleta de chips",
                                 "price": 7000,
-                                "imageIcon": "🧁"
+                                "imageIcon": "🍪"
                             },
                             {
-                                "id": "torta-genovesa",
-                                "name": "Torta Genovesa",
-                                "description": "Torta genovesa con crema",
+                                "id": "torta-zanahoria",
+                                "name": "Torta de zanahoria",
+                                "description": "Torta de zanahoria",
+                                "price": 10000,
+                                "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/togoima/tortazanahoria.png"
+                            },
+                            {
+                                "id": "tarta-vasca",
+                                "name": "Tarta vasca",
+                                "description": "Tarta vasca",
                                 "price": 14000,
-                                "imageIcon": "🍰"
+                                "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/togoima/vazca.png"
                             },
                             {
                                 "id": "torta-red-velvet",
-                                "name": "Torta Red Velvet",
-                                "description": "Torta red velvet con frosting",
+                                "name": "Torta red velvet",
+                                "description": "Torta red velvet",
                                 "price": 11000,
                                 "imageIcon": "🍰"
                             },
                             {
-                                "id": "palito-queso",
-                                "name": "Palito de Queso",
-                                "description": "Palito de queso horneado",
-                                "price": 3000,
-                                "imageIcon": "🧀"
+                                "id": "torta-naranja",
+                                "name": "Torta de naranja",
+                                "description": "Torta de naranja",
+                                "price": 10000,
+                                "imageIcon": "🍊"
                             },
                             {
-                                "id": "yogurt-griego-litro",
-                                "name": "Yogurt Griego Litro",
-                                "description": "Litro de yogurt griego natural",
-                                "price": 28000,
-                                "imageIcon": "🥛"
+                                "id": "torta-milky-way",
+                                "name": "Torta de Milky Way",
+                                "description": "Torta de Milky Way",
+                                "price": 11000,
+                                "image": "https://terrazaedenfiles.s3.us-east-2.amazonaws.com/togoima/milkyway.png"
                             },
                             {
-                                "id": "yogurt-griego-medio",
-                                "name": "Yogurt Griego 1/2 Litro",
-                                "description": "Medio litro de yogurt griego",
-                                "price": 17000,
-                                "imageIcon": "🥛"
+                                "id": "brownie",
+                                "name": "Brownie",
+                                "description": "Brownie",
+                                "price": 5000,
+                                "imageIcon": "🍫"
+                            },
+                            {
+                                "id": "brownie-helado",
+                                "name": "Brownie helado",
+                                "description": "Brownie helado",
+                                "price": 12000,
+                                "imageIcon": "🍨"
+                            },
+                            {
+                                "id": "copa-helado",
+                                "name": "Copa de helado",
+                                "description": "Copa de helado",
+                                "price": 7000,
+                                "imageIcon": "🍨"
+                            },
+                            {
+                                "id": "carantanta",
+                                "name": "Carantanta",
+                                "description": "Carantanta",
+                                "price": 4500,
+                                "imageIcon": "🥨"
+                            },
+                            {
+                                "id": "platanitos",
+                                "name": "Platanitos",
+                                "description": "Platanitos",
+                                "price": 4500,
+                                "imageIcon": "🍌"
+                            },
+                            {
+                                "id": "muffin-vainilla",
+                                "name": "Muffin de vainilla",
+                                "description": "Muffin de vainilla",
+                                "price": 7000,
+                                "imageIcon": "🧁"
+                            },
+                            {
+                                "id": "cheese-pie-frutos-rojos",
+                                "name": "Cheese pie frutos rojos",
+                                "description": "Cheese pie frutos rojos",
+                                "price": 14000,
+                                "imageIcon": "🍓"
                             }
                         ]
                     },
@@ -1966,10 +2116,10 @@
                                 "imageIcon": "🥃"
                             },
                             {
-                                "id": "gin-beefeater",
-                                "name": "Gin Beefeater",
-                                "description": "Trago de gin premium",
-                                "price": 10000,
+                                "id": "ron-blanco",
+                                "name": "Ron blanco",
+                                "description": "Trago de ron blanco",
+                                "price": 12000,
                                 "imageIcon": "🥃"
                             },
                             {
@@ -1980,17 +2130,17 @@
                                 "imageIcon": "🥃"
                             },
                             {
-                                "id": "mezcal",
-                                "name": "Mezcal",
-                                "description": "Mezcal artesanal mexicano",
-                                "price": 14000,
+                                "id": "brandy",
+                                "name": "Brandy",
+                                "description": "Trago de brandy",
+                                "price": 10000,
                                 "imageIcon": "🥃"
                             },
                             {
-                                "id": "tequila-herradura",
-                                "name": "Tequila Herradura",
-                                "description": "Tequila premium",
-                                "price": 15000,
+                                "id": "ginebra",
+                                "name": "Ginebra",
+                                "description": "Trago de ginebra",
+                                "price": 20000,
                                 "imageIcon": "🥃"
                             },
                             {
@@ -2004,28 +2154,28 @@
                                 "id": "jack-daniels",
                                 "name": "Jack Daniel's",
                                 "description": "Whiskey americano",
-                                "price": 18000,
+                                "price": 13000,
                                 "imageIcon": "🥃"
                             },
                             {
                                 "id": "club-colombia",
                                 "name": "Club Colombia",
                                 "description": "Cerveza premium colombiana",
-                                "price": 7000,
+                                "price": 7500,
                                 "imageIcon": "🍺"
                             },
                             {
                                 "id": "poker",
-                                "name": "Póker",
+                                "name": "Poker",
                                 "description": "Cerveza tradicional",
-                                "price": 6000,
+                                "price": 6500,
                                 "imageIcon": "🍺"
                             },
                             {
                                 "id": "corona",
                                 "name": "Corona",
                                 "description": "Cerveza mexicana",
-                                "price": 8000,
+                                "price": 9000,
                                 "imageIcon": "🍺"
                             },
                             {
@@ -2036,15 +2186,15 @@
                                 "imageIcon": "🍷"
                             },
                             {
-                                "id": "adicion-marihuana",
-                                "name": "Adición Marihuana",
-                                "description": "Adición especial",
-                                "price": 15000,
+                                "id": "adicion-michelada",
+                                "name": "Adición michelada",
+                                "description": "Michelada para cerveza",
+                                "price": 2000,
                                 "imageIcon": "🌿"
                             },
                             {
                                 "id": "baileys",
-                                "name": "Bailey's",
+                                "name": "Baileys",
                                 "description": "Licor de crema irlandesa",
                                 "price": 15000,
                                 "imageIcon": "🥃"

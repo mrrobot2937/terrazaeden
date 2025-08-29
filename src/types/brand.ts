@@ -5,6 +5,11 @@ export interface MenuItem {
     price: number;
     image?: string;
     imageIcon?: string;
+    variants?: Array<{
+        id: string;
+        name: string;
+        price: number;
+    }>;
 }
 
 export interface MenuCategory {
